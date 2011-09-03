@@ -1,0 +1,14 @@
+<?php
+
+$vendor_dir = __DIR__.'/../../vendor';
+require_once $vendor_dir.'/symfony/src/Symfony/Component/ClassLoader/UniversalClassLoader.php';
+
+use Symfony\Component\ClassLoader\UniversalClassLoader;
+
+$loader = new UniversalClassLoader();
+$loader->registerNamespaces(array(
+    'Doctrine\\DBAL'                 => $vendor_dir.'/doctrine-dbal/lib',
+    'Sonata'                         => __DIR__.'/src',
+));
+
+$loader->register();
