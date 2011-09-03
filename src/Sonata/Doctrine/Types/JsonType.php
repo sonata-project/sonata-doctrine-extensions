@@ -22,16 +22,6 @@ class JsonType extends Type
     const JSON = 'json'; // modify to match your type name
 
     /**
-     * @param array $fieldDeclaration
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
-     * @return string
-     */
-    public function getSqlDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
-    {
-        return 'JSON';
-    }
-
-    /**
      * @param $value
      * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
      * @return mixed
@@ -57,5 +47,11 @@ class JsonType extends Type
     public function getName()
     {
         return self::JSON;
+    }
+
+    /** @override */
+    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    {
+        return $platform->getClobTypeDeclarationSQL($fieldDeclaration);
     }
 }
