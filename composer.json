@@ -22,5 +22,5 @@
     },
     "autoload": {
         "psr-0": { "Sonata\\Doctrine\\Types": "src/" }
-    },
+    }
 }
