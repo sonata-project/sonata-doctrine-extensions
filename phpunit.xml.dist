@@ -6,13 +6,13 @@
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
-         processIsolation="true"
+         processIsolation="false"
          stopOnFailure="false"
          syntaxCheck="false"
          bootstrap="tests/bootstrap.php"
 >
     <testsuites>
-        <testsuite name="Doctrine Extensions Sonata Test Suite">
+        <testsuite name="Sonata Doctrine Extensions ~ Test Suite">
             <directory>./tests/Sonata/</directory>
         </testsuite>
     </testsuites>

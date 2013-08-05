@@ -54,9 +54,9 @@ class JsonType extends Type
     {
         return $platform->getClobTypeDeclarationSQL($fieldDeclaration);
     }
-    
+
     public function requiresSQLCommentHint(AbstractPlatform $platform)
     {
         return true;
-    }    
+    }
 }
