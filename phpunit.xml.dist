@@ -13,7 +13,7 @@
 >
     <testsuites>
         <testsuite name="Sonata Doctrine Extensions ~ Test Suite">
-            <directory>./tests/Sonata/</directory>
+            <directory>./tests/</directory>
         </testsuite>
     </testsuites>
 </phpunit>

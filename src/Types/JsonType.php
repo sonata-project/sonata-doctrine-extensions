@@ -22,9 +22,7 @@ class JsonType extends Type
     const JSON = 'json'; // modify to match your type name
 
     /**
-     * @param $value
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
-     * @return mixed
+     * {@inheritdoc}
      */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
@@ -32,9 +30,7 @@ class JsonType extends Type
     }
 
     /**
-     * @param $value
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
-     * @return string
+     * {@inheritdoc}
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
@@ -42,19 +38,24 @@ class JsonType extends Type
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getName()
     {
         return self::JSON;
     }
 
-    /** @override */
+    /**
+     * {@inheritdoc}
+     */
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
         return $platform->getClobTypeDeclarationSQL($fieldDeclaration);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function requiresSQLCommentHint(AbstractPlatform $platform)
     {
         return true;
