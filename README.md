@@ -3,8 +3,6 @@ Sonata Doctrine Extensions
 
 [![Build Status](https://secure.travis-ci.org/sonata-project/doctrine-extensions.png?branch=master)](http://travis-ci.org/sonata-project/doctrine-extensions)
 
-Data Exporter is a lightweight library to export data into different formats.
-
 ### Installation using Composer
 
 Add the dependency:
