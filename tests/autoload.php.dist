@@ -17,6 +17,10 @@ foreach ($files as $file) {
     }
 }
 
+
+/* @var $autoload \Composer\Autoload\ClassLoader */
+$autoload->add('Sonata\\Doctrine\\Tests\\', __DIR__ . '/../');
+
 if (!$autoload) {
     die('Unable to find autoload.php file, please use composer to load dependencies:
 
