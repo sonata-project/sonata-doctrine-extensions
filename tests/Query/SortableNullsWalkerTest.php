@@ -50,7 +50,7 @@ class SortableNullsWalkerTest extends \PHPUnit_Framework_TestCase
                 ->setHint("sortableNulls.fields", array("p.position" => SortableNullsWalker::NULLS_FIRST))
         ;
 
-        $sqlToBeConfirmed = "SELECT b0_.id AS id0, b0_.title AS title1, b0_.position AS position2 FROM BlogPost b0_ ORDER BY b0_.position ASC";
+        $sqlToBeConfirmed = "SELECT b0_.id AS id_0, b0_.title AS title_1, b0_.position AS position_2 FROM BlogPost b0_ ORDER BY b0_.position ASC";
 
         $sqlGenerated =  $q->getSql();
 
@@ -67,7 +67,7 @@ class SortableNullsWalkerTest extends \PHPUnit_Framework_TestCase
                 ->setHint("sortableNulls.fields", array("p.position" => SortableNullsWalker::NULLS_FIRST))
         ;
 
-        $sqlToBeConfirmed = "SELECT b0_.id AS id0, b0_.title AS title1, b0_.position AS position2 FROM BlogPost b0_ ORDER BY b0_.position ASC NULLS FIRST";
+        $sqlToBeConfirmed = "SELECT b0_.id AS id_0, b0_.title AS title_1, b0_.position AS position_2 FROM BlogPost b0_ ORDER BY b0_.position ASC NULLS FIRST";
 
         $sqlGenerated =  $q->getSql();
 
@@ -89,7 +89,7 @@ class SortableNullsWalkerTest extends \PHPUnit_Framework_TestCase
                 ->setHint("sortableNulls.fields", array("p.position" => SortableNullsWalker::NULLS_LAST))
         ;
 
-        $sqlToBeConfirmed = "SELECT b0_.id AS id0, b0_.title AS title1, b0_.position AS position2 FROM BlogPost b0_ ORDER BY b0_.position ASC";
+        $sqlToBeConfirmed = "SELECT b0_.id AS id_0, b0_.title AS title_1, b0_.position AS position_2 FROM BlogPost b0_ ORDER BY b0_.position ASC";
 
         $sqlGenerated =  $q->getSql();
 
@@ -106,7 +106,7 @@ class SortableNullsWalkerTest extends \PHPUnit_Framework_TestCase
                 ->setHint("sortableNulls.fields", array("p.position" => SortableNullsWalker::NULLS_LAST))
         ;
 
-        $sqlToBeConfirmed = "SELECT b0_.id AS id0, b0_.title AS title1, b0_.position AS position2 FROM BlogPost b0_ ORDER BY b0_.position ASC NULLS LAST";
+        $sqlToBeConfirmed = "SELECT b0_.id AS id_0, b0_.title AS title_1, b0_.position AS position_2 FROM BlogPost b0_ ORDER BY b0_.position ASC NULLS LAST";
 
         $sqlGenerated =  $q->getSql();
 
