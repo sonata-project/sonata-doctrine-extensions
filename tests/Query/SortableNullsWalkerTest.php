@@ -39,8 +39,21 @@ class SortableNullsWalkerTest extends \PHPUnit_Framework_TestCase
         return $entityManager;
     }
 
-    private function cleanAlias($sql) {
+    private function cleanAlias($sql)
+    {
         return preg_replace("/( AS [\w_\d]+)/i", "", $sql);
+    }
+
+    private function createSql($entity, AbstractPlatform $platform, $sortDirective = SortableNullsWalker::NULLS_FIRST)
+    {
+        $dql = "SELECT p FROM {$entity} p ORDER BY p.position ASC";
+        $q = $this->getTestEntityManager($platform)->createQuery($dql)
+        ->setHint(Query::HINT_CUSTOM_OUTPUT_WALKER, 'Sonata\Doctrine\Query\SortableNullsWalker')
+        ->setHint("sortableNulls.fields", array("p.position" => $sortDirective))
+        ->useQueryCache(false)
+        ;
+
+        return self::cleanAlias($q->getSql());
     }
 
     public function testWalkOrderByItemNullsFirst()
@@ -48,16 +61,8 @@ class SortableNullsWalkerTest extends \PHPUnit_Framework_TestCase
         $entity = 'Sonata\Doctrine\Tests\Entities\BlogPost';
 
         // MySql
-        $dql = "SELECT p FROM {$entity} p ORDER BY p.position ASC";
-        $q = $this->getTestEntityManager(new MySqlPlatform())->createQuery($dql)
-                ->setHint(Query::HINT_CUSTOM_OUTPUT_WALKER, 'Sonata\Doctrine\Query\SortableNullsWalker')
-                ->setHint("sortableNulls.fields", array("p.position" => SortableNullsWalker::NULLS_FIRST))
-                ->useQueryCache(false)
-        ;
-
-        $sqlToBeConfirmed = "SELECT b0_.id, b0_.title, b0_.position FROM BlogPost b0_ ORDER BY b0_.position ASC";
-
-        $sqlGenerated =  self::cleanAlias($q->getSql());
+        $sqlToBeConfirmed   = "SELECT b0_.id, b0_.title, b0_.position FROM BlogPost b0_ ORDER BY b0_.position ASC";
+        $sqlGenerated       = self::createSql($entity, new MySqlPlatform(), SortableNullsWalker::NULLS_FIRST);
 
         $this->assertEquals(
             $sqlToBeConfirmed,
@@ -66,16 +71,8 @@ class SortableNullsWalkerTest extends \PHPUnit_Framework_TestCase
         );
 
         // Postgresql
-        $dql = "SELECT p FROM {$entity} p ORDER BY p.position ASC";
-        $q = $this->getTestEntityManager(new PostgreSqlPlatform())->createQuery($dql)
-                ->setHint(Query::HINT_CUSTOM_OUTPUT_WALKER, 'Sonata\Doctrine\Query\SortableNullsWalker')
-                ->setHint("sortableNulls.fields", array("p.position" => SortableNullsWalker::NULLS_FIRST))
-                ->useQueryCache(false)
-        ;
-
         $sqlToBeConfirmed = "SELECT b0_.id, b0_.title, b0_.position FROM BlogPost b0_ ORDER BY b0_.position ASC NULLS FIRST";
-
-        $sqlGenerated =  self::cleanAlias($q->getSql());
+        $sqlGenerated       = self::createSql($entity, new PostgreSqlPlatform(), SortableNullsWalker::NULLS_FIRST);
 
         $this->assertEquals(
             $sqlToBeConfirmed,
@@ -89,16 +86,8 @@ class SortableNullsWalkerTest extends \PHPUnit_Framework_TestCase
         $entity = 'Sonata\Doctrine\Tests\Entities\BlogPost';
 
         // MySql
-        $dql = "SELECT p FROM {$entity} p ORDER BY p.position ASC";
-        $q = $this->getTestEntityManager(new MySqlPlatform())->createQuery($dql)
-                ->setHint(Query::HINT_CUSTOM_OUTPUT_WALKER, 'Sonata\Doctrine\Query\SortableNullsWalker')
-                ->setHint("sortableNulls.fields", array("p.position" => SortableNullsWalker::NULLS_LAST))
-                ->useQueryCache(false)
-        ;
-
         $sqlToBeConfirmed = "SELECT b0_.id, b0_.title, b0_.position FROM BlogPost b0_ ORDER BY b0_.position ASC";
-
-        $sqlGenerated =  self::cleanAlias($q->getSql());
+        $sqlGenerated       = self::createSql($entity, new MySqlPlatform(), SortableNullsWalker::NULLS_LAST);
 
         $this->assertEquals(
             $sqlToBeConfirmed,
@@ -107,16 +96,8 @@ class SortableNullsWalkerTest extends \PHPUnit_Framework_TestCase
         );
 
         // Postgresql
-        $dql = "SELECT p FROM {$entity} p ORDER BY p.position ASC";
-        $q = $this->getTestEntityManager(new PostgreSqlPlatform())->createQuery($dql)
-                ->setHint(Query::HINT_CUSTOM_OUTPUT_WALKER, 'Sonata\Doctrine\Query\SortableNullsWalker')
-                ->setHint("sortableNulls.fields", array("p.position" => SortableNullsWalker::NULLS_LAST))
-                ->useQueryCache(false)
-        ;
-
         $sqlToBeConfirmed = "SELECT b0_.id, b0_.title, b0_.position FROM BlogPost b0_ ORDER BY b0_.position ASC NULLS LAST";
-
-        $sqlGenerated =  self::cleanAlias($q->getSql());
+        $sqlGenerated       = self::createSql($entity, new PostgreSqlPlatform(), SortableNullsWalker::NULLS_LAST);
 
         $this->assertEquals(
             $sqlToBeConfirmed,
