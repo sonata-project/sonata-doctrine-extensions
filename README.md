@@ -1,7 +1,7 @@
 Sonata Doctrine Extensions
 ==========================
 
-[![Build Status](https://secure.travis-ci.org/sonata-project/doctrine-extensions.png?branch=master)](http://travis-ci.org/sonata-project/doctrine-extensions)
+[![Build Status](https://travis-ci.org/sonata-project/sonata-doctrine-extensions.svg?branch=master)](https://travis-ci.org/sonata-project/sonata-doctrine-extensions)
 
 ### Installation using Composer
 
