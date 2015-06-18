@@ -23,6 +23,8 @@ env:
 matrix:
   fast_finish: true
   include:
+    - php: 5.6
+      env: CS_FIXER=run
     - php: 5.3
       env: COMPOSER_FLAGS="--prefer-lowest"
     - php: 5.6
@@ -48,4 +50,6 @@ before_script:
   - if [ "$DOCTRINE_VERSION" != "" ]; then composer require "doctrine/dbal:${DOCTRINE_VERSION}" --no-update; fi;
   - travis_wait composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
 
-script:  make test
+script:
+ - if [ "$CS_FIXER" = "run" ]; then make cs_dry_run ; fi;
+ - make test

@@ -21,7 +21,8 @@
         "doctrine/dbal": "~2.2"
     },
     "require-dev": {
-        "symfony/phpunit-bridge": "~2.7|~3.0"
+        "symfony/phpunit-bridge": "~2.7|~3.0",
+        "fabpot/php-cs-fixer": "~0.1|~1.0"
     },
     "autoload": {
         "psr-4": {

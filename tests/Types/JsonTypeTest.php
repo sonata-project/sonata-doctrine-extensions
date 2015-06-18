@@ -12,7 +12,6 @@
 namespace Sonata\Doctrine\Types\Tests;
 
 use Doctrine\DBAL\Types\Type;
-use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 class JsonTypeTest extends \PHPUnit_Framework_TestCase
 {
@@ -23,7 +22,6 @@ class JsonTypeTest extends \PHPUnit_Framework_TestCase
         } else {
             Type::addType('json', 'Sonata\Doctrine\Types\JsonType');
         }
-
     }
 
     public function testConvertToDatabaseValue()
@@ -57,15 +55,25 @@ class MockPlatform extends \Doctrine\DBAL\Platforms\AbstractPlatform
         throw DBALException::notSupported(__METHOD__);
     }
 
-    public function getBooleanTypeDeclarationSQL(array $columnDef) {}
-    public function getIntegerTypeDeclarationSQL(array $columnDef) {}
-    public function getBigIntTypeDeclarationSQL(array $columnDef) {}
-    public function getSmallIntTypeDeclarationSQL(array $columnDef) {}
-    public function _getCommonIntegerTypeDeclarationSQL(array $columnDef) {}
+    public function getBooleanTypeDeclarationSQL(array $columnDef)
+    {
+    }
+    public function getIntegerTypeDeclarationSQL(array $columnDef)
+    {
+    }
+    public function getBigIntTypeDeclarationSQL(array $columnDef)
+    {
+    }
+    public function getSmallIntTypeDeclarationSQL(array $columnDef)
+    {
+    }
+    public function _getCommonIntegerTypeDeclarationSQL(array $columnDef)
+    {
+    }
 
     public function getVarcharTypeDeclarationSQL(array $field)
     {
-        return "DUMMYVARCHAR()";
+        return 'DUMMYVARCHAR()';
     }
 
     /** @override */
@@ -83,10 +91,10 @@ class MockPlatform extends \Doctrine\DBAL\Platforms\AbstractPlatform
     {
         return 'mock';
     }
-    protected function initializeDoctrineTypeMappings() {
+    protected function initializeDoctrineTypeMappings()
+    {
     }
     protected function getVarcharTypeDeclarationSQLSnippet($length, $fixed)
     {
-
     }
 }
