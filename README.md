@@ -8,13 +8,7 @@ Sonata Doctrine Extensions
 Add the dependency:
 
 ```bash
-php composer.phar require sonata-project/doctrine-extensions
-```
-
-If asked for a version, type in 'dev-master' (unless you want another version):
-
-```bash
-Please provide a version constraint for the sonata-project/doctrine-extensions requirement: dev-master
+composer require sonata-project/doctrine-extensions
 ```
 
 ### Doctrine Types
