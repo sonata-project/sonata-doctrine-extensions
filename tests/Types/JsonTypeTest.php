@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -58,15 +58,19 @@ class MockPlatform extends \Doctrine\DBAL\Platforms\AbstractPlatform
     public function getBooleanTypeDeclarationSQL(array $columnDef)
     {
     }
+
     public function getIntegerTypeDeclarationSQL(array $columnDef)
     {
     }
+
     public function getBigIntTypeDeclarationSQL(array $columnDef)
     {
     }
+
     public function getSmallIntTypeDeclarationSQL(array $columnDef)
     {
     }
+
     public function _getCommonIntegerTypeDeclarationSQL(array $columnDef)
     {
     }
@@ -91,9 +95,11 @@ class MockPlatform extends \Doctrine\DBAL\Platforms\AbstractPlatform
     {
         return 'mock';
     }
+
     protected function initializeDoctrineTypeMappings()
     {
     }
+
     protected function getVarcharTypeDeclarationSQLSnippet($length, $fixed)
     {
     }
