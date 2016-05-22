@@ -28,8 +28,6 @@ env:
 matrix:
   fast_finish: true
   include:
-    - php: '7.0'
-      env: TARGET=docs
     - php: '5.3'
       env: COMPOSER_FLAGS="--prefer-lowest"
     - php: '7.0'
