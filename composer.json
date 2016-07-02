@@ -24,11 +24,11 @@
         "symfony/phpunit-bridge": "^2.7 || ^3.0"
     },
     "autoload": {
-        "psr-4": {
-            "Sonata\\Doctrine\\": "src/",
-            "Sonata\\Doctrine\\Tests\\": "tests/"
-        }
+        "psr-4": { "Sonata\\Doctrine\\": "src/" }
     },
+    "autoload-dev": {
+        "psr-4": { "Sonata\\Doctrine\\Tests\\": "tests/" }
+     },
     "extra": {
         "branch-alias": {
             "dev-master": "2.x-dev"
