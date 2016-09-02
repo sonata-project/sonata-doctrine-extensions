@@ -26,21 +26,21 @@ class JsonTypeTest extends \PHPUnit_Framework_TestCase
 
     public function testConvertToDatabaseValue()
     {
-        $plateform = new MockPlatform();
+        $platform = new MockPlatform();
 
         $this->assertEquals(
             '{"foo":"bar"}',
-            Type::getType('json')->convertToDatabaseValue(array('foo' => 'bar'), $plateform)
+            Type::getType('json')->convertToDatabaseValue(array('foo' => 'bar'), $platform)
         );
     }
 
     public function testConvertToPHPValue()
     {
-        $plateform = new MockPlatform();
+        $platform = new MockPlatform();
 
         $this->assertEquals(
             array('foo' => 'bar'),
-            Type::getType('json')->convertToPHPValue('{"foo":"bar"}', $plateform)
+            Type::getType('json')->convertToPHPValue('{"foo":"bar"}', $platform)
         );
     }
 }
