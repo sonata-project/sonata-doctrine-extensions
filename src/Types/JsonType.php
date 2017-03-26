@@ -19,7 +19,7 @@ use Doctrine\DBAL\Types\Type;
  */
 class JsonType extends Type
 {
-    const JSON = 'json'; // modify to match your type name
+    const JSON = 'json';
 
     /**
      * {@inheritdoc}
