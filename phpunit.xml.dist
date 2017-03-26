@@ -12,8 +12,26 @@
          bootstrap="tests/bootstrap.php"
 >
     <testsuites>
-        <testsuite name="Sonata Doctrine Extensions ~ Test Suite">
-            <directory>./tests/</directory>
+        <testsuite name="sonata-doctrine-extensions Test Suite">
+            <directory>./tests</directory>
         </testsuite>
     </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>./</directory>
+            <exclude>
+                <directory>./tests/</directory>
+                <directory>./DataFixtures/</directory>
+                <directory>./Resources/</directory>
+                <directory>./vendor/</directory>
+                <directory>./coverage/</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+
+    <php>
+        <ini name="precision" value="8"/>
+    </php>
+
 </phpunit>
