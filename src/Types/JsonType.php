@@ -15,7 +15,7 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 
 /**
- * convert a value into a json string to be stored into the persistency layer.
+ * Convert a value into a json string to be stored into the persistency layer.
  */
 class JsonType extends Type
 {
