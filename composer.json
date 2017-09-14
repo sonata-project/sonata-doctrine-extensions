@@ -29,6 +29,9 @@
     "autoload-dev": {
         "psr-4": { "Sonata\\Doctrine\\Tests\\": "tests/" }
      },
+    "config": {
+        "sort-packages": true
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "2.x-dev"
