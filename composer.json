@@ -17,11 +17,11 @@
         }
     ],
     "require": {
-        "php": "^5.3.2 || ^7.0",
-        "doctrine/dbal": "^2.2"
+        "php": "^7.1",
+        "doctrine/dbal": "^2.6"
     },
     "require-dev": {
-        "symfony/phpunit-bridge": "^2.8 || ^3.0"
+        "symfony/phpunit-bridge": "^3.3"
     },
     "autoload": {
         "psr-4": { "Sonata\\Doctrine\\": "src/" }
@@ -29,6 +29,9 @@
     "autoload-dev": {
         "psr-4": { "Sonata\\Doctrine\\Tests\\": "tests/" }
      },
+    "config": {
+        "sort-packages": true
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "2.x-dev"
