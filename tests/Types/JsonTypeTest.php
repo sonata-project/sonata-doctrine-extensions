@@ -30,7 +30,7 @@ class JsonTypeTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             '{"foo":"bar"}',
-            Type::getType('json')->convertToDatabaseValue(array('foo' => 'bar'), $platform)
+            Type::getType('json')->convertToDatabaseValue(['foo' => 'bar'], $platform)
         );
     }
 
@@ -39,7 +39,7 @@ class JsonTypeTest extends \PHPUnit_Framework_TestCase
         $platform = new MockPlatform();
 
         $this->assertEquals(
-            array('foo' => 'bar'),
+            ['foo' => 'bar'],
             Type::getType('json')->convertToPHPValue('{"foo":"bar"}', $platform)
         );
     }
