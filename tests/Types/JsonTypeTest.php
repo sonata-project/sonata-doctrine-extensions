@@ -12,8 +12,9 @@
 namespace Sonata\Doctrine\Types\Tests;
 
 use Doctrine\DBAL\Types\Type;
+use PHPUnit\Framework\TestCase;
 
-class JsonTypeTest extends \PHPUnit_Framework_TestCase
+class JsonTypeTest extends TestCase
 {
     public function setUp()
     {
