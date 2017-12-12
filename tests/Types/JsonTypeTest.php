@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -16,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 
 class JsonTypeTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         if (Type::hasType('json')) {
             Type::overrideType('json', 'Sonata\Doctrine\Types\JsonType');
@@ -25,7 +27,7 @@ class JsonTypeTest extends TestCase
         }
     }
 
-    public function testConvertToDatabaseValue()
+    public function testConvertToDatabaseValue(): void
     {
         $platform = new MockPlatform();
 
@@ -35,7 +37,7 @@ class JsonTypeTest extends TestCase
         );
     }
 
-    public function testConvertToPHPValue()
+    public function testConvertToPHPValue(): void
     {
         $platform = new MockPlatform();
 
@@ -51,28 +53,28 @@ class MockPlatform extends \Doctrine\DBAL\Platforms\AbstractPlatform
     /**
      * Gets the SQL Snippet used to declare a BLOB column type.
      */
-    public function getBlobTypeDeclarationSQL(array $field)
+    public function getBlobTypeDeclarationSQL(array $field): void
     {
         throw DBALException::notSupported(__METHOD__);
     }
 
-    public function getBooleanTypeDeclarationSQL(array $columnDef)
+    public function getBooleanTypeDeclarationSQL(array $columnDef): void
     {
     }
 
-    public function getIntegerTypeDeclarationSQL(array $columnDef)
+    public function getIntegerTypeDeclarationSQL(array $columnDef): void
     {
     }
 
-    public function getBigIntTypeDeclarationSQL(array $columnDef)
+    public function getBigIntTypeDeclarationSQL(array $columnDef): void
     {
     }
 
-    public function getSmallIntTypeDeclarationSQL(array $columnDef)
+    public function getSmallIntTypeDeclarationSQL(array $columnDef): void
     {
     }
 
-    public function _getCommonIntegerTypeDeclarationSQL(array $columnDef)
+    public function _getCommonIntegerTypeDeclarationSQL(array $columnDef): void
     {
     }
 
@@ -97,11 +99,11 @@ class MockPlatform extends \Doctrine\DBAL\Platforms\AbstractPlatform
         return 'mock';
     }
 
-    protected function initializeDoctrineTypeMappings()
+    protected function initializeDoctrineTypeMappings(): void
     {
     }
 
-    protected function getVarcharTypeDeclarationSQLSnippet($length, $fixed)
+    protected function getVarcharTypeDeclarationSQLSnippet($length, $fixed): void
     {
     }
 }
