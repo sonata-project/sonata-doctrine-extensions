@@ -25,7 +25,10 @@
         "doctrine/dbal": "^2.2"
     },
     "require-dev": {
-        "symfony/phpunit-bridge": "^3.3"
+        "symfony/phpunit-bridge": "^4.0"
+    },
+    "config": {
+        "sort-packages": true
     },
     "extra": {
         "branch-alias": {
