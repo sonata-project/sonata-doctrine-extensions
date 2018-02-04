@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the Sonata Project package.
  *
@@ -27,14 +25,14 @@ class MyDocument
 
 final class DoctrinePHPCRAdapterTest extends TestCase
 {
-    public function setUp(): void
+    public function setUp()
     {
         if (!class_exists(UnitOfWork::class)) {
             $this->markTestSkipped('Doctrine PHPCR not installed');
         }
     }
 
-    public function testNormalizedIdentifierWithScalar(): void
+    public function testNormalizedIdentifierWithScalar()
     {
         $this->expectException(\RuntimeException::class);
 
@@ -44,7 +42,7 @@ final class DoctrinePHPCRAdapterTest extends TestCase
         $adapter->getNormalizedIdentifier(1);
     }
 
-    public function testNormalizedIdentifierWithNull(): void
+    public function testNormalizedIdentifierWithNull()
     {
         $registry = $this->createMock(ManagerRegistry::class);
         $adapter = new DoctrinePHPCRAdapter($registry);
@@ -52,7 +50,7 @@ final class DoctrinePHPCRAdapterTest extends TestCase
         $this->assertNull($adapter->getNormalizedIdentifier(null));
     }
 
-    public function testNormalizedIdentifierWithNoManager(): void
+    public function testNormalizedIdentifierWithNoManager()
     {
         $registry = $this->createMock(ManagerRegistry::class);
         $registry->expects($this->once())->method('getManagerForClass')->will($this->returnValue(null));
@@ -62,7 +60,7 @@ final class DoctrinePHPCRAdapterTest extends TestCase
         $this->assertNull($adapter->getNormalizedIdentifier(new \stdClass()));
     }
 
-    public function testNormalizedIdentifierWithNotManaged(): void
+    public function testNormalizedIdentifierWithNotManaged()
     {
         $manager = $this->getMockBuilder(DocumentManager::class)->disableOriginalConstructor()->getMock();
         $manager->expects($this->once())->method('contains')->will($this->returnValue(false));
@@ -78,7 +76,7 @@ final class DoctrinePHPCRAdapterTest extends TestCase
     /**
      * @dataProvider getFixtures
      */
-    public function testNormalizedIdentifierWithValidObject($data, $expected): void
+    public function testNormalizedIdentifierWithValidObject($data, $expected)
     {
         $metadata = new ClassMetadata(MyDocument::class);
         $metadata->identifier = 'path';
