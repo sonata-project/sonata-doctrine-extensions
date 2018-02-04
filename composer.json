@@ -29,9 +29,9 @@
         "doctrine/orm": "^2.5",
         "doctrine/phpcr-odm": "^1.4 || ^2.0",
         "jackalope/jackalope-doctrine-dbal": "^1.0",
-        "symfony/dependency-injection": "^3.4 || ^4.0",
-        "symfony/expression-language": "^3.4 || ^4.0",
-        "symfony/framework-bundle": "^3.4 || ^4.0",
+        "symfony/dependency-injection": "^2.8 || ^3.3 || ^4.0",
+        "symfony/expression-language": "^2.8 || ^3.3 || ^4.0",
+        "symfony/framework-bundle": "^2.8 || ^3.3 || ^4.0",
         "symfony/phpunit-bridge": "^4.0"
     },
     "suggest": {
