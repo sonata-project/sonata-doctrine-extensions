@@ -25,7 +25,10 @@
         "doctrine/dbal": "^2.6"
     },
     "require-dev": {
-        "symfony/phpunit-bridge": "^3.3"
+        "symfony/phpunit-bridge": "^4.0"
+    },
+    "config": {
+        "sort-packages": true
     },
     "config": {
         "sort-packages": true
