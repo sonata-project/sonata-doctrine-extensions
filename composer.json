@@ -30,9 +30,6 @@
     "config": {
         "sort-packages": true
     },
-    "config": {
-        "sort-packages": true
-    },
     "extra": {
         "branch-alias": {
             "dev-master": "2.x-dev"
