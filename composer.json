@@ -34,13 +34,13 @@
         "symfony/framework-bundle": "^3.4 || ^4.0",
         "symfony/phpunit-bridge": "^4.0"
     },
-    "config": {
-        "sort-packages": true
-    },
     "suggest": {
         "doctrine/orm": "If you use doctrine orm",
         "doctrine/phpcr-odm": "If you use doctrine phpcr",
         "symfony/framework-bundle": "If you want to use symfony"
+    },
+    "config": {
+        "sort-packages": true
     },
     "extra": {
         "branch-alias": {
