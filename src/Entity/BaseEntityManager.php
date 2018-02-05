@@ -9,17 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonata\Doctrine\Model\MongoDB;
+namespace Sonata\Doctrine\Entity;
 
-use Doctrine\ODM\MongoDB\DocumentManager;
+use Doctrine\ORM\EntityManager;
 use Sonata\Doctrine\Model\BaseManager;
 
 /**
- * @author Hugo Briand <briand@ekino.com>
+ * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  *
- * @mixin DocumentManager
+ * @mixin EntityManager
  */
-abstract class BaseDocumentManager extends BaseManager
+abstract class BaseEntityManager extends BaseManager
 {
     /**
      * Make sure the code is compatible with legacy code.
@@ -28,7 +28,7 @@ abstract class BaseDocumentManager extends BaseManager
      */
     public function __get($name)
     {
-        if ('dm' === $name) {
+        if ('em' === $name) {
             return $this->getObjectManager();
         }
 
@@ -37,13 +37,13 @@ abstract class BaseDocumentManager extends BaseManager
 
     public function getConnection()
     {
-        return $this->getObjectManager()->getConnection();
+        return $this->getEntityManager()->getConnection();
     }
 
     /**
-     * @return DocumentManager
+     * @return EntityManager
      */
-    public function getDocumentManager()
+    public function getEntityManager()
     {
         return $this->getObjectManager();
     }

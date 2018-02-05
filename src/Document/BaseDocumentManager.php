@@ -9,15 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonata\Doctrine\Model\PHPCR;
+namespace Sonata\Doctrine\Document;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ODM\MongoDB\DocumentManager;
 use Sonata\Doctrine\Model\BaseManager;
 
 /**
- * @mixin ObjectManager
+ * @author Hugo Briand <briand@ekino.com>
+ *
+ * @mixin DocumentManager
  */
-abstract class BasePHPCRManager extends BaseManager
+abstract class BaseDocumentManager extends BaseManager
 {
     /**
      * Make sure the code is compatible with legacy code.
@@ -33,28 +35,13 @@ abstract class BasePHPCRManager extends BaseManager
         throw new \RuntimeException(sprintf('The property %s does not exists', $name));
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @throws \LogicException Each call
-     */
     public function getConnection()
     {
-        throw new \LogicException('PHPCR does not use a database connection.');
+        return $this->getObjectManager()->getConnection();
     }
 
     /**
-     * {@inheritdoc}
-     *
-     * @throws \LogicException Each call
-     */
-    public function getTableName()
-    {
-        throw new \LogicException('PHPCR does not use a reference name for a list of data.');
-    }
-
-    /**
-     * @return ObjectManager
+     * @return DocumentManager
      */
     public function getDocumentManager()
     {

@@ -9,17 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonata\Doctrine\Model\ORM;
+namespace Sonata\Doctrine\Document;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Persistence\ObjectManager;
 use Sonata\Doctrine\Model\BaseManager;
 
 /**
- * @author Sylvain Deloux <sylvain.deloux@ekino.com>
- *
- * @mixin EntityManager
+ * @mixin ObjectManager
  */
-abstract class BaseEntityManager extends BaseManager
+abstract class BasePHPCRManager extends BaseManager
 {
     /**
      * Make sure the code is compatible with legacy code.
@@ -28,22 +26,37 @@ abstract class BaseEntityManager extends BaseManager
      */
     public function __get($name)
     {
-        if ('em' === $name) {
+        if ('dm' === $name) {
             return $this->getObjectManager();
         }
 
         throw new \RuntimeException(sprintf('The property %s does not exists', $name));
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @throws \LogicException Each call
+     */
     public function getConnection()
     {
-        return $this->getEntityManager()->getConnection();
+        throw new \LogicException('PHPCR does not use a database connection.');
     }
 
     /**
-     * @return EntityManager
+     * {@inheritdoc}
+     *
+     * @throws \LogicException Each call
      */
-    public function getEntityManager()
+    public function getTableName()
+    {
+        throw new \LogicException('PHPCR does not use a reference name for a list of data.');
+    }
+
+    /**
+     * @return ObjectManager
+     */
+    public function getDocumentManager()
     {
         return $this->getObjectManager();
     }
