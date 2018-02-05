@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonata\Doctrine\Tests\Entity;
+namespace Sonata\Doctrine\Tests\Document;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use PHPUnit\Framework\TestCase;
-use Sonata\Doctrine\Model\MongoDB\BaseDocumentManager;
+use Sonata\Doctrine\Document\BaseDocumentManager;
 
 class DocumentManager extends BaseDocumentManager
 {

@@ -14,7 +14,7 @@ namespace Sonata\Doctrine\Tests\Entity;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
 use PHPUnit\Framework\TestCase;
-use Sonata\Doctrine\Model\ORM\BaseEntityManager;
+use Sonata\Doctrine\Entity\BaseEntityManager;
 
 class EntityManager extends BaseEntityManager
 {
