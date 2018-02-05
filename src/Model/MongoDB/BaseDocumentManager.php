@@ -16,6 +16,8 @@ use Sonata\Doctrine\Model\BaseManager;
 
 /**
  * @author Hugo Briand <briand@ekino.com>
+ *
+ * @mixin DocumentManager
  */
 abstract class BaseDocumentManager extends BaseManager
 {
