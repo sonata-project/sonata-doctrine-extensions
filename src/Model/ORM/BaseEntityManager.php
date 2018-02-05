@@ -16,6 +16,8 @@ use Sonata\Doctrine\Model\BaseManager;
 
 /**
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
+ *
+ * @mixin EntityManager
  */
 abstract class BaseEntityManager extends BaseManager
 {

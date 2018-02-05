@@ -14,6 +14,9 @@ namespace Sonata\Doctrine\Model\PHPCR;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sonata\Doctrine\Model\BaseManager;
 
+/**
+ * @mixin ObjectManager
+ */
 abstract class BasePHPCRManager extends BaseManager
 {
     /**
