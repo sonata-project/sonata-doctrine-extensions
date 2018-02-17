@@ -41,6 +41,8 @@ abstract class BaseManager implements ManagerInterface
     }
 
     /**
+     * @throws \RuntimeException
+     *
      * @return ObjectManager
      */
     public function getObjectManager()
