@@ -26,9 +26,7 @@ final class BaseEntityManagerTest extends TestCase
     {
         $registry = $this->createMock(ManagerRegistry::class);
 
-        $manager = new EntityManager('classname', $registry);
-
-        return $manager;
+        return new EntityManager('classname', $registry);
     }
 
     public function test()
