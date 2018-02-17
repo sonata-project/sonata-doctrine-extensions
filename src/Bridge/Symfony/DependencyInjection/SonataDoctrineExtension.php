@@ -11,6 +11,8 @@
 
 namespace Sonata\Doctrine\Bridge\Symfony\DependencyInjection;
 
+use Doctrine\ODM\PHPCR\DocumentManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
@@ -26,11 +28,11 @@ class SonataDoctrineExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
 
-        if (class_exists(Doctrine\ORM\EntityManagerInterface::class)) {
+        if (class_exists(EntityManagerInterface::class)) {
             $loader->load('doctrine_orm.xml');
         }
 
-        if (class_exists(Doctrine\ODM\PHPCR\DocumentManager::class)) {
+        if (class_exists(DocumentManager::class)) {
             $loader->load('doctine_phpcr.xml');
         }
     }
