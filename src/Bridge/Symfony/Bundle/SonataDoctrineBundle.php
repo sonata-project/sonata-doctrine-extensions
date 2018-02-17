@@ -16,17 +16,11 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 final class SonataDoctrineBundle extends Bundle
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getPath()
     {
         return __DIR__.'/..';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getContainerExtensionClass()
     {
         return SonataDoctrineExtension::class;
