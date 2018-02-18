@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -41,7 +43,7 @@ class ManagerTest extends BaseManager
  */
 final class BaseManagerTest extends TestCase
 {
-    public function testCheckObject()
+    public function testCheckObject(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Object must be instance of class, DateTime given');
