@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -17,7 +19,7 @@ use Sonata\Doctrine\Adapter\AdapterInterface;
 
 final class AdapterChainTest extends TestCase
 {
-    public function testEmptyAdapter()
+    public function testEmptyAdapter(): void
     {
         $adapter = new AdapterChain();
 
@@ -25,7 +27,7 @@ final class AdapterChainTest extends TestCase
         $this->assertNull($adapter->getUrlsafeIdentifier(new \stdClass()));
     }
 
-    public function testUrlSafeIdentifier()
+    public function testUrlSafeIdentifier(): void
     {
         $adapter = new AdapterChain();
 
@@ -39,7 +41,7 @@ final class AdapterChainTest extends TestCase
         $this->assertSame('voila', $adapter->getUrlsafeIdentifier(new \stdClass()));
     }
 
-    public function testNormalizedIdentifier()
+    public function testNormalizedIdentifier(): void
     {
         $adapter = new AdapterChain();
 

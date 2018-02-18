@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -38,7 +40,7 @@ abstract class BasePHPCRManager extends BaseManager
      *
      * @throws \LogicException Each call
      */
-    public function getConnection()
+    public function getConnection(): void
     {
         throw new \LogicException('PHPCR does not use a database connection.');
     }
@@ -48,7 +50,7 @@ abstract class BasePHPCRManager extends BaseManager
      *
      * @throws \LogicException Each call
      */
-    public function getTableName()
+    public function getTableName(): void
     {
         throw new \LogicException('PHPCR does not use a reference name for a list of data.');
     }
