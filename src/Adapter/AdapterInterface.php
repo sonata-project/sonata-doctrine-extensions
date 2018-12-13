@@ -36,3 +36,10 @@ interface AdapterInterface
      */
     public function getUrlsafeIdentifier($model);
 }
+
+if (!interface_exists(\Sonata\CoreBundle\Model\Adapter\AdapterInterface::class)) {
+    class_alias(
+        __NAMESPACE__.'\AdapterInterface',
+        \Sonata\CoreBundle\Model\Adapter\AdapterInterface::class
+    );
+}
