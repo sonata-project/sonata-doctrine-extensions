@@ -58,3 +58,5 @@ abstract class BasePHPCRManager extends BaseManager
         return $this->getObjectManager();
     }
 }
+
+class_exists(\Sonata\CoreBundle\Model\BasePHPCRManager::class);

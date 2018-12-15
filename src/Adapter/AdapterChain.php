@@ -45,3 +45,5 @@ class AdapterChain implements AdapterInterface
         }
     }
 }
+
+class_exists(\Sonata\CoreBundle\Model\Adapter\AdapterChain::class);

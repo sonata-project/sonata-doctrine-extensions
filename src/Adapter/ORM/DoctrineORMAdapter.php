@@ -64,3 +64,5 @@ class DoctrineORMAdapter implements AdapterInterface
         return $this->getNormalizedIdentifier($entity);
     }
 }
+
+class_exists(\Sonata\CoreBundle\Model\Adapter\DoctrineORMAdapter::class);
