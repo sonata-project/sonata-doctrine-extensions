@@ -26,3 +26,5 @@ interface PageableManagerInterface
      */
     public function getPager(array $criteria, $page, $limit = 10, array $sort = []);
 }
+
+interface_exists(\Sonata\CoreBundle\Model\PageableManagerInterface::class);
