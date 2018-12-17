@@ -48,3 +48,5 @@ abstract class BaseDocumentManager extends BaseManager
         return $this->getObjectManager();
     }
 }
+
+class_exists(\Sonata\CoreBundle\Model\BaseDocumentManager::class);

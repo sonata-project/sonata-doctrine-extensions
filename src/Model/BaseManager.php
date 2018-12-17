@@ -144,3 +144,5 @@ abstract class BaseManager implements ManagerInterface
         }
     }
 }
+
+class_exists(\Sonata\CoreBundle\Model\BaseManager::class);

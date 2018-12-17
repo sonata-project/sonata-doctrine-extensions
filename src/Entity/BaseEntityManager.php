@@ -48,3 +48,5 @@ abstract class BaseEntityManager extends BaseManager
         return $this->getObjectManager();
     }
 }
+
+class_exists(\Sonata\CoreBundle\Model\BaseEntityManager::class);

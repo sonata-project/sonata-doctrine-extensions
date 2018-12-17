@@ -97,3 +97,5 @@ interface ManagerInterface
      */
     public function getConnection();
 }
+
+interface_exists(\Sonata\CoreBundle\Model\ManagerInterface::class);

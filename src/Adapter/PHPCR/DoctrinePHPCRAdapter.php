@@ -73,3 +73,5 @@ class DoctrinePHPCRAdapter implements AdapterInterface
         }
     }
 }
+
+class_exists(\Sonata\CoreBundle\Model\Adapter\DoctrinePHPCRAdapter::class);
