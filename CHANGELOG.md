@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.1.4](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.1.3...1.1.4) - 2019-01-16
+
+### Fixed
+- invalid `doctrine_phpcr` config filename loading in SonataDoctrineExtension
+
 ## [1.1.3](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.1.2...1.1.3) - 2018-12-16
 ### Fixed
 - crash about type hinting issues with AdapterInterface
