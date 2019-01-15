@@ -35,7 +35,7 @@ class SonataDoctrineExtension extends Extension
         }
 
         if (class_exists(DocumentManager::class)) {
-            $loader->load('doctine_phpcr.xml');
+            $loader->load('doctrine_phpcr.xml');
         }
     }
 }
