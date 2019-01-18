@@ -25,7 +25,7 @@ class JsonType extends Type
 
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
-        return json_decode($value, true);
+        return json_decode((string) $value, true);
     }
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
