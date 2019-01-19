@@ -1,6 +1,11 @@
 UPGRADE 1.x
 ===========
 
+### `Sonata\Doctrine\Types\JsonType` has been deprecated
+
+`doctrine/dbal` has a native implementation, `Doctrine\DBAL\Types\JsonType`, that
+should be used instead.
+
 ### Tests
 
 All files under the ``Tests`` directory are now correctly handled as internal test classes. 
