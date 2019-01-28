@@ -42,10 +42,10 @@ $rules = [
     '@PHP71Migration' => true,
     '@PHP71Migration:risky' => true,
     'compact_nullable_typehint' => true,
-    // To be tested before insertion:
-//    'strict_comparison' => true,
-//    'strict_param' => true,
-//    'php_unit_strict' => true,
+    'void_return' => null,
+    'strict_comparison' => true,
+    'strict_param' => true,
+    'php_unit_strict' => true,
 ];
 
 

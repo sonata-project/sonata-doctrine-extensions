@@ -32,7 +32,7 @@
         "symfony/dependency-injection": "^2.8 || ^3.3 || ^4.0",
         "symfony/expression-language": "^2.8 || ^3.3 || ^4.0",
         "symfony/framework-bundle": "^2.8 || ^3.3 || ^4.0",
-        "symfony/phpunit-bridge": "^4.1"
+        "symfony/phpunit-bridge": "^4.2"
     },
     "suggest": {
         "doctrine/orm": "If you use doctrine orm",

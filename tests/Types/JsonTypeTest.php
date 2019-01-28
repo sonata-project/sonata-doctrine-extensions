@@ -16,6 +16,9 @@ namespace Sonata\Doctrine\Types\Tests;
 use Doctrine\DBAL\Types\Type;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @group legacy
+ */
 class JsonTypeTest extends TestCase
 {
     public function setUp(): void
@@ -31,7 +34,7 @@ class JsonTypeTest extends TestCase
     {
         $platform = new MockPlatform();
 
-        $this->assertEquals(
+        $this->assertSame(
             '{"foo":"bar"}',
             Type::getType('json')->convertToDatabaseValue(['foo' => 'bar'], $platform)
         );
@@ -41,7 +44,7 @@ class JsonTypeTest extends TestCase
     {
         $platform = new MockPlatform();
 
-        $this->assertEquals(
+        $this->assertSame(
             ['foo' => 'bar'],
             Type::getType('json')->convertToPHPValue('{"foo":"bar"}', $platform)
         );
