@@ -24,7 +24,7 @@ use Sonata\DatagridBundle\Pager\PagerInterface;
 /**
  * @author Raphaël Benitte <benitteraphael@gmail.com>
  *
- * @deprecated since 1.x, to be removed in 43.0. Use Sonata\DatagridBundle\Pager\PageableInterface instead.
+ * @deprecated since 1.x, to be removed in 2.0. Use Sonata\DatagridBundle\Pager\PageableInterface instead.
  */
 interface PageableManagerInterface
 {
