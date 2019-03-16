@@ -32,6 +32,7 @@ class SonataDoctrineExtension extends Extension
 
         if (interface_exists(EntityManagerInterface::class)) {
             $loader->load('doctrine_orm.xml');
+            $loader->load('mapper_orm.xml');
         }
 
         if (class_exists(DocumentManager::class)) {
