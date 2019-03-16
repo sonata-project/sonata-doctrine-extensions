@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Sonata\Doctrine\Bridge\Symfony\Bundle;
 
 use Sonata\Doctrine\Bridge\Symfony\DependencyInjection\Compiler\AdapterCompilerPass;
+use Sonata\Doctrine\Bridge\Symfony\DependencyInjection\Compiler\MapperCompilerPass;
 use Sonata\Doctrine\Bridge\Symfony\DependencyInjection\SonataDoctrineExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -23,6 +24,7 @@ final class SonataDoctrineBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         $container->addCompilerPass(new AdapterCompilerPass());
+        $container->addCompilerPass(new MapperCompilerPass());
     }
 
     public function getPath()
