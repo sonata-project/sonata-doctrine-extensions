@@ -15,6 +15,7 @@ namespace Sonata\Doctrine\Tests\Mapper\ORM;
 
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use PHPUnit\Framework\TestCase;
+use Sonata\Doctrine\Mapper\Builder\ColumnDefinitionBuilder;
 use Sonata\Doctrine\Mapper\ORM\DoctrineORMMapper;
 
 class DoctrineORMMapperTest extends TestCase
@@ -55,7 +56,7 @@ class DoctrineORMMapperTest extends TestCase
 
         $this->metadata->name = 'class';
         $mapper = new DoctrineORMMapper();
-        $mapper->addDiscriminatorColumn('class', ['name' => 'disc']);
+        $mapper->addDiscriminatorColumn('class', ColumnDefinitionBuilder::create()->add('name', 'disc'));
 
         $r = new \ReflectionObject($mapper);
         $m = $r->getMethod('loadDiscriminatorColumns');
