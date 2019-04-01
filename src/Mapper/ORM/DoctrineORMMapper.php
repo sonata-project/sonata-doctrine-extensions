@@ -16,56 +16,48 @@ namespace Sonata\Doctrine\Mapper\ORM;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Persistence\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
+use InvalidArgumentException;
 use ReflectionException;
 use RuntimeException;
+use Sonata\Doctrine\Mapper\Builder\ColumnDefinitionBuilder;
+use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
 
 final class DoctrineORMMapper implements EventSubscriber
 {
     /**
      * @var array
      */
-    private $associations;
+    private $associations = [];
 
     /**
      * @var array
      */
-    private $discriminators;
+    private $discriminators = [];
 
     /**
      * @var array
      */
-    private $discriminatorColumns;
+    private $discriminatorColumns = [];
 
     /**
      * @var array
      */
-    private $inheritanceTypes;
+    private $inheritanceTypes = [];
 
     /**
      * @var array
      */
-    private $indexes;
+    private $indexes = [];
 
     /**
      * @var array
      */
-    private $uniques;
+    private $uniques = [];
 
     /**
      * @var array
      */
-    private $overrides;
-
-    public function __construct(array $associations = [], array $indexes = [], array $discriminators = [], array $discriminatorColumns = [], array $inheritanceTypes = [], array $uniques = [], array $overrides = [])
-    {
-        $this->associations = $associations;
-        $this->indexes = $indexes;
-        $this->uniques = $uniques;
-        $this->discriminatorColumns = $discriminatorColumns;
-        $this->discriminators = $discriminators;
-        $this->inheritanceTypes = $inheritanceTypes;
-        $this->overrides = $overrides;
-    }
+    private $overrides = [];
 
     public function getSubscribedEvents(): array
     {
@@ -74,13 +66,13 @@ final class DoctrineORMMapper implements EventSubscriber
         ];
     }
 
-    public function addAssociation(string $class, string $field, array $options): void
+    public function addAssociation(string $class, string $field, OptionsBuilder $options): void
     {
         if (!isset($this->associations[$class])) {
             $this->associations[$class] = [];
         }
 
-        $this->associations[$class][$field] = $options;
+        $this->associations[$class][$field] = $options->getOptions();
     }
 
     /**
@@ -100,10 +92,10 @@ final class DoctrineORMMapper implements EventSubscriber
         }
     }
 
-    public function addDiscriminatorColumn(string $class, array $columnDef): void
+    public function addDiscriminatorColumn(string $class, ColumnDefinitionBuilder $columnDef): void
     {
         if (!isset($this->discriminatorColumns[$class])) {
-            $this->discriminatorColumns[$class] = $columnDef;
+            $this->discriminatorColumns[$class] = $columnDef->getOptions();
         }
     }
 
@@ -117,8 +109,13 @@ final class DoctrineORMMapper implements EventSubscriber
         }
     }
 
+    /**
+     * @param array<string> $columns
+     */
     public function addIndex(string $class, string $name, array $columns): void
     {
+        $this->verifyColumnNames($columns);
+
         if (!isset($this->indexes[$class])) {
             $this->indexes[$class] = [];
         }
@@ -130,8 +127,13 @@ final class DoctrineORMMapper implements EventSubscriber
         $this->indexes[$class][$name] = $columns;
     }
 
+    /**
+     * @param array<string> $columns
+     */
     public function addUnique(string $class, string $name, array $columns): void
     {
+        $this->verifyColumnNames($columns);
+
         if (!isset($this->uniques[$class])) {
             $this->uniques[$class] = [];
         }
@@ -143,13 +145,13 @@ final class DoctrineORMMapper implements EventSubscriber
         $this->uniques[$class][$name] = $columns;
     }
 
-    public function addOverride(string $class, string $type, array $options): void
+    public function addOverride(string $class, string $type, OptionsBuilder $options): void
     {
         if (!isset($this->overrides[$class])) {
             $this->overrides[$class] = [];
         }
 
-        $this->overrides[$class][$type] = $options;
+        $this->overrides[$class][$type] = $options->getOptions();
     }
 
     public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs): void
@@ -290,6 +292,15 @@ final class DoctrineORMMapper implements EventSubscriber
             throw new RuntimeException(
                 sprintf('Error with class %s : %s', $metadata->name, $e->getMessage()), 404, $e
             );
+        }
+    }
+
+    private function verifyColumnNames(array $columns): void
+    {
+        foreach ($columns as $column) {
+            if (!\is_string($column)) {
+                throw new InvalidArgumentException(sprintf('The column is not a valid string, %s given', \gettype($column)));
+            }
         }
     }
 }

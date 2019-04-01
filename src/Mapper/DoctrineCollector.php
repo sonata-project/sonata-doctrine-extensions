@@ -13,42 +13,46 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Mapper;
 
+use InvalidArgumentException;
+use Sonata\Doctrine\Mapper\Builder\ColumnDefinitionBuilder;
+use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
+
 final class DoctrineCollector
 {
     /**
      * @var array
      */
-    private $associations;
+    private $associations = [];
 
     /**
      * @var array
      */
-    private $indexes;
+    private $indexes = [];
 
     /**
      * @var array
      */
-    private $uniques;
+    private $uniques = [];
 
     /**
      * @var array
      */
-    private $discriminators;
+    private $discriminators = [];
 
     /**
      * @var array
      */
-    private $discriminatorColumns;
+    private $discriminatorColumns = [];
 
     /**
      * @var array
      */
-    private $inheritanceTypes;
+    private $inheritanceTypes = [];
 
     /**
      * @var array
      */
-    private $overrides;
+    private $overrides = [];
 
     /**
      * @var DoctrineCollector
@@ -57,7 +61,6 @@ final class DoctrineCollector
 
     private function __construct()
     {
-        $this->initialize();
     }
 
     /**
@@ -89,7 +92,7 @@ final class DoctrineCollector
         }
     }
 
-    public function addDiscriminatorColumn(string $class, array $columnDef): void
+    public function addDiscriminatorColumn(string $class, ColumnDefinitionBuilder $columnDef): void
     {
         if (!isset($this->discriminatorColumns[$class])) {
             $this->discriminatorColumns[$class] = $columnDef;
@@ -103,7 +106,7 @@ final class DoctrineCollector
         }
     }
 
-    public function addAssociation(string $class, string $type, array $options): void
+    public function addAssociation(string $class, string $type, OptionsBuilder $options): void
     {
         if (!isset($this->associations[$class])) {
             $this->associations[$class] = [];
@@ -116,8 +119,13 @@ final class DoctrineCollector
         $this->associations[$class][$type][] = $options;
     }
 
+    /**
+     * @param array<string> $columns
+     */
     public function addIndex(string $class, string $name, array $columns): void
     {
+        $this->verifyColumnNames($columns);
+
         if (!isset($this->indexes[$class])) {
             $this->indexes[$class] = [];
         }
@@ -129,8 +137,13 @@ final class DoctrineCollector
         $this->indexes[$class][$name] = $columns;
     }
 
+    /**
+     * @param array<string> $columns
+     */
     public function addUnique(string $class, string $name, array $columns): void
     {
+        $this->verifyColumnNames($columns);
+
         if (!isset($this->indexes[$class])) {
             $this->uniques[$class] = [];
         }
@@ -142,7 +155,7 @@ final class DoctrineCollector
         $this->uniques[$class][$name] = $columns;
     }
 
-    public function addOverride(string $class, string $type, array $options): void
+    public function addOverride(string $class, string $type, OptionsBuilder $options): void
     {
         if (!isset($this->overrides[$class])) {
             $this->overrides[$class] = [];
@@ -192,11 +205,6 @@ final class DoctrineCollector
 
     public function clear(): void
     {
-        $this->initialize();
-    }
-
-    private function initialize(): void
-    {
         $this->associations = [];
         $this->indexes = [];
         $this->uniques = [];
@@ -204,5 +212,14 @@ final class DoctrineCollector
         $this->inheritanceTypes = [];
         $this->discriminators = [];
         $this->overrides = [];
+    }
+
+    private function verifyColumnNames(array $columns): void
+    {
+        foreach ($columns as $column) {
+            if (!\is_string($column)) {
+                throw new InvalidArgumentException(sprintf('The column is not a valid string, %s given', \gettype($column)));
+            }
+        }
     }
 }

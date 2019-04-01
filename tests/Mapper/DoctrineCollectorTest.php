@@ -14,6 +14,8 @@ declare(strict_types=1);
 namespace Sonata\Doctrine\Tests\Mapper;
 
 use PHPUnit\Framework\TestCase;
+use Sonata\Doctrine\Mapper\Builder\ColumnDefinitionBuilder;
+use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
 use Sonata\Doctrine\Mapper\DoctrineCollector;
 use stdClass;
 
@@ -45,10 +47,13 @@ class DoctrineCollectorTest extends TestCase
         $collector->addIndex(stdClass::class, 'name', ['column']);
         $collector->addUnique(stdClass::class, 'name', ['column']);
         $collector->addInheritanceType(stdClass::class, 'type');
-        $collector->addDiscriminatorColumn(stdClass::class, ['columnDef']);
-        $collector->addAssociation(stdClass::class, 'type', ['options']);
+        $collector->addDiscriminatorColumn(stdClass::class, ColumnDefinitionBuilder::create()
+            ->add('columnDef', ''));
+        $collector->addAssociation(stdClass::class, 'type', OptionsBuilder::create()
+            ->add('foo', 'bar'));
         $collector->addDiscriminator(stdClass::class, 'key', 'discriminatorClass');
-        $collector->addOverride(stdClass::class, 'type', ['options']);
+        $collector->addOverride(stdClass::class, 'type', OptionsBuilder::create()
+            ->add('foo', 'bar'));
 
         $collector->clear();
 
