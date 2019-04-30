@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.3.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.2.0...1.3.0) - 2019-04-29
+
+### Added
+- Added `DoctrineORMMapper` to manipulate doctrine entity relations
+
+### Deprecated
+- Deprecated `Sonata\Doctrine\Model\PageableManagerInterface`
+
 ## [1.2.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.1.5...1.2.0) - 2019-03-08
 
 ### Fixed
