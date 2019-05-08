@@ -49,7 +49,7 @@ final class DoctrineORMAdapterTest extends TestCase
     public function testNormalizedIdentifierWithNoManager(): void
     {
         $registry = $this->createMock(ManagerRegistry::class);
-        $registry->expects($this->once())->method('getManagerForClass')->will($this->returnValue(null));
+        $registry->expects($this->once())->method('getManagerForClass')->willReturn(null);
 
         $adapter = new DoctrineORMAdapter($registry);
 
@@ -59,13 +59,13 @@ final class DoctrineORMAdapterTest extends TestCase
     public function testNormalizedIdentifierWithNotManaged(): void
     {
         $unitOfWork = $this->getMockBuilder(UnitOfWork::class)->disableOriginalConstructor()->getMock();
-        $unitOfWork->expects($this->once())->method('isInIdentityMap')->will($this->returnValue(false));
+        $unitOfWork->expects($this->once())->method('isInIdentityMap')->willReturn(false);
 
         $manager = $this->createMock(EntityManagerInterface::class);
-        $manager->expects($this->any())->method('getUnitOfWork')->will($this->returnValue($unitOfWork));
+        $manager->expects($this->any())->method('getUnitOfWork')->willReturn($unitOfWork);
 
         $registry = $this->createMock(ManagerRegistry::class);
-        $registry->expects($this->once())->method('getManagerForClass')->will($this->returnValue($manager));
+        $registry->expects($this->once())->method('getManagerForClass')->willReturn($manager);
 
         $adapter = new DoctrineORMAdapter($registry);
 
@@ -78,14 +78,14 @@ final class DoctrineORMAdapterTest extends TestCase
     public function testNormalizedIdentifierWithValidObject($data, $expected): void
     {
         $unitOfWork = $this->getMockBuilder(UnitOfWork::class)->disableOriginalConstructor()->getMock();
-        $unitOfWork->expects($this->once())->method('isInIdentityMap')->will($this->returnValue(true));
-        $unitOfWork->expects($this->once())->method('getEntityIdentifier')->will($this->returnValue($data));
+        $unitOfWork->expects($this->once())->method('isInIdentityMap')->willReturn(true);
+        $unitOfWork->expects($this->once())->method('getEntityIdentifier')->willReturn($data);
 
         $manager = $this->createMock(EntityManagerInterface::class);
-        $manager->expects($this->any())->method('getUnitOfWork')->will($this->returnValue($unitOfWork));
+        $manager->expects($this->any())->method('getUnitOfWork')->willReturn($unitOfWork);
 
         $registry = $this->createMock(ManagerRegistry::class);
-        $registry->expects($this->once())->method('getManagerForClass')->will($this->returnValue($manager));
+        $registry->expects($this->once())->method('getManagerForClass')->willReturn($manager);
 
         $adapter = new DoctrineORMAdapter($registry);
 
