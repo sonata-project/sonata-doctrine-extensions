@@ -13,7 +13,9 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Document;
 
+use Doctrine\DBAL\Connection;
 use Doctrine\ODM\MongoDB\DocumentManager;
+use Doctrine\Persistence\ObjectManager;
 use Sonata\Doctrine\Model\BaseManager;
 
 /**
@@ -38,7 +40,7 @@ abstract class BaseDocumentManager extends BaseManager
         throw new \RuntimeException(sprintf('The property %s does not exists', $name));
     }
 
-    public function getConnection()
+    public function getConnection(): Connection
     {
         return $this->getObjectManager()->getConnection();
     }
@@ -46,7 +48,7 @@ abstract class BaseDocumentManager extends BaseManager
     /**
      * @return DocumentManager
      */
-    public function getDocumentManager()
+    public function getDocumentManager(): ObjectManager
     {
         $dm = $this->getObjectManager();
 

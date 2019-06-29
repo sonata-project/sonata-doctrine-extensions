@@ -13,8 +13,10 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Entity;
 
+use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityRepository;
+use Doctrine\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectRepository;
 use Sonata\Doctrine\Model\BaseManager;
 
 /**
@@ -39,7 +41,7 @@ abstract class BaseEntityManager extends BaseManager
         throw new \RuntimeException(sprintf('The property %s does not exists', $name));
     }
 
-    public function getConnection()
+    public function getConnection(): Connection
     {
         return $this->getEntityManager()->getConnection();
     }
@@ -47,12 +49,12 @@ abstract class BaseEntityManager extends BaseManager
     /**
      * @return EntityManager
      */
-    public function getEntityManager()
+    public function getEntityManager(): ObjectManager
     {
         return $this->getObjectManager();
     }
 
-    protected function getRepository(): EntityRepository
+    protected function getRepository(): ObjectRepository
     {
         return $this->getEntityManager()->getRepository($this->class);
     }

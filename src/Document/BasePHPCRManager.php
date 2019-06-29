@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Document;
 
+use Doctrine\DBAL\Connection;
 use Doctrine\Persistence\ObjectManager;
 use Sonata\Doctrine\Model\BaseManager;
 
@@ -41,7 +42,7 @@ abstract class BasePHPCRManager extends BaseManager
      *
      * @throws \LogicException Each call
      */
-    public function getConnection(): void
+    public function getConnection(): Connection
     {
         throw new \LogicException('PHPCR does not use a database connection.');
     }
@@ -51,15 +52,12 @@ abstract class BasePHPCRManager extends BaseManager
      *
      * @throws \LogicException Each call
      */
-    public function getTableName(): void
+    public function getTableName(): string
     {
         throw new \LogicException('PHPCR does not use a reference name for a list of data.');
     }
 
-    /**
-     * @return ObjectManager
-     */
-    public function getDocumentManager()
+    public function getDocumentManager(): ObjectManager
     {
         return $this->getObjectManager();
     }
