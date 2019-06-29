@@ -27,31 +27,28 @@ interface ManagerInterface
      *
      * @return string|class-string<T>
      */
-    public function getClass();
+    public function getClass(): string;
 
     /**
      * Find all entities in the repository.
      *
      * @return array|T[]
      */
-    public function findAll();
+    public function findAll(): array;
 
     /**
      * Find entities by a set of criteria.
      *
-     * @param int|null $limit
-     * @param int|null $offset
-     *
      * @return array|T[]
      */
-    public function findBy(array $criteria, ?array $orderBy = null, $limit = null, $offset = null);
+    public function findBy(array $criteria, ?array $orderBy = null, ?int $limit = null, ?int $offset = null): array;
 
     /**
      * Find a single entity by a set of criteria.
      *
      * @return T|null
      */
-    public function findOneBy(array $criteria, ?array $orderBy = null);
+    public function findOneBy(array $criteria, ?array $orderBy = null): ?object;
 
     /**
      * Finds an entity by its primary key / identifier.
@@ -60,14 +57,14 @@ interface ManagerInterface
      *
      * @return T|null
      */
-    public function find($id);
+    public function find($id): ?object;
 
     /**
      * Create an empty Entity instance.
      *
      * @return T
      */
-    public function create();
+    public function create(): object;
 
     /**
      * Save an Entity.
@@ -75,7 +72,7 @@ interface ManagerInterface
      * @param T    $entity   The Entity to save
      * @param bool $andFlush Flush the EntityManager after saving the object?
      */
-    public function save($entity, $andFlush = true);
+    public function save(object $entity, bool $andFlush = true): void;
 
     /**
      * Delete an Entity.
@@ -83,21 +80,17 @@ interface ManagerInterface
      * @param T    $entity   The Entity to delete
      * @param bool $andFlush Flush the EntityManager after deleting the object?
      */
-    public function delete($entity, $andFlush = true);
+    public function delete(object $entity, bool $andFlush = true): void;
 
     /**
      * Get the related table name.
-     *
-     * @return string
      */
-    public function getTableName();
+    public function getTableName(): string;
 
     /**
      * Get the DB driver connection.
-     *
-     * @return Connection
      */
-    public function getConnection();
+    public function getConnection(): Connection;
 }
 
 interface_exists(\Sonata\CoreBundle\Model\ManagerInterface::class);

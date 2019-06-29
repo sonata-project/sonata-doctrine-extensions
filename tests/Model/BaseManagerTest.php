@@ -22,10 +22,8 @@ class ManagerTest extends BaseManager
 {
     /**
      * Get the DB driver connection.
-     *
-     * @return Connection
      */
-    public function getConnection()
+    public function getConnection(): Connection
     {
     }
 
