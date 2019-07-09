@@ -33,8 +33,7 @@ abstract class BaseManager implements ManagerInterface
     protected $class;
 
     /**
-     * @param string          $class
-     * @param ManagerRegistry $registry
+     * @param string $class
      */
     public function __construct($class, ManagerRegistry $registry)
     {
