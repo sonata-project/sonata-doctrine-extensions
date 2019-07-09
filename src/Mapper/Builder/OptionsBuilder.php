@@ -36,9 +36,6 @@ final class OptionsBuilder
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function getOptions(): array
     {
         return $this->options;
