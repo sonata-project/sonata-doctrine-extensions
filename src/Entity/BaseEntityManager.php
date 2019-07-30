@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Sonata\Doctrine\Entity;
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
 use Sonata\Doctrine\Model\BaseManager;
 
 /**
@@ -46,6 +47,11 @@ abstract class BaseEntityManager extends BaseManager
     public function getEntityManager()
     {
         return $this->getObjectManager();
+    }
+
+    final protected function getRepository(): EntityRepository
+    {
+        return $this->getEntityManager()->getRepository($this->class);
     }
 }
 

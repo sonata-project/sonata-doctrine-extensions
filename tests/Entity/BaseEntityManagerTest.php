@@ -15,11 +15,16 @@ namespace Sonata\Doctrine\Tests\Entity;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityRepository;
 use PHPUnit\Framework\TestCase;
 use Sonata\Doctrine\Entity\BaseEntityManager;
 
 class EntityManager extends BaseEntityManager
 {
+    public function getRepositoryFromBaseClass(): EntityRepository
+    {
+        return $this->getRepository();
+    }
 }
 
 final class BaseEntityManagerTest extends TestCase
@@ -66,5 +71,19 @@ final class BaseEntityManagerTest extends TestCase
         $manager = new EntityManager('classname', $registry);
 
         $manager->em;
+    }
+
+    public function testGetRepository(): void
+    {
+        $entityRepository = $this->createMock(EntityRepository::class);
+        $objectManager = $this->createMock(ObjectManager::class);
+        $objectManager->expects($this->once())->method('getRepository')->with('classname')->willReturn($entityRepository);
+
+        $registry = $this->createMock(ManagerRegistry::class);
+        $registry->expects($this->once())->method('getManagerForClass')->willReturn($objectManager);
+
+        $manager = new EntityManager('classname', $registry);
+        $repository = $manager->getRepositoryFromBaseClass();
+        $this->assertInstanceOf(EntityRepository::class, $repository);
     }
 }
