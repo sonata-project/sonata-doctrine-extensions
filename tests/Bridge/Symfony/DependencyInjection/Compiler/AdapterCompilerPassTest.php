@@ -36,6 +36,7 @@ final class AdapterCompilerPassTest extends AbstractCompilerPassTestCase
 
         $this->registerService('doctrine', 'foo');
         $this->registerService('doctrine_phpcr', 'foo');
+        $this->registerService('sonata.doctrine.adapter.doctrine_orm', 'foo');
 
         $this->compile();
 
@@ -44,6 +45,25 @@ final class AdapterCompilerPassTest extends AbstractCompilerPassTestCase
             'addAdapter',
             [new Reference('sonata.doctrine.adapter.doctrine_orm')]
         );
+
+        $this->assertContainerBuilderHasServiceDefinitionWithMethodCall(
+            'sonata.doctrine.model.adapter.chain',
+            'addAdapter',
+            [new Reference('sonata.doctrine.adapter.doctrine_phpcr')]
+        );
+    }
+
+    public function testDefinitionsAddedWithoutOrm()
+    {
+        $adapterChain = new Definition();
+        $this->setDefinition('sonata.doctrine.model.adapter.chain', $adapterChain);
+
+        $this->registerService('doctrine', 'foo');
+        $this->registerService('doctrine_phpcr', 'foo');
+
+        $this->compile();
+
+        $this->assertContainerBuilderNotHasService('sonata.doctrine.adapter.doctrine_orm');
 
         $this->assertContainerBuilderHasServiceDefinitionWithMethodCall(
             'sonata.doctrine.model.adapter.chain',
