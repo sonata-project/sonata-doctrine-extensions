@@ -30,7 +30,7 @@ final class AdapterCompilerPass implements CompilerPassInterface
 
         $definition = $container->findDefinition('sonata.doctrine.model.adapter.chain');
 
-        if ($container->has('doctrine')) {
+        if ($this->isDoctrineOrmLoaded($container)) {
             $definition->addMethodCall('addAdapter', [new Reference('sonata.doctrine.adapter.doctrine_orm')]);
         } else {
             $container->removeDefinition('sonata.doctrine.adapter.doctrine_orm');
@@ -41,5 +41,10 @@ final class AdapterCompilerPass implements CompilerPassInterface
         } else {
             $container->removeDefinition('sonata.doctrine.adapter.doctrine_phpcr');
         }
+    }
+
+    private function isDoctrineOrmLoaded(ContainerBuilder $container): bool
+    {
+        return $container->has('doctrine') && $container->has('sonata.doctrine.adapter.doctrine_orm');
     }
 }

@@ -27,7 +27,7 @@ final class MapperCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container): void
     {
-        if (!$container->hasDefinition('doctrine')) {
+        if (!$this->isDoctrineOrmLoaded($container)) {
             $container->removeDefinition('sonata.doctrine.mapper');
 
             return;
@@ -75,5 +75,10 @@ final class MapperCompilerPass implements CompilerPassInterface
         }
 
         $collector->clear();
+    }
+
+    private function isDoctrineOrmLoaded(ContainerBuilder $container): bool
+    {
+        return $container->hasDefinition('doctrine') && $container->hasDefinition('sonata.doctrine.mapper');
     }
 }
