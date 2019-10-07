@@ -16,74 +16,76 @@ namespace Sonata\Doctrine\Tests\Entity;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sonata\Doctrine\Entity\BaseEntityManager;
 
-class EntityManager extends BaseEntityManager
-{
-    public function getRepositoryFromBaseClass(): EntityRepository
-    {
-        return $this->getRepository();
-    }
-}
-
 final class BaseEntityManagerTest extends TestCase
 {
-    public function getManager()
-    {
-        $registry = $this->createMock(ManagerRegistry::class);
+    /**
+     * @var ManagerRegistry|MockObject
+     */
+    private $registry;
 
-        return new EntityManager('classname', $registry);
+    /**
+     * @var ObjectManager|MockObject
+     */
+    private $objectManager;
+
+    /**
+     * @var BaseEntityManager
+     */
+    private $manager;
+
+    public function setUp(): void
+    {
+        $this->registry = $this->createMock(ManagerRegistry::class);
+        $this->objectManager = $this->createMock(ObjectManager::class);
+        $this->manager = $this->getMockForAbstractClass(BaseEntityManager::class, ['classname', $this->registry]);
     }
 
-    public function test()
+    public function testGetClassName(): void
     {
-        $this->assertSame('classname', $this->getManager()->getClass());
+        $this->assertSame('classname', $this->manager->getClass());
     }
 
-    public function testException()
+    public function testException(): void
     {
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage('The property exception does not exists');
 
-        $this->getManager()->exception;
+        $this->manager->exception;
     }
 
-    public function testExceptionOnNonMappedEntity()
+    public function testExceptionOnNonMappedEntity(): void
     {
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage('Unable to find the mapping information for the class classname. Please check the `auto_mapping` option (http://symfony.com/doc/current/reference/configuration/doctrine.html#configuration-overview) or add the bundle to the `mappings` section in the doctrine configuration');
 
-        $registry = $this->createMock(ManagerRegistry::class);
-        $registry->expects($this->once())->method('getManagerForClass')->willReturn(null);
+        $this->registry->expects($this->once())->method('getManagerForClass')->willReturn(null);
 
-        $manager = new EntityManager('classname', $registry);
-        $manager->getObjectManager();
+        $this->manager->getObjectManager();
     }
 
-    public function testGetEntityManager()
+    public function testGetEntityManager(): void
     {
-        $objectManager = $this->createMock(ObjectManager::class);
+        $this->registry->expects($this->once())->method('getManagerForClass')->willReturn($this->objectManager);
 
-        $registry = $this->createMock(ManagerRegistry::class);
-        $registry->expects($this->once())->method('getManagerForClass')->willReturn($objectManager);
-
-        $manager = new EntityManager('classname', $registry);
-
-        $manager->em;
+        $this->manager->em;
     }
 
     public function testGetRepository(): void
     {
         $entityRepository = $this->createMock(EntityRepository::class);
-        $objectManager = $this->createMock(ObjectManager::class);
-        $objectManager->expects($this->once())->method('getRepository')->with('classname')->willReturn($entityRepository);
 
-        $registry = $this->createMock(ManagerRegistry::class);
-        $registry->expects($this->once())->method('getManagerForClass')->willReturn($objectManager);
+        $this->objectManager->expects($this->once())->method('getRepository')->with('classname')->willReturn($entityRepository);
 
-        $manager = new EntityManager('classname', $registry);
-        $repository = $manager->getRepositoryFromBaseClass();
-        $this->assertInstanceOf(EntityRepository::class, $repository);
+        $this->registry->expects($this->once())->method('getManagerForClass')->willReturn($this->objectManager);
+
+        $r = new \ReflectionObject($this->manager);
+        $m = $r->getMethod('getRepository');
+        $m->setAccessible(true);
+
+        $this->assertInstanceOf(EntityRepository::class, $m->invoke($this->manager));
     }
 }
