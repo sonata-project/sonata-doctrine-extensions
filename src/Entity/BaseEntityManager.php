@@ -49,7 +49,7 @@ abstract class BaseEntityManager extends BaseManager
         return $this->getObjectManager();
     }
 
-    final protected function getRepository(): EntityRepository
+    protected function getRepository(): EntityRepository
     {
         return $this->getEntityManager()->getRepository($this->class);
     }
