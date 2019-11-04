@@ -51,13 +51,7 @@ abstract class BaseManager implements ManagerInterface
         $manager = $this->registry->getManagerForClass($this->class);
 
         if (!$manager) {
-            throw new \RuntimeException(sprintf(
-                'Unable to find the mapping information for the class %s.'
-                .' Please check the `auto_mapping` option'
-                .' (http://symfony.com/doc/current/reference/configuration/doctrine.html#configuration-overview)'
-                .' or add the bundle to the `mappings` section in the doctrine configuration.',
-                $this->class
-            ));
+            throw new \RuntimeException(sprintf('Unable to find the mapping information for the class %s.'.' Please check the `auto_mapping` option'.' (http://symfony.com/doc/current/reference/configuration/doctrine.html#configuration-overview)'.' or add the bundle to the `mappings` section in the doctrine configuration.', $this->class));
         }
 
         return $manager;
@@ -136,10 +130,7 @@ abstract class BaseManager implements ManagerInterface
     protected function checkObject($object)
     {
         if (!$object instanceof $this->class) {
-            throw new \InvalidArgumentException(sprintf(
-                'Object must be instance of %s, %s given',
-                $this->class, \is_object($object) ? \get_class($object) : \gettype($object)
-            ));
+            throw new \InvalidArgumentException(sprintf('Object must be instance of %s, %s given', $this->class, \is_object($object) ? \get_class($object) : \gettype($object)));
         }
     }
 }
