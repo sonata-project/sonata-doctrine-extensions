@@ -26,6 +26,7 @@
     },
     "require-dev": {
         "doctrine/common": "^2.7",
+        "doctrine/mongodb-odm": "^2.0",
         "doctrine/orm": "^2.5",
         "doctrine/phpcr-odm": "^1.4 || ^2.0",
         "jackalope/jackalope-doctrine-dbal": "^1.0",
@@ -36,6 +37,7 @@
         "symfony/phpunit-bridge": "^5.0"
     },
     "suggest": {
+        "doctrine/mongodb-odm": "If you use doctrine mongodb",
         "doctrine/orm": "If you use doctrine orm",
         "doctrine/phpcr-odm": "If you use doctrine phpcr",
         "symfony/framework-bundle": "If you want to use symfony"
