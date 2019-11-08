@@ -1,0 +1,18 @@
+parameters:
+    level: 1
+
+    paths:
+        - src
+# Uncomment this, when phpstan extensions are allowed
+#        - tests
+
+    excludes_analyse:
+        - src/Test/EntityManagerMockFactory.php
+        - tests/bootstrap.php
+
+    autoload_files:
+        - vendor/autoload.php
+
+    ignoreErrors:
+        - '#Class Sonata\\CoreBundle\\.* not found.#'
+        - '#Return typehint of method Sonata\\Doctrine\\Model\\PageableManagerInterface::getPager\(\) has invalid type Sonata\\DatagridBundle\\Pager\\PagerInterface.#'
