@@ -15,6 +15,9 @@ php:
   - '7.4snapshot'
   - nightly
 
+services:
+  - mongodb
+
 dist: xenial
 
 addons:
