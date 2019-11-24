@@ -62,7 +62,7 @@ final class DoctrineORMAdapterTest extends TestCase
         $unitOfWork->expects($this->once())->method('isInIdentityMap')->willReturn(false);
 
         $manager = $this->createMock(EntityManagerInterface::class);
-        $manager->expects($this->any())->method('getUnitOfWork')->willReturn($unitOfWork);
+        $manager->method('getUnitOfWork')->willReturn($unitOfWork);
 
         $registry = $this->createMock(ManagerRegistry::class);
         $registry->expects($this->once())->method('getManagerForClass')->willReturn($manager);
@@ -82,7 +82,7 @@ final class DoctrineORMAdapterTest extends TestCase
         $unitOfWork->expects($this->once())->method('getEntityIdentifier')->willReturn($data);
 
         $manager = $this->createMock(EntityManagerInterface::class);
-        $manager->expects($this->any())->method('getUnitOfWork')->willReturn($unitOfWork);
+        $manager->method('getUnitOfWork')->willReturn($unitOfWork);
 
         $registry = $this->createMock(ManagerRegistry::class);
         $registry->expects($this->once())->method('getManagerForClass')->willReturn($manager);
