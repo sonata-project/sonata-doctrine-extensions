@@ -85,11 +85,11 @@ final class DoctrinePHPCRAdapterTest extends TestCase
         $metadata->reflFields['path'] = new \ReflectionProperty(MyDocument::class, 'path');
 
         $manager = $this->getMockBuilder(DocumentManager::class)->disableOriginalConstructor()->getMock();
-        $manager->expects($this->any())->method('contains')->willReturn(true);
-        $manager->expects($this->any())->method('getClassMetadata')->willReturn($metadata);
+        $manager->method('contains')->willReturn(true);
+        $manager->method('getClassMetadata')->willReturn($metadata);
 
         $registry = $this->createMock(ManagerRegistry::class);
-        $registry->expects($this->any())->method('getManagerForClass')->willReturn($manager);
+        $registry->method('getManagerForClass')->willReturn($manager);
 
         $adapter = new DoctrinePHPCRAdapter($registry);
 

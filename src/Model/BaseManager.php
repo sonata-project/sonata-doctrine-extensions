@@ -80,7 +80,7 @@ abstract class BaseManager implements ManagerInterface
 
     public function findOneBy(array $criteria, array $orderBy = null)
     {
-        return $this->getRepository()->findOneBy($criteria, $orderBy);
+        return $this->getRepository()->findOneBy($criteria);
     }
 
     public function find($id)
