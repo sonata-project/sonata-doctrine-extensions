@@ -36,6 +36,7 @@ final class AdapterCompilerPassTest extends AbstractCompilerPassTestCase
 
         $this->registerService('doctrine', 'foo');
         $this->registerService('doctrine_phpcr', 'foo');
+        $this->registerService('sonata.doctrine.adapter.doctrine_phpcr', 'foo');
         $this->registerService('sonata.doctrine.adapter.doctrine_orm', 'foo');
 
         $this->compile();
@@ -60,6 +61,7 @@ final class AdapterCompilerPassTest extends AbstractCompilerPassTestCase
 
         $this->registerService('doctrine', 'foo');
         $this->registerService('doctrine_phpcr', 'foo');
+        $this->registerService('sonata.doctrine.adapter.doctrine_phpcr', 'foo');
 
         $this->compile();
 
