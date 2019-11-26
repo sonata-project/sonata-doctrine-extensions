@@ -15,6 +15,7 @@ namespace Sonata\Doctrine\Types\Tests;
 
 use Doctrine\DBAL\Types\Type;
 use PHPUnit\Framework\TestCase;
+use Sonata\Doctrine\Types\JsonType;
 
 /**
  * @group legacy
@@ -24,9 +25,9 @@ class JsonTypeTest extends TestCase
     public function setUp(): void
     {
         if (Type::hasType('json')) {
-            Type::overrideType('json', 'Sonata\Doctrine\Types\JsonType');
+            Type::overrideType('json', JsonType::class);
         } else {
-            Type::addType('json', 'Sonata\Doctrine\Types\JsonType');
+            Type::addType('json', JsonType::class);
         }
     }
 

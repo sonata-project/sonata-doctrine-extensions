@@ -19,7 +19,6 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
-use Doctrine\ORM\Version;
 
 class EntityManagerMockFactory
 {
@@ -28,36 +27,30 @@ class EntityManagerMockFactory
      */
     public static function create(\PHPUnit\Framework\TestCase $test, \Closure $qbCallback, $fields)
     {
-        $query = $test->getMockBuilder(AbstractQuery::class)
-            ->disableOriginalConstructor()->getMock();
-        $query->expects($test->any())->method('execute')->will($test->returnValue(true));
+        $query = $test->createMock(AbstractQuery::class);
+        $query->method('execute')->willReturn(true);
 
-        if (Version::compare('2.5.0') < 1) {
-            $entityManager = $test->getMockBuilder(EntityManagerInterface::class)->getMock();
-            $qb = $test->getMockBuilder(QueryBuilder::class)->setConstructorArgs([$entityManager])->getMock();
-        } else {
-            $qb = $test->getMockBuilder(QueryBuilder::class)->disableOriginalConstructor()->getMock();
-        }
+        $qb = $test->createMock(QueryBuilder::class);
 
-        $qb->expects($test->any())->method('select')->will($test->returnValue($qb));
-        $qb->expects($test->any())->method('getQuery')->will($test->returnValue($query));
-        $qb->expects($test->any())->method('where')->will($test->returnValue($qb));
-        $qb->expects($test->any())->method('orderBy')->will($test->returnValue($qb));
-        $qb->expects($test->any())->method('andWhere')->will($test->returnValue($qb));
-        $qb->expects($test->any())->method('leftJoin')->will($test->returnValue($qb));
+        $qb->method('select')->willReturn($qb);
+        $qb->method('getQuery')->willReturn($query);
+        $qb->method('where')->willReturn($qb);
+        $qb->method('orderBy')->willReturn($qb);
+        $qb->method('andWhere')->willReturn($qb);
+        $qb->method('leftJoin')->willReturn($qb);
 
         $qbCallback($qb);
 
-        $repository = $test->getMockBuilder(EntityRepository::class)->disableOriginalConstructor()->getMock();
-        $repository->expects($test->any())->method('createQueryBuilder')->will($test->returnValue($qb));
+        $repository = $test->createMock(EntityRepository::class);
+        $repository->method('createQueryBuilder')->willReturn($qb);
 
-        $metadata = $test->getMockBuilder(ClassMetadata::class)->getMock();
-        $metadata->expects($test->any())->method('getFieldNames')->will($test->returnValue($fields));
-        $metadata->expects($test->any())->method('getName')->will($test->returnValue('className'));
+        $metadata = $test->createMock(ClassMetadata::class);
+        $metadata->method('getFieldNames')->willReturn($fields);
+        $metadata->method('getName')->willReturn('className');
 
-        $em = $test->getMockBuilder(EntityManager::class)->disableOriginalConstructor()->getMock();
-        $em->expects($test->any())->method('getRepository')->will($test->returnValue($repository));
-        $em->expects($test->any())->method('getClassMetadata')->will($test->returnValue($metadata));
+        $em = $test->createMock(EntityManager::class);
+        $em->method('getRepository')->willReturn($repository);
+        $em->method('getClassMetadata')->willReturn($metadata);
 
         return $em;
     }

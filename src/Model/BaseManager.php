@@ -80,7 +80,14 @@ abstract class BaseManager implements ManagerInterface
 
     public function findOneBy(array $criteria, array $orderBy = null)
     {
-        return $this->getRepository()->findOneBy($criteria, $orderBy);
+        if (null !== $orderBy) {
+            @trigger_error(
+                'The $orderBy argument of '.__METHOD__.' is deprecated since sonata-project/doctrine-extensions 1.x, to be removed in 2.0.',
+                E_USER_DEPRECATED
+            );
+        }
+
+        return $this->getRepository()->findOneBy($criteria);
     }
 
     public function find($id)

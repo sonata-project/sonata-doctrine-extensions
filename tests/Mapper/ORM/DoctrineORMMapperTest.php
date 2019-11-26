@@ -27,7 +27,7 @@ class DoctrineORMMapperTest extends TestCase
 
     public function setUp()
     {
-        $this->metadata = $this->createMock(ClassMetadataInfo::class, [], [], '', false);
+        $this->metadata = $this->createMock(ClassMetadataInfo::class);
     }
 
     public function testLoadDiscriminators(): void
