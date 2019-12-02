@@ -82,7 +82,7 @@ abstract class BaseManager implements ManagerInterface
     {
         if (null !== $orderBy) {
             @trigger_error(
-                'The $orderBy argument of '.__METHOD__.' is deprecated since sonata-project/doctrine-extensions 1.x, to be removed in 2.0.',
+                'The $orderBy argument of '.__METHOD__.' is deprecated since sonata-project/doctrine-extensions 1.4, to be removed in 2.0.',
                 E_USER_DEPRECATED
             );
         }
