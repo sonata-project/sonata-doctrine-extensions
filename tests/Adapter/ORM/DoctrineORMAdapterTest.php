@@ -21,7 +21,7 @@ use Sonata\Doctrine\Adapter\ORM\DoctrineORMAdapter;
 
 final class DoctrineORMAdapterTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         if (!class_exists(UnitOfWork::class)) {
             $this->markTestSkipped('Doctrine ORM not installed');

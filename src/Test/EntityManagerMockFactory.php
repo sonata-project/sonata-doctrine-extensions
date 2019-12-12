@@ -19,8 +19,9 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
+use PHPUnit\Framework\TestCase;
 
-class EntityManagerMockFactory
+class EntityManagerMockFactory extends TestCase
 {
     /**
      * @return EntityManagerInterface
