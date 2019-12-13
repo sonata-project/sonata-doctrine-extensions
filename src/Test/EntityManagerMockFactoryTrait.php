@@ -19,28 +19,21 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
+use PHPUnit\Framework\MockObject\MockObject;
 
-@trigger_error(
-    'The '.__NAMESPACE__.'\EntityManagerMockFactory class is deprecated since '.
-    'sonata-project/doctrine-extensions 1.x in favor of '.
-    __NAMESPACE__.'\EntityManagerMockFactoryTrait, and will be removed in 2.0.',
-    E_USER_DEPRECATED
-);
-
-/**
- * @deprecated since sonata-project/doctrine-extensions 1.x, to be removed in 2.0.
- */
-class EntityManagerMockFactory
+trait EntityManagerMockFactoryTrait
 {
     /**
-     * @return EntityManagerInterface
+     * @param string[] $fields
+     *
+     * @return EntityManagerInterface|MockObject
      */
-    public static function create(\Closure $qbCallback, $fields)
+    final protected function createEntityManagerMock(\Closure $qbCallback, array $fields): MockObject
     {
-        $query = $test->createMock(AbstractQuery::class);
+        $query = $this->createMock(AbstractQuery::class);
         $query->method('execute')->willReturn(true);
 
-        $qb = $test->createMock(QueryBuilder::class);
+        $qb = $this->createMock(QueryBuilder::class);
 
         $qb->method('select')->willReturn($qb);
         $qb->method('getQuery')->willReturn($query);
@@ -51,17 +44,19 @@ class EntityManagerMockFactory
 
         $qbCallback($qb);
 
-        $repository = $test->createMock(EntityRepository::class);
+        $repository = $this->createMock(EntityRepository::class);
         $repository->method('createQueryBuilder')->willReturn($qb);
 
-        $metadata = $test->createMock(ClassMetadata::class);
+        $metadata = $this->createMock(ClassMetadata::class);
         $metadata->method('getFieldNames')->willReturn($fields);
         $metadata->method('getName')->willReturn('className');
 
-        $em = $test->createMock(EntityManager::class);
+        $em = $this->createMock(EntityManager::class);
         $em->method('getRepository')->willReturn($repository);
         $em->method('getClassMetadata')->willReturn($metadata);
 
         return $em;
     }
+
+    abstract protected function createMock($originalClassName): MockObject;
 }
