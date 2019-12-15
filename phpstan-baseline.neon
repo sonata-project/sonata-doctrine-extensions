@@ -1,0 +1,57 @@
+parameters:
+    ignoreErrors:
+        # NEXT_MAJOR: Remove these findings when dropping class_exists hack
+        -
+            message: "#^Class Sonata\\\\CoreBundle\\\\Model\\\\Adapter\\\\AdapterChain not found\\.$#"
+            count: 1
+            path: src/Adapter/AdapterChain.php
+
+        -
+            message: "#^Class Sonata\\\\CoreBundle\\\\Model\\\\Adapter\\\\AdapterInterface not found\\.$#"
+            count: 1
+            path: src/Adapter/AdapterInterface.php
+
+        -
+            message: "#^Class Sonata\\\\CoreBundle\\\\Model\\\\Adapter\\\\DoctrineORMAdapter not found\\.$#"
+            count: 1
+            path: src/Adapter/ORM/DoctrineORMAdapter.php
+
+        -
+            message: "#^Class Sonata\\\\CoreBundle\\\\Model\\\\Adapter\\\\DoctrinePHPCRAdapter not found\\.$#"
+            count: 1
+            path: src/Adapter/PHPCR/DoctrinePHPCRAdapter.php
+
+        -
+            message: "#^Class Sonata\\\\CoreBundle\\\\Model\\\\BaseDocumentManager not found\\.$#"
+            count: 1
+            path: src/Document/BaseDocumentManager.php
+
+        -
+            message: "#^Class Sonata\\\\CoreBundle\\\\Model\\\\BasePHPCRManager not found\\.$#"
+            count: 1
+            path: src/Document/BasePHPCRManager.php
+
+        -
+            message: "#^Class Sonata\\\\CoreBundle\\\\Model\\\\BaseEntityManager not found\\.$#"
+            count: 1
+            path: src/Entity/BaseEntityManager.php
+
+        -
+            message: "#^Class Sonata\\\\CoreBundle\\\\Model\\\\BaseManager not found\\.$#"
+            count: 1
+            path: src/Model/BaseManager.php
+
+        -
+            message: "#^Class Sonata\\\\CoreBundle\\\\Model\\\\ManagerInterface not found\\.$#"
+            count: 1
+            path: src/Model/ManagerInterface.php
+
+        -
+            message: "#^Class Sonata\\\\CoreBundle\\\\Model\\\\PageableManagerInterface not found\\.$#"
+            count: 1
+            path: src/Model/PageableManagerInterface.php
+
+        -
+            message: "#^Class Doctrine\\\\ODM\\\\MongoDB\\\\DocumentManager not found\\.$#"
+            count: 1
+            path: src/Document/BaseDocumentManager.php
