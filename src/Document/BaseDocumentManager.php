@@ -45,7 +45,11 @@ abstract class BaseDocumentManager extends BaseManager
      */
     public function getDocumentManager()
     {
-        return $this->getObjectManager();
+        $dm = $this->getObjectManager();
+
+        assert($dm instanceof DocumentManager);
+
+        return $dm;
     }
 }
 
