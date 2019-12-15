@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.5.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.4.0...1.5.0) - 2019-12-15
+### Added
+- Add `EntityManagerMockFactoryTrait`
+
 ## [1.4.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.3.1...1.4.0) - 2019-12-02
 ### Changed
 - Remove the final modifier for the `getRepository` method
