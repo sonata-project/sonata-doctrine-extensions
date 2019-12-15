@@ -19,6 +19,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
+use PHPUnit\Framework\TestCase;
 
 @trigger_error(
     'The '.__NAMESPACE__.'\EntityManagerMockFactory class is deprecated since '.
@@ -35,7 +36,7 @@ class EntityManagerMockFactory
     /**
      * @return EntityManagerInterface
      */
-    public static function create(\Closure $qbCallback, $fields)
+    public static function create(TestCase $test, \Closure $qbCallback, $fields)
     {
         $query = $test->createMock(AbstractQuery::class);
         $query->method('execute')->willReturn(true);
