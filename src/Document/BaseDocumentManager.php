@@ -47,7 +47,7 @@ abstract class BaseDocumentManager extends BaseManager
     {
         $dm = $this->getObjectManager();
 
-        assert($dm instanceof DocumentManager);
+        \assert($dm instanceof DocumentManager);
 
         return $dm;
     }
