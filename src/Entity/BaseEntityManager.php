@@ -19,6 +19,9 @@ use Sonata\Doctrine\Model\BaseManager;
 
 /**
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
+ *
+ * @extends BaseManager<T>
+ * @template-covariant T of object
  */
 abstract class BaseEntityManager extends BaseManager
 {
