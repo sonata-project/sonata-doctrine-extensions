@@ -49,7 +49,7 @@ interface ManagerInterface
     /**
      * Find a single entity by a set of criteria.
      *
-     * @return object|T|null
+     * @return T|null
      */
     public function findOneBy(array $criteria, array $orderBy = null);
 
@@ -58,30 +58,30 @@ interface ManagerInterface
      *
      * @param mixed $id The identifier
      *
-     * @return object|T|null
+     * @return T|null
      */
     public function find($id);
 
     /**
      * Create an empty Entity instance.
      *
-     * @return object|T
+     * @return T
      */
     public function create();
 
     /**
      * Save an Entity.
      *
-     * @param object|T $entity   The Entity to save
-     * @param bool     $andFlush Flush the EntityManager after saving the object?
+     * @param T    $entity   The Entity to save
+     * @param bool $andFlush Flush the EntityManager after saving the object?
      */
     public function save($entity, $andFlush = true);
 
     /**
      * Delete an Entity.
      *
-     * @param object|T $entity   The Entity to delete
-     * @param bool     $andFlush Flush the EntityManager after deleting the object?
+     * @param T    $entity   The Entity to delete
+     * @param bool $andFlush Flush the EntityManager after deleting the object?
      */
     public function delete($entity, $andFlush = true);
 
