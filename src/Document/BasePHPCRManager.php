@@ -16,6 +16,10 @@ namespace Sonata\Doctrine\Document;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sonata\Doctrine\Model\BaseManager;
 
+/**
+ * @extends BaseManager<T>
+ * @template-covariant T of object
+ */
 abstract class BasePHPCRManager extends BaseManager
 {
     /**
