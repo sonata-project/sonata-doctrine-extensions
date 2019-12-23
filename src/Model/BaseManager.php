@@ -19,6 +19,9 @@ use Doctrine\Common\Persistence\ObjectRepository;
 
 /**
  * @author Hugo Briand <briand@ekino.com>
+ *
+ * @implements ManagerInterface<T>
+ * @template-covariant T of object
  */
 abstract class BaseManager implements ManagerInterface
 {
@@ -33,7 +36,7 @@ abstract class BaseManager implements ManagerInterface
     protected $class;
 
     /**
-     * @param string $class
+     * @param string|class-string<T> $class
      */
     public function __construct($class, ManagerRegistry $registry)
     {

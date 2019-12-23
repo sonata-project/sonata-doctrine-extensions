@@ -17,20 +17,22 @@ use Doctrine\DBAL\Connection;
 
 /**
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
+ *
+ * @template-covariant T of object
  */
 interface ManagerInterface
 {
     /**
      * Return the Entity class name.
      *
-     * @return string
+     * @return string|class-string<T>
      */
     public function getClass();
 
     /**
      * Find all entities in the repository.
      *
-     * @return array
+     * @return array|T[]
      */
     public function findAll();
 
@@ -40,14 +42,14 @@ interface ManagerInterface
      * @param int|null $limit
      * @param int|null $offset
      *
-     * @return array
+     * @return array|T[]
      */
     public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null);
 
     /**
      * Find a single entity by a set of criteria.
      *
-     * @return object|null
+     * @return T|null
      */
     public function findOneBy(array $criteria, array $orderBy = null);
 
@@ -56,30 +58,30 @@ interface ManagerInterface
      *
      * @param mixed $id The identifier
      *
-     * @return object
+     * @return T|null
      */
     public function find($id);
 
     /**
      * Create an empty Entity instance.
      *
-     * @return object
+     * @return T
      */
     public function create();
 
     /**
      * Save an Entity.
      *
-     * @param object $entity   The Entity to save
-     * @param bool   $andFlush Flush the EntityManager after saving the object?
+     * @param T    $entity   The Entity to save
+     * @param bool $andFlush Flush the EntityManager after saving the object?
      */
     public function save($entity, $andFlush = true);
 
     /**
      * Delete an Entity.
      *
-     * @param object $entity   The Entity to delete
-     * @param bool   $andFlush Flush the EntityManager after deleting the object?
+     * @param T    $entity   The Entity to delete
+     * @param bool $andFlush Flush the EntityManager after deleting the object?
      */
     public function delete($entity, $andFlush = true);
 
