@@ -36,7 +36,7 @@ env:
     - SYMFONY_DEPRECATIONS_HELPER=max[self]=0
     - TARGET=test
     - UPSTREAM_URL=https://github.com/sonata-project/sonata-doctrine-extensions.git
-    - PHPUNIT_VERSION=7
+    - PHPUNIT_VERSION=8
 
 matrix:
   fast_finish: true
@@ -48,7 +48,7 @@ matrix:
     - php: '7.3'
       env: SYMFONY_DEPRECATIONS_HELPER=0
   allow_failures:
-    - php: 7.4snapshot
+    - php: 7.4
     - php: nightly
     - env: SYMFONY_DEPRECATIONS_HELPER=0
 
