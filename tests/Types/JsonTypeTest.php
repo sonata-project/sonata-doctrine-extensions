@@ -22,7 +22,7 @@ use Sonata\Doctrine\Types\JsonType;
  */
 class JsonTypeTest extends TestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         if (Type::hasType('json')) {
             Type::overrideType('json', JsonType::class);

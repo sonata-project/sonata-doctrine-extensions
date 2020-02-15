@@ -27,7 +27,7 @@ class MyDocument
 
 final class DoctrinePHPCRAdapterTest extends TestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         if (!class_exists(UnitOfWork::class)) {
             $this->markTestSkipped('Doctrine PHPCR not installed');

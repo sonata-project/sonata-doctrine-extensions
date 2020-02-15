@@ -20,11 +20,6 @@ services:
 
 dist: xenial
 
-addons:
-  apt:
-    packages:
-      - libxml2-utils
-
 cache:
   pip: true
   directories:
@@ -36,13 +31,11 @@ env:
     - SYMFONY_DEPRECATIONS_HELPER=max[self]=0
     - TARGET=test
     - UPSTREAM_URL=https://github.com/sonata-project/sonata-doctrine-extensions.git
-    - PHPUNIT_VERSION=7
+    - PHPUNIT_VERSION=8
 
 matrix:
   fast_finish: true
   include:
-    - php: '7.3'
-      env: TARGET=lint
     - php: '7.2'
       env: COMPOSER_FLAGS="--prefer-lowest"
     - php: '7.3'
