@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Adapter\PHPCR;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ODM\PHPCR\DocumentManager;
+use Doctrine\Persistence\ManagerRegistry;
 use Sonata\Doctrine\Adapter\AdapterInterface;
 
 /**
