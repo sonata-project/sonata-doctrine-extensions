@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Tests\Model;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\DBAL\Connection;
+use Doctrine\Persistence\ManagerRegistry;
 use PHPUnit\Framework\TestCase;
 use Sonata\Doctrine\Model\BaseManager;
 

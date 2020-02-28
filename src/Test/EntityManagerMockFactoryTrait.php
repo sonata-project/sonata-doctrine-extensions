@@ -13,12 +13,12 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Test;
 
-use Doctrine\Common\Persistence\Mapping\ClassMetadata;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
+use Doctrine\Persistence\Mapping\ClassMetadata;
 use PHPUnit\Framework\MockObject\MockObject;
 
 trait EntityManagerMockFactoryTrait

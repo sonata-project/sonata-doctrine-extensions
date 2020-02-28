@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Tests\Adapter\PHPCR;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ODM\PHPCR\DocumentManager;
 use Doctrine\ODM\PHPCR\Mapping\ClassMetadata;
 use Doctrine\ODM\PHPCR\UnitOfWork;
+use Doctrine\Persistence\ManagerRegistry;
 use PHPUnit\Framework\TestCase;
 use Sonata\Doctrine\Adapter\PHPCR\DoctrinePHPCRAdapter;
 

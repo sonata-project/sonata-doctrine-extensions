@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Document;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Sonata\Doctrine\Model\BaseManager;
 
 /**

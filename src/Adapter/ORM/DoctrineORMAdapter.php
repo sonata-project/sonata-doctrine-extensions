@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Adapter\ORM;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Sonata\Doctrine\Adapter\AdapterInterface;
 
 /**
