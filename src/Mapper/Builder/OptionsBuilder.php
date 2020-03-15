@@ -109,6 +109,24 @@ final class OptionsBuilder
         return $this;
     }
 
+    /**
+     * @param array{
+     *     name: string,
+     *     referencedColumnName: string,
+     *     unique?: bool,
+     *     nullable?: bool,
+     *     onDelete?: string,
+     *     columnDefinition?: string
+     * }[] $joinColumns
+     * @param array{
+     *     name: string,
+     *     referencedColumnName: string,
+     *     unique?: bool,
+     *     nullable?: bool,
+     *     onDelete?: string,
+     *     columnDefinition?: string
+     * }[] $inverseJoinColumns
+     */
     public function addJoinTable(string $name, array $joinColumns, array $inverseJoinColumns): self
     {
         if (self::MANY_TO_MANY !== $this->type) {
@@ -124,6 +142,9 @@ final class OptionsBuilder
         return $this;
     }
 
+    /**
+     * @param 'ASC'|'DESC' $orientation
+     */
     public function addOrder(string $field, string $orientation): self
     {
         if (!\in_array($this->type, [self::ONE_TO_MANY, self::MANY_TO_MANY], true)) {
@@ -141,6 +162,16 @@ final class OptionsBuilder
         return $this;
     }
 
+    /**
+     * @param array{
+     *     name: string,
+     *     referencedColumnName: string,
+     *     unique?: bool,
+     *     nullable?: bool,
+     *     onDelete?: string,
+     *     columnDefinition?: string
+     * } $joinColumn
+     */
     public function addJoin(array $joinColumn): self
     {
         if (!\in_array($this->type, [self::MANY_TO_ONE, self::ONE_TO_ONE], true)) {
@@ -158,6 +189,9 @@ final class OptionsBuilder
         return $this;
     }
 
+    /**
+     * @psalm-param list<'persist'|'remove'|'merge'|'detach'|'refresh'|'all'> $value
+     */
     public function cascade(array $value): self
     {
         $this->options['cascade'] = $value;
