@@ -19,8 +19,6 @@ use Doctrine\Persistence\Mapping\ClassMetadata;
 use InvalidArgumentException;
 use ReflectionException;
 use RuntimeException;
-use Sonata\Doctrine\Mapper\Builder\ColumnDefinitionBuilder;
-use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
 
 final class DoctrineORMMapper implements EventSubscriber
 {
@@ -66,13 +64,24 @@ final class DoctrineORMMapper implements EventSubscriber
         ];
     }
 
-    public function addAssociation(string $class, string $field, OptionsBuilder $options): void
+    /**
+     * @param array $options
+     */
+    public function addAssociation(string $class, string $type, $options): void
     {
+        // NEXT_MAJOR: Move array check to method signature
+        if (!\is_array($options)) {
+            @trigger_error(sprintf(
+                'Passing other type than array as argument 3 for method %s() is deprecated since sonata-project/doctrine-extensions 1.x. It will accept only array in version 2.0.',
+                __METHOD__
+            ), E_USER_DEPRECATED);
+        }
+
         if (!isset($this->associations[$class])) {
             $this->associations[$class] = [];
         }
 
-        $this->associations[$class][$field] = $options->getOptions();
+        $this->associations[$class][$type] = $options;
     }
 
     /**
@@ -92,10 +101,21 @@ final class DoctrineORMMapper implements EventSubscriber
         }
     }
 
-    public function addDiscriminatorColumn(string $class, ColumnDefinitionBuilder $columnDef): void
+    /**
+     * @param array $columnDef
+     */
+    public function addDiscriminatorColumn(string $class, $columnDef): void
     {
+        // NEXT_MAJOR: Move array check to method signature
+        if (!\is_array($columnDef)) {
+            @trigger_error(sprintf(
+                'Passing other type than array as argument 2 for method %s() is deprecated since sonata-project/doctrine-extensions 1.x. It will accept only array in version 2.0.',
+                __METHOD__
+            ), E_USER_DEPRECATED);
+        }
+
         if (!isset($this->discriminatorColumns[$class])) {
-            $this->discriminatorColumns[$class] = $columnDef->getOptions();
+            $this->discriminatorColumns[$class] = $columnDef;
         }
     }
 
@@ -145,13 +165,24 @@ final class DoctrineORMMapper implements EventSubscriber
         $this->uniques[$class][$name] = $columns;
     }
 
-    public function addOverride(string $class, string $type, OptionsBuilder $options): void
+    /**
+     * @param array $options
+     */
+    public function addOverride(string $class, string $type, $options): void
     {
+        // NEXT_MAJOR: Move array check to method signature
+        if (!\is_array($options)) {
+            @trigger_error(sprintf(
+                'Passing other type than array as argument 3 for method %s() is deprecated since sonata-project/doctrine-extensions 1.x. It will accept only array in version 2.0.',
+                __METHOD__
+            ), E_USER_DEPRECATED);
+        }
+
         if (!isset($this->overrides[$class])) {
             $this->overrides[$class] = [];
         }
 
-        $this->overrides[$class][$type] = $options->getOptions();
+        $this->overrides[$class][$type] = $options;
     }
 
     public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs): void

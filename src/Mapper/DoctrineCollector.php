@@ -95,12 +95,23 @@ final class DoctrineCollector
     public function addDiscriminatorColumn(string $class, ColumnDefinitionBuilder $columnDef): void
     {
         if (!isset($this->discriminatorColumns[$class])) {
-            $this->discriminatorColumns[$class] = $columnDef;
+            $this->discriminatorColumns[$class] = $columnDef->getOptions();
         }
     }
 
-    public function addInheritanceType(string $class, string $type): void
+    /**
+     * @param int $type
+     */
+    public function addInheritanceType(string $class, $type): void
     {
+        // NEXT_MAJOR: Move int check to method signature
+        if (!\is_int($type)) {
+            @trigger_error(sprintf(
+                'Passing other type than int as argument 2 for method %s() is deprecated since sonata-project/doctrine-extensions 1.x. It will accept only int in version 2.0.',
+                __METHOD__
+            ), E_USER_DEPRECATED);
+        }
+
         if (!isset($this->inheritanceTypes[$class])) {
             $this->inheritanceTypes[$class] = $type;
         }
@@ -116,7 +127,7 @@ final class DoctrineCollector
             $this->associations[$class][$type] = [];
         }
 
-        $this->associations[$class][$type][] = $options;
+        $this->associations[$class][$type][] = $options->getOptions();
     }
 
     /**
@@ -165,7 +176,7 @@ final class DoctrineCollector
             $this->overrides[$class][$type] = [];
         }
 
-        $this->overrides[$class][$type][] = $options;
+        $this->overrides[$class][$type][] = $options->getOptions();
     }
 
     public function getAssociations(): array
