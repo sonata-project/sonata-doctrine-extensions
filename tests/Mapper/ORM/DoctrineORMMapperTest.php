@@ -14,70 +14,51 @@ declare(strict_types=1);
 namespace Sonata\Doctrine\Tests\Mapper\ORM;
 
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
-use PHPUnit\Framework\TestCase;
 use Sonata\Doctrine\Mapper\Builder\ColumnDefinitionBuilder;
+use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
+use Sonata\Doctrine\Mapper\DoctrineCollector;
 use Sonata\Doctrine\Mapper\ORM\DoctrineORMMapper;
+use Sonata\Doctrine\Tests\App\Entity\TestEntity;
+use Sonata\Doctrine\Tests\App\Entity\TestInheritanceEntity;
+use Sonata\Doctrine\Tests\App\Entity\TestRelatedEntity;
+use Sonata\Doctrine\Tests\App\Kernel;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class DoctrineORMMapperTest extends TestCase
+class DoctrineORMMapperTest extends KernelTestCase
 {
-    /**
-     * @var ClassMetadataInfo
-     */
-    private $metadata;
-
-    protected function setUp(): void
+    public static function setUpBeforeClass(): void
     {
-        $this->metadata = $this->createMock(ClassMetadataInfo::class);
+        $options = OptionsBuilder::createManyToOne('relation', TestRelatedEntity::class)
+            ->add('joinColumns', [['referencedColumnName' => 'id']]);
+
+        $override = OptionsBuilder::create()
+            ->add('fieldName', 'property')
+            ->add('length', 100);
+
+        $columnDefinition = ColumnDefinitionBuilder::create()
+            ->add('name', 'discriminator')
+            ->add('type', 'string');
+
+        $collector = DoctrineCollector::getInstance();
+
+        $collector->addDiscriminator(TestEntity::class, 'test', TestInheritanceEntity::class);
+        $collector->addDiscriminatorColumn(TestEntity::class, $columnDefinition);
+        $collector->addInheritanceType(TestEntity::class, ClassMetadataInfo::INHERITANCE_TYPE_SINGLE_TABLE);
+        $collector->addAssociation(TestEntity::class, 'mapManyToOne', $options);
+        $collector->addOverride(TestEntity::class, 'setAttributeOverride', $override);
     }
 
-    public function testLoadDiscriminators(): void
+    public function testDoctrineMappingLoaded(): void
     {
-        $this->metadata
-            ->expects($this->atLeastOnce())
-            ->method('setDiscriminatorMap')
-            ->with(['key' => 'discriminator']);
+        self::bootKernel();
 
-        $this->metadata->name = 'class';
-        $mapper = new DoctrineORMMapper();
-        $mapper->addDiscriminator('class', 'key', 'discriminator');
+        $mapper = self::$container->get('sonata.doctrine.mapper');
 
-        $r = new \ReflectionObject($mapper);
-        $m = $r->getMethod('loadDiscriminators');
-        $m->setAccessible(true);
-        $m->invoke($mapper, $this->metadata);
+        $this->assertInstanceOf(DoctrineORMMapper::class, $mapper);
     }
 
-    public function testLoadDiscriminatorColumns(): void
+    protected static function getKernelClass()
     {
-        $this->metadata
-            ->expects($this->atLeastOnce())
-            ->method('setDiscriminatorColumn')
-            ->with(['name' => 'disc']);
-
-        $this->metadata->name = 'class';
-        $mapper = new DoctrineORMMapper();
-        $mapper->addDiscriminatorColumn('class', ColumnDefinitionBuilder::create()->add('name', 'disc'));
-
-        $r = new \ReflectionObject($mapper);
-        $m = $r->getMethod('loadDiscriminatorColumns');
-        $m->setAccessible(true);
-        $m->invoke($mapper, $this->metadata);
-    }
-
-    public function testInheritanceTypes(): void
-    {
-        $this->metadata
-            ->expects($this->atLeastOnce())
-            ->method('setInheritanceType')
-            ->with(1);
-
-        $this->metadata->name = 'class';
-        $mapper = new DoctrineORMMapper();
-        $mapper->addInheritanceType('class', 1);
-
-        $r = new \ReflectionObject($mapper);
-        $m = $r->getMethod('loadInheritanceTypes');
-        $m->setAccessible(true);
-        $m->invoke($mapper, $this->metadata);
+        return Kernel::class;
     }
 }
