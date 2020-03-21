@@ -14,8 +14,7 @@ declare(strict_types=1);
 namespace Sonata\Doctrine\Mapper;
 
 use InvalidArgumentException;
-use Sonata\Doctrine\Mapper\Builder\ColumnDefinitionBuilder;
-use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
+use Sonata\Doctrine\Mapper\Builder\OptionsBuilderInterface;
 
 final class DoctrineCollector
 {
@@ -92,7 +91,7 @@ final class DoctrineCollector
         }
     }
 
-    public function addDiscriminatorColumn(string $class, ColumnDefinitionBuilder $columnDef): void
+    public function addDiscriminatorColumn(string $class, OptionsBuilderInterface $columnDef): void
     {
         if (!isset($this->discriminatorColumns[$class])) {
             $this->discriminatorColumns[$class] = $columnDef->getOptions();
@@ -117,7 +116,7 @@ final class DoctrineCollector
         }
     }
 
-    public function addAssociation(string $class, string $type, OptionsBuilder $options): void
+    public function addAssociation(string $class, string $type, OptionsBuilderInterface $options): void
     {
         if (!isset($this->associations[$class])) {
             $this->associations[$class] = [];
@@ -166,7 +165,7 @@ final class DoctrineCollector
         $this->uniques[$class][$name] = $columns;
     }
 
-    public function addOverride(string $class, string $type, OptionsBuilder $options): void
+    public function addOverride(string $class, string $type, OptionsBuilderInterface $options): void
     {
         if (!isset($this->overrides[$class])) {
             $this->overrides[$class] = [];

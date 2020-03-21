@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Mapper\Builder;
 
-final class ColumnDefinitionBuilder
+final class ColumnDefinitionBuilder implements OptionsBuilderInterface
 {
     /**
      * @var array<string, mixed>
