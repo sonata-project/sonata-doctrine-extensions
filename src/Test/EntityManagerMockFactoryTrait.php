@@ -32,6 +32,8 @@ trait EntityManagerMockFactoryTrait
     {
         $query = $this->createMock(AbstractQuery::class);
         $query->method('execute')->willReturn(true);
+        $query->method('getResult')->willReturn([]);
+        $query->method('getOneOrNullResult')->willReturn(null);
 
         $qb = $this->createMock(QueryBuilder::class);
 
