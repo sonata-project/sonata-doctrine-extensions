@@ -2,6 +2,19 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.6.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.5.1...1.6.0) - 2020-03-23
+### Added
+- Added some explicit methods to `OptionsBuilder`
+
+### Deprecated
+- `OptionsBuilder::create` method
+
+### Fixed
+- Doctrine deprecation
+
+### Changed
+- Bump SF to 4.4
+
 ## [1.5.1](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.5.0...1.5.1) - 2019-12-15
 ### Fixed
 - Fix typo in class name
