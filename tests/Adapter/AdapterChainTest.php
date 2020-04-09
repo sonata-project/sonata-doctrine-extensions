@@ -24,7 +24,7 @@ final class AdapterChainTest extends TestCase
         $adapter = new AdapterChain();
 
         $this->assertNull($adapter->getNormalizedIdentifier(new \stdClass()));
-        $this->assertNull($adapter->getUrlsafeIdentifier(new \stdClass()));
+        $this->assertNull($adapter->getUrlSafeIdentifier(new \stdClass()));
     }
 
     public function testUrlSafeIdentifier()
@@ -32,13 +32,13 @@ final class AdapterChainTest extends TestCase
         $adapter = new AdapterChain();
 
         $adapter->addAdapter($fake1 = $this->createMock(AdapterInterface::class));
-        $fake1->expects($this->once())->method('getUrlsafeIdentifier')->willReturn(null);
+        $fake1->expects($this->once())->method('getUrlSafeIdentifier')->willReturn(null);
 
         $adapter->addAdapter($fake2 = $this->createMock(AdapterInterface::class));
 
-        $fake2->expects($this->once())->method('getUrlsafeIdentifier')->willReturn('voila');
+        $fake2->expects($this->once())->method('getUrlSafeIdentifier')->willReturn('voila');
 
-        $this->assertSame('voila', $adapter->getUrlsafeIdentifier(new \stdClass()));
+        $this->assertSame('voila', $adapter->getUrlSafeIdentifier(new \stdClass()));
     }
 
     public function testNormalizedIdentifier()
