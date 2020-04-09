@@ -34,22 +34,22 @@ class DoctrineORMAdapter implements AdapterInterface
 
     public function getNormalizedIdentifier($entity)
     {
-        if (is_scalar($entity)) {
-            throw new \RuntimeException('Invalid argument, object or null required');
+        if (null === $entity) {
+            return null;
         }
 
-        if (!$entity) {
-            return;
+        if (!\is_object($entity)) {
+            throw new \RuntimeException('Invalid argument, object or null required');
         }
 
         $manager = $this->registry->getManagerForClass(\get_class($entity));
 
         if (!$manager instanceof EntityManagerInterface) {
-            return;
+            return null;
         }
 
         if (!$manager->getUnitOfWork()->isInIdentityMap($entity)) {
-            return;
+            return null;
         }
 
         return implode(self::ID_SEPARATOR, $manager->getUnitOfWork()->getEntityIdentifier($entity));
@@ -61,7 +61,7 @@ class DoctrineORMAdapter implements AdapterInterface
      * The ORM implementation does nothing special but you still should use
      * this method when using the id in a URL to allow for future improvements.
      */
-    public function getUrlsafeIdentifier($entity)
+    public function getUrlSafeIdentifier($entity)
     {
         return $this->getNormalizedIdentifier($entity);
     }

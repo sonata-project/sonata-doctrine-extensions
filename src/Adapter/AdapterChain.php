@@ -34,17 +34,21 @@ class AdapterChain implements AdapterInterface
                 return $identifier;
             }
         }
+
+        return null;
     }
 
-    public function getUrlsafeIdentifier($model)
+    public function getUrlSafeIdentifier($model)
     {
         foreach ($this->adapters as $adapter) {
-            $safeIdentifier = $adapter->getUrlsafeIdentifier($model);
+            $safeIdentifier = $adapter->getUrlSafeIdentifier($model);
 
             if ($safeIdentifier) {
                 return $safeIdentifier;
             }
         }
+
+        return null;
     }
 }
 

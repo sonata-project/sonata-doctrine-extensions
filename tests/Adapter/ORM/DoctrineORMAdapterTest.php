@@ -28,14 +28,30 @@ final class DoctrineORMAdapterTest extends TestCase
         }
     }
 
-    public function testNormalizedIdentifierWithScalar()
+    /**
+     * @dataProvider getWrongEntities
+     *
+     * @param mixed $entity
+     */
+    public function testNormalizedIdentifierWithInvalidEntity($entity): void
     {
-        $this->expectException(\RuntimeException::class);
-
         $registry = $this->createMock(ManagerRegistry::class);
         $adapter = new DoctrineORMAdapter($registry);
 
-        $adapter->getNormalizedIdentifier(1);
+        $this->expectException(\RuntimeException::class);
+
+        $adapter->getNormalizedIdentifier($entity);
+    }
+
+    public function getWrongEntities(): iterable
+    {
+        yield [0];
+        yield [1];
+        yield [false];
+        yield [true];
+        yield [[]];
+        yield [''];
+        yield ['sonata-project'];
     }
 
     public function testNormalizedIdentifierWithNull()

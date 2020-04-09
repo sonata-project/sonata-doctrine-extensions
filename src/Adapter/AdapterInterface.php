@@ -22,7 +22,7 @@ interface AdapterInterface
      *
      * @param object $model
      *
-     * @return string a string representation of the identifiers for this instance
+     * @return string|null a string representation of the identifiers for this instance
      */
     public function getNormalizedIdentifier($model);
 
@@ -34,9 +34,9 @@ interface AdapterInterface
      *
      * @param object $model
      *
-     * @return string string representation of the id that is save to use in an url
+     * @return string|null string representation of the id that is save to use in an url
      */
-    public function getUrlsafeIdentifier($model);
+    public function getUrlSafeIdentifier($model);
 }
 
 interface_exists(\Sonata\CoreBundle\Model\Adapter\AdapterInterface::class);
