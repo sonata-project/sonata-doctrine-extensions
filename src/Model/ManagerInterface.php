@@ -44,14 +44,14 @@ interface ManagerInterface
      *
      * @return array|T[]
      */
-    public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null);
+    public function findBy(array $criteria, ?array $orderBy = null, $limit = null, $offset = null);
 
     /**
      * Find a single entity by a set of criteria.
      *
      * @return T|null
      */
-    public function findOneBy(array $criteria, array $orderBy = null);
+    public function findOneBy(array $criteria, ?array $orderBy = null);
 
     /**
      * Finds an entity by its primary key / identifier.

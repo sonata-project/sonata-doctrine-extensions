@@ -33,7 +33,7 @@ final class OptionsBuilder
     /**
      * NEXT_MAJOR: Make the arguments mandatory.
      */
-    private function __construct(string $type = null, string $fieldName = null, string $targetEntity = null)
+    private function __construct(?string $type = null, ?string $fieldName = null, ?string $targetEntity = null)
     {
         $this->type = $type;
 
