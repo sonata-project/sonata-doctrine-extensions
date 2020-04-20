@@ -37,7 +37,7 @@ final class BaseEntityManagerTest extends TestCase
      */
     private $manager;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->registry = $this->createMock(ManagerRegistry::class);
         $this->objectManager = $this->createMock(ObjectManager::class);
