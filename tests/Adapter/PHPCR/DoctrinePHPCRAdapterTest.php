@@ -34,14 +34,28 @@ final class DoctrinePHPCRAdapterTest extends TestCase
         }
     }
 
-    public function testNormalizedIdentifierWithScalar(): void
+    /**
+     * @dataProvider getWrongDocuments
+     *
+     * @param mixed $document
+     */
+    public function testNormalizedIdentifierWithInvalidDocument($document): void
     {
-        $this->expectException(\RuntimeException::class);
-
         $registry = $this->createMock(ManagerRegistry::class);
         $adapter = new DoctrinePHPCRAdapter($registry);
 
-        $adapter->getNormalizedIdentifier(1);
+        $this->expectException(\RuntimeException::class);
+
+        $adapter->getNormalizedIdentifier($document);
+    }
+
+    public function getWrongDocuments(): iterable
+    {
+        yield [0];
+        yield [1];
+        yield [false];
+        yield [true];
+        yield [[]];
     }
 
     public function testNormalizedIdentifierWithNull(): void
@@ -97,7 +111,7 @@ final class DoctrinePHPCRAdapterTest extends TestCase
         $instance->path = $data;
 
         $this->assertSame($data, $adapter->getNormalizedIdentifier($instance));
-        $this->assertSame($expected, $adapter->getUrlsafeIdentifier($instance));
+        $this->assertSame($expected, $adapter->getUrlSafeIdentifier($instance));
     }
 
     public static function getFixtures()

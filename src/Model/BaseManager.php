@@ -76,12 +76,12 @@ abstract class BaseManager implements ManagerInterface
         return $this->getRepository()->findAll();
     }
 
-    public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+    public function findBy(array $criteria, ?array $orderBy = null, $limit = null, $offset = null)
     {
         return $this->getRepository()->findBy($criteria, $orderBy, $limit, $offset);
     }
 
-    public function findOneBy(array $criteria, array $orderBy = null)
+    public function findOneBy(array $criteria, ?array $orderBy = null)
     {
         if (null !== $orderBy) {
             @trigger_error(
