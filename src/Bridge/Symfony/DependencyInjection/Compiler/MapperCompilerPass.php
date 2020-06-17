@@ -37,8 +37,8 @@ final class MapperCompilerPass implements CompilerPassInterface
         $collector = DoctrineCollector::getInstance();
 
         foreach ($collector->getAssociations() as $class => $associations) {
-            foreach ($associations as $field => $options) {
-                $mapper->addMethodCall('addAssociation', [$class, $field, $options]);
+            foreach ($associations as $type => $options) {
+                $mapper->addMethodCall('addAssociation', [$class, $type, $options]);
             }
         }
 
