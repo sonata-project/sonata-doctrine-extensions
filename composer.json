@@ -28,7 +28,7 @@
     "require-dev": {
         "doctrine/common": "^2.7",
         "doctrine/orm": "^2.5",
-        "doctrine/phpcr-odm": "^1.4 || ^2.0",
+        "doctrine/phpcr-odm": "^1.4",
         "jackalope/jackalope-doctrine-dbal": "^1.0",
         "matthiasnoback/symfony-dependency-injection-test": "^4.0",
         "symfony/dependency-injection": "^4.4 || ^5.0",
