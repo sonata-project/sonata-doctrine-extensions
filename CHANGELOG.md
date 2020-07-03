@@ -2,6 +2,23 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.7.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.6.0...1.7.0) - 2020-07-02
+### Added
+- [[#203](https://github.com/sonata-project/sonata-doctrine-extensions/pull/203)]
+  Added support for `doctrine/persistence:^2.0`.
+([@phansys](https://github.com/phansys))
+
+### Fixed
+- [[#189](https://github.com/sonata-project/sonata-doctrine-extensions/pull/189)]
+  Fixed returning `void` from methods which are intended to return values;
+([@phansys](https://github.com/phansys))
+- [[#189](https://github.com/sonata-project/sonata-doctrine-extensions/pull/189)]
+  Fixed weak check at `ModelManager::getNormalizedIdentifier()`.
+([@phansys](https://github.com/phansys))
+
+### Removed
+- [[#202](https://github.com/sonata-project/sonata-doctrine-extensions/pull/202)] Removed support for php:7.1. ([@phansys](https://github.com/phansys))
+
 ## [1.6.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.5.1...1.6.0) - 2020-03-23
 ### Added
 - Added some explicit methods to `OptionsBuilder`
