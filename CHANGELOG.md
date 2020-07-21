@@ -2,6 +2,23 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.8.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.7.0...1.8.0) - 2020-07-20
+### Added
+- [[#205](https://github.com/sonata-project/sonata-doctrine-extensions/pull/205)]
+  Added `Sonata\Doctrine\Bridge\Symfony\SonataDoctrineBundle`.
+([@phansys](https://github.com/phansys))
+
+### Deprecated
+- [[#205](https://github.com/sonata-project/sonata-doctrine-extensions/pull/205)]
+  Deprecated `Sonata\Doctrine\Bridge\Symfony\Bundle\SonataDoctrineBundle` in
+favor of `Sonata\Doctrine\Bridge\Symfony\SonataDoctrineBundle`.
+([@phansys](https://github.com/phansys))
+
+### Fixed
+- [[#184](https://github.com/sonata-project/sonata-doctrine-extensions/pull/184)]
+  Fix modifying entities (associations, discriminator columns and overrides)
+with DoctrineCollector ([@jordisala1991](https://github.com/jordisala1991))
+
 ## [1.7.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.6.0...1.7.0) - 2020-07-02
 ### Added
 - [[#203](https://github.com/sonata-project/sonata-doctrine-extensions/pull/203)]

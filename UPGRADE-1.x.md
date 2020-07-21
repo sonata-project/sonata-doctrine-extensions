@@ -1,6 +1,16 @@
 UPGRADE 1.x
 ===========
 
+### `Sonata\Doctrine\Mapper\DoctrineCollector`
+
+Deprecated passing other type than integer as argument 2 for `addInheritanceType()`.
+
+### `Sonata\Doctrine\Mapper\ORM\DoctrineORMMapper`
+
+Deprecated passing other type than array as argument 3 for `addAssociation()`.
+Deprecated passing other type than array as argument 2 for `addDiscriminatorColumn()`.
+Deprecated passing other type than array as argument 3 for `addOverride()`.
+
 ### `Sonata\Doctrine\Bridge\Symfony\Bundle\SonataDoctrineBundle`
 
 Deprecated `Sonata\Doctrine\Bridge\Symfony\Bundle\SonataDoctrineBundle`. Use `Sonata\Doctrine\Bridge\Symfony\SonataDoctrineBundle`

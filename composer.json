@@ -27,6 +27,7 @@
     },
     "require-dev": {
         "doctrine/common": "^2.7 || ^3.0",
+        "doctrine/doctrine-bundle": "^2.0",
         "doctrine/orm": "^2.5",
         "doctrine/phpcr-odm": "^1.5.2",
         "jackalope/jackalope-doctrine-dbal": "^1.0",
