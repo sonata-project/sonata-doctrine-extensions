@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.9.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.8.0...1.9.0) - 2020-08-08
+### Added
+- [[#209](https://github.com/sonata-project/sonata-doctrine-extensions/pull/209)]
+  Added `Sonata\Exporter\Bridge\Symfony\SonataDoctrineSymfonyBundle` alias in
+order to fix Symfony Flex autodiscovery.
+([@phansys](https://github.com/phansys))
+
 ## [1.8.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.7.0...1.8.0) - 2020-07-20
 ### Added
 - [[#205](https://github.com/sonata-project/sonata-doctrine-extensions/pull/205)]
