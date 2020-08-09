@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.9.1](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.9.0...1.9.1) - 2020-08-09
+### Fixed
+- [[#211](https://github.com/sonata-project/sonata-doctrine-extensions/pull/211)] Fixed conflict with class names. ([@franmomu](https://github.com/franmomu))
+
 ## [1.9.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.8.0...1.9.0) - 2020-08-08
 ### Added
 - [[#209](https://github.com/sonata-project/sonata-doctrine-extensions/pull/209)]
