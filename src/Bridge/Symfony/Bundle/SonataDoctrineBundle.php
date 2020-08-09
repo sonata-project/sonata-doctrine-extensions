@@ -17,7 +17,7 @@ use Sonata\Doctrine\Bridge\Symfony\SonataDoctrineBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 @trigger_error(sprintf(
-    'The %s\SonataDoctrineBundle class is deprecated since sonata-project/doctrine-extensions 1.x, to be removed in version 2.0. Use %s instead.',
+    'The %s\SonataDoctrineBundle class is deprecated since sonata-project/doctrine-extensions 1.9, to be removed in version 2.0. Use %s instead.',
     __NAMESPACE__,
     SonataDoctrineBundle::class
 ), E_USER_DEPRECATED);
@@ -26,7 +26,7 @@ if (false) {
     /**
      * NEXT_MAJOR: remove this class.
      *
-     * @deprecated Since sonata-project/doctrine-extensions 1.x, to be removed in 2.0. Use Sonata\Doctrine\Bridge\Symfony\SonataDoctrineBundle instead.
+     * @deprecated Since sonata-project/doctrine-extensions 1.9, to be removed in 2.0. Use Sonata\Doctrine\Bridge\Symfony\SonataDoctrineBundle instead.
      */
     final class SonataDoctrineBundle extends Bundle
     {
