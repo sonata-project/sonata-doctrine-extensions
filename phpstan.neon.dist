@@ -11,6 +11,3 @@ parameters:
         - src/Bridge/Symfony/Bundle/SonataDoctrineBundle.php
         - src/Test/EntityManagerMockFactory.php
         - tests/bootstrap.php
-
-    autoload_files:
-        - vendor/autoload.php
