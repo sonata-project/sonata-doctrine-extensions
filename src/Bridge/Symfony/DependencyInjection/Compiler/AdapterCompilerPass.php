@@ -36,10 +36,12 @@ final class AdapterCompilerPass implements CompilerPassInterface
             $container->removeDefinition('sonata.doctrine.adapter.doctrine_orm');
         }
 
-        if ($container->has('doctrine_phpcr')) {
-            $definition->addMethodCall('addAdapter', [new Reference('sonata.doctrine.adapter.doctrine_phpcr')]);
-        } else {
-            $container->removeDefinition('sonata.doctrine.adapter.doctrine_phpcr');
+        if ($container->has('sonata.doctrine.adapter.doctrine_phpcr')) {
+            if ($container->has('doctrine_phpcr')) {
+                $definition->addMethodCall('addAdapter', [new Reference('sonata.doctrine.adapter.doctrine_phpcr')]);
+            } else {
+                $container->removeDefinition('sonata.doctrine.adapter.doctrine_phpcr');
+            }
         }
     }
 
