@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Sonata\Doctrine\Adapter\PHPCR;
 
 use Doctrine\ODM\PHPCR\DocumentManager;
+use Doctrine\ODM\PHPCR\Mapping\ClassMetadata;
 use Doctrine\Persistence\ManagerRegistry;
 use Sonata\Doctrine\Adapter\AdapterInterface;
 
@@ -42,7 +43,7 @@ class DoctrinePHPCRAdapter implements AdapterInterface
             throw new \RuntimeException('Invalid argument, object or null required');
         }
 
-        $manager = $this->registry->getManagerForClass($document);
+        $manager = $this->registry->getManagerForClass(\get_class($document));
 
         if (!$manager instanceof DocumentManager) {
             return null;
@@ -53,6 +54,8 @@ class DoctrinePHPCRAdapter implements AdapterInterface
         }
 
         $class = $manager->getClassMetadata(\get_class($document));
+
+        \assert($class instanceof ClassMetadata);
 
         return $class->getIdentifierValue($document);
     }
