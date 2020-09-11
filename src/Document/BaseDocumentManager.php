@@ -19,8 +19,8 @@ use Sonata\Doctrine\Model\BaseManager;
 /**
  * @author Hugo Briand <briand@ekino.com>
  *
- * @extends BaseManager<T>
- * @template-covariant T of object
+ * @phpstan-template T of object
+ * @phpstan-extends BaseManager<T>
  */
 abstract class BaseDocumentManager extends BaseManager
 {

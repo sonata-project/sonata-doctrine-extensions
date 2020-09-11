@@ -17,8 +17,8 @@ use Doctrine\Persistence\ObjectManager;
 use Sonata\Doctrine\Model\BaseManager;
 
 /**
- * @extends BaseManager<T>
- * @template-covariant T of object
+ * @phpstan-template T of object
+ * @phpstan-extends BaseManager<T>
  */
 abstract class BasePHPCRManager extends BaseManager
 {
