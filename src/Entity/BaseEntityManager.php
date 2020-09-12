@@ -15,6 +15,7 @@ namespace Sonata\Doctrine\Entity;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Persistence\ObjectRepository;
 use Sonata\Doctrine\Model\BaseManager;
@@ -22,8 +23,8 @@ use Sonata\Doctrine\Model\BaseManager;
 /**
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  *
- * @extends BaseManager<T>
- * @template-covariant T of object
+ * @phpstan-template T of object
+ * @phpstan-extends BaseManager<T>
  */
 abstract class BaseEntityManager extends BaseManager
 {
@@ -51,12 +52,20 @@ abstract class BaseEntityManager extends BaseManager
      */
     public function getEntityManager(): ObjectManager
     {
-        return $this->getObjectManager();
+        $objectManager = $this->getObjectManager();
+
+        \assert($objectManager instanceof EntityManager);
+
+        return $objectManager;
     }
 
     protected function getRepository(): ObjectRepository
     {
-        return $this->getEntityManager()->getRepository($this->class);
+        $repository = $this->getEntityManager()->getRepository($this->class);
+
+        \assert($repository instanceof EntityRepository);
+
+        return $repository;
     }
 }
 

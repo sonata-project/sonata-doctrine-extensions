@@ -17,7 +17,7 @@ use Doctrine\ODM\PHPCR\DocumentManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
@@ -27,16 +27,16 @@ class SonataDoctrineExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.xml');
+        $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.php');
 
         if (interface_exists(EntityManagerInterface::class)) {
-            $loader->load('doctrine_orm.xml');
-            $loader->load('mapper_orm.xml');
+            $loader->load('doctrine_orm.php');
+            $loader->load('mapper_orm.php');
         }
 
         if (class_exists(DocumentManager::class)) {
-            $loader->load('doctrine_phpcr.xml');
+            $loader->load('doctrine_phpcr.php');
         }
     }
 }

@@ -18,35 +18,39 @@ use Doctrine\DBAL\Connection;
 /**
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  *
- * @template-covariant T of object
+ * @phpstan-template T of object
  */
 interface ManagerInterface
 {
     /**
      * Return the Entity class name.
      *
-     * @return string|class-string<T>
+     * @phpstan-return class-string<T>
      */
     public function getClass(): string;
 
     /**
      * Find all entities in the repository.
      *
-     * @return array|T[]
+     * @return object[]
+     *
+     * @phpstan-return T[]
      */
     public function findAll(): array;
 
     /**
      * Find entities by a set of criteria.
      *
-     * @return array|T[]
+     * @return object[]
+     *
+     * @phpstan-return T[]
      */
     public function findBy(array $criteria, ?array $orderBy = null, ?int $limit = null, ?int $offset = null): array;
 
     /**
      * Find a single entity by a set of criteria.
      *
-     * @return T|null
+     * @phpstan-return T|null
      */
     public function findOneBy(array $criteria, ?array $orderBy = null): ?object;
 
@@ -55,30 +59,34 @@ interface ManagerInterface
      *
      * @param mixed $id The identifier
      *
-     * @return T|null
+     * @phpstan-return T|null
      */
     public function find($id): ?object;
 
     /**
      * Create an empty Entity instance.
      *
-     * @return T
+     * @phpstan-return T
      */
     public function create(): object;
 
     /**
      * Save an Entity.
      *
-     * @param T    $entity   The Entity to save
-     * @param bool $andFlush Flush the EntityManager after saving the object?
+     * @param object $entity   The Entity to save
+     * @param bool   $andFlush Flush the EntityManager after saving the object?
+     *
+     * @phpstan-param T $entity
      */
     public function save(object $entity, bool $andFlush = true): void;
 
     /**
      * Delete an Entity.
      *
-     * @param T    $entity   The Entity to delete
-     * @param bool $andFlush Flush the EntityManager after deleting the object?
+     * @param object $entity   The Entity to delete
+     * @param bool   $andFlush Flush the EntityManager after deleting the object?
+     *
+     * @phpstan-param T $entity
      */
     public function delete(object $entity, bool $andFlush = true): void;
 

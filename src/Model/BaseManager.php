@@ -20,8 +20,8 @@ use Doctrine\Persistence\ObjectRepository;
 /**
  * @author Hugo Briand <briand@ekino.com>
  *
- * @implements ManagerInterface<T>
- * @template-covariant T of object
+ * @phpstan-template T of object
+ * @phpstan-implements ManagerInterface<T>
  */
 abstract class BaseManager implements ManagerInterface
 {
@@ -36,7 +36,7 @@ abstract class BaseManager implements ManagerInterface
     protected $class;
 
     /**
-     * @param string|class-string<T> $class
+     * @phpstan-param class-string<T> $class
      */
     public function __construct(string $class, ManagerRegistry $registry)
     {

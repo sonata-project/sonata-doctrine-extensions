@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Sonata\Doctrine\Mapper\ORM;
 
 use Doctrine\Common\EventSubscriber;
+use Doctrine\ORM\Mapping\ClassMetadata as ORMClassMetadata;
 use Doctrine\Persistence\Event\LoadClassMetadataEventArgs;
 use Doctrine\Persistence\Mapping\ClassMetadata;
 use InvalidArgumentException;
@@ -204,12 +205,12 @@ final class DoctrineORMMapper implements EventSubscriber
      */
     private function loadAssociations(ClassMetadata $metadata): void
     {
-        if (!\array_key_exists($metadata->name, $this->associations)) {
+        if (!\array_key_exists($metadata->getName(), $this->associations)) {
             return;
         }
 
         try {
-            foreach ($this->associations[$metadata->name] as $type => $mappings) {
+            foreach ($this->associations[$metadata->getName()] as $type => $mappings) {
                 foreach ($mappings as $mapping) {
                     // the association is already set, skip the native one
                     if ($metadata->hasAssociation($mapping['fieldName'])) {
@@ -220,7 +221,7 @@ final class DoctrineORMMapper implements EventSubscriber
                 }
             }
         } catch (ReflectionException $e) {
-            throw new RuntimeException(sprintf('Error with class %s : %s', $metadata->name, $e->getMessage()), 404, $e);
+            throw new RuntimeException(sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
         }
     }
 
@@ -229,20 +230,22 @@ final class DoctrineORMMapper implements EventSubscriber
      */
     private function loadDiscriminatorColumns(ClassMetadata $metadata): void
     {
-        if (!\array_key_exists($metadata->name, $this->discriminatorColumns)) {
+        if (!\array_key_exists($metadata->getName(), $this->discriminatorColumns)) {
             return;
         }
 
+        \assert($metadata instanceof ORMClassMetadata);
+
         try {
-            if (isset($this->discriminatorColumns[$metadata->name])) {
-                $arrayDiscriminatorColumns = $this->discriminatorColumns[$metadata->name];
+            if (isset($this->discriminatorColumns[$metadata->getName()])) {
+                $arrayDiscriminatorColumns = $this->discriminatorColumns[$metadata->getName()];
                 if (isset($metadata->discriminatorColumn)) {
-                    $arrayDiscriminatorColumns = array_merge($metadata->discriminatorColumn, $this->discriminatorColumns[$metadata->name]);
+                    $arrayDiscriminatorColumns = array_merge($metadata->discriminatorColumn, $this->discriminatorColumns[$metadata->getName()]);
                 }
                 $metadata->setDiscriminatorColumn($arrayDiscriminatorColumns);
             }
         } catch (ReflectionException $e) {
-            throw new RuntimeException(sprintf('Error with class %s : %s', $metadata->name, $e->getMessage()), 404, $e);
+            throw new RuntimeException(sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
         }
     }
 
@@ -251,16 +254,18 @@ final class DoctrineORMMapper implements EventSubscriber
      */
     private function loadInheritanceTypes(ClassMetadata $metadata): void
     {
-        if (!\array_key_exists($metadata->name, $this->inheritanceTypes)) {
+        if (!\array_key_exists($metadata->getName(), $this->inheritanceTypes)) {
             return;
         }
 
+        \assert($metadata instanceof ORMClassMetadata);
+
         try {
-            if (isset($this->inheritanceTypes[$metadata->name])) {
-                $metadata->setInheritanceType($this->inheritanceTypes[$metadata->name]);
+            if (isset($this->inheritanceTypes[$metadata->getName()])) {
+                $metadata->setInheritanceType($this->inheritanceTypes[$metadata->getName()]);
             }
         } catch (ReflectionException $e) {
-            throw new RuntimeException(sprintf('Error with class %s : %s', $metadata->name, $e->getMessage()), 404, $e);
+            throw new RuntimeException(sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
         }
     }
 
@@ -269,59 +274,65 @@ final class DoctrineORMMapper implements EventSubscriber
      */
     private function loadDiscriminators(ClassMetadata $metadata): void
     {
-        if (!\array_key_exists($metadata->name, $this->discriminators)) {
+        if (!\array_key_exists($metadata->getName(), $this->discriminators)) {
             return;
         }
 
+        \assert($metadata instanceof ORMClassMetadata);
+
         try {
-            foreach ($this->discriminators[$metadata->name] as $key => $class) {
+            foreach ($this->discriminators[$metadata->getName()] as $key => $class) {
                 if (\in_array($key, $metadata->discriminatorMap, true)) {
                     continue;
                 }
                 $metadata->setDiscriminatorMap([$key => $class]);
             }
         } catch (ReflectionException $e) {
-            throw new RuntimeException(sprintf('Error with class %s : %s', $metadata->name, $e->getMessage()), 404, $e);
+            throw new RuntimeException(sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
         }
     }
 
     private function loadIndexes(ClassMetadata $metadata): void
     {
-        if (!\array_key_exists($metadata->name, $this->indexes)) {
+        if (!\array_key_exists($metadata->getName(), $this->indexes)) {
             return;
         }
 
-        foreach ($this->indexes[$metadata->name] as $name => $columns) {
+        \assert($metadata instanceof ORMClassMetadata);
+
+        foreach ($this->indexes[$metadata->getName()] as $name => $columns) {
             $metadata->table['indexes'][$name] = ['columns' => $columns];
         }
     }
 
     private function loadUniques(ClassMetadata $metadata): void
     {
-        if (!\array_key_exists($metadata->name, $this->uniques)) {
+        if (!\array_key_exists($metadata->getName(), $this->uniques)) {
             return;
         }
 
-        foreach ($this->uniques[$metadata->name] as $name => $columns) {
+        \assert($metadata instanceof ORMClassMetadata);
+
+        foreach ($this->uniques[$metadata->getName()] as $name => $columns) {
             $metadata->table['uniqueConstraints'][$name] = ['columns' => $columns];
         }
     }
 
     private function loadOverrides(ClassMetadata $metadata): void
     {
-        if (!\array_key_exists($metadata->name, $this->overrides)) {
+        if (!\array_key_exists($metadata->getName(), $this->overrides)) {
             return;
         }
 
         try {
-            foreach ($this->overrides[$metadata->name] as $type => $overrides) {
+            foreach ($this->overrides[$metadata->getName()] as $type => $overrides) {
                 foreach ($overrides as $override) {
                     \call_user_func([$metadata, $type], $override['fieldName'], $override);
                 }
             }
         } catch (ReflectionException $e) {
             throw new RuntimeException(
-                sprintf('Error with class %s : %s', $metadata->name, $e->getMessage()),
+                sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()),
                 404,
                 $e
             );
