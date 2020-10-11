@@ -17,9 +17,6 @@ use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Mapping\ClassMetadata as ORMClassMetadata;
 use Doctrine\Persistence\Event\LoadClassMetadataEventArgs;
 use Doctrine\Persistence\Mapping\ClassMetadata;
-use InvalidArgumentException;
-use ReflectionException;
-use RuntimeException;
 
 final class DoctrineORMMapper implements EventSubscriber
 {
@@ -201,7 +198,7 @@ final class DoctrineORMMapper implements EventSubscriber
     }
 
     /**
-     * @throws RuntimeException
+     * @throws \RuntimeException
      */
     private function loadAssociations(ClassMetadata $metadata): void
     {
@@ -220,13 +217,13 @@ final class DoctrineORMMapper implements EventSubscriber
                     \call_user_func([$metadata, $type], $mapping);
                 }
             }
-        } catch (ReflectionException $e) {
-            throw new RuntimeException(sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
+        } catch (\ReflectionException $e) {
+            throw new \RuntimeException(sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
         }
     }
 
     /**
-     * @throws RuntimeException
+     * @throws \RuntimeException
      */
     private function loadDiscriminatorColumns(ClassMetadata $metadata): void
     {
@@ -244,13 +241,13 @@ final class DoctrineORMMapper implements EventSubscriber
                 }
                 $metadata->setDiscriminatorColumn($arrayDiscriminatorColumns);
             }
-        } catch (ReflectionException $e) {
-            throw new RuntimeException(sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
+        } catch (\ReflectionException $e) {
+            throw new \RuntimeException(sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
         }
     }
 
     /**
-     * @throws RuntimeException
+     * @throws \RuntimeException
      */
     private function loadInheritanceTypes(ClassMetadata $metadata): void
     {
@@ -264,13 +261,13 @@ final class DoctrineORMMapper implements EventSubscriber
             if (isset($this->inheritanceTypes[$metadata->getName()])) {
                 $metadata->setInheritanceType($this->inheritanceTypes[$metadata->getName()]);
             }
-        } catch (ReflectionException $e) {
-            throw new RuntimeException(sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
+        } catch (\ReflectionException $e) {
+            throw new \RuntimeException(sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
         }
     }
 
     /**
-     * @throws RuntimeException
+     * @throws \RuntimeException
      */
     private function loadDiscriminators(ClassMetadata $metadata): void
     {
@@ -287,8 +284,8 @@ final class DoctrineORMMapper implements EventSubscriber
                 }
                 $metadata->setDiscriminatorMap([$key => $class]);
             }
-        } catch (ReflectionException $e) {
-            throw new RuntimeException(sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
+        } catch (\ReflectionException $e) {
+            throw new \RuntimeException(sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
         }
     }
 
@@ -330,8 +327,8 @@ final class DoctrineORMMapper implements EventSubscriber
                     \call_user_func([$metadata, $type], $override['fieldName'], $override);
                 }
             }
-        } catch (ReflectionException $e) {
-            throw new RuntimeException(
+        } catch (\ReflectionException $e) {
+            throw new \RuntimeException(
                 sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()),
                 404,
                 $e
@@ -343,7 +340,7 @@ final class DoctrineORMMapper implements EventSubscriber
     {
         foreach ($columns as $column) {
             if (!\is_string($column)) {
-                throw new InvalidArgumentException(sprintf('The column is not a valid string, %s given', \gettype($column)));
+                throw new \InvalidArgumentException(sprintf('The column is not a valid string, %s given', \gettype($column)));
             }
         }
     }
