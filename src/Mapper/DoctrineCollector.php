@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Mapper;
 
-use InvalidArgumentException;
 use Sonata\Doctrine\Mapper\Builder\ColumnDefinitionBuilder;
 use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
 
@@ -229,7 +228,7 @@ final class DoctrineCollector
     {
         foreach ($columns as $column) {
             if (!\is_string($column)) {
-                throw new InvalidArgumentException(sprintf('The column is not a valid string, %s given', \gettype($column)));
+                throw new \InvalidArgumentException(sprintf('The column is not a valid string, %s given', \gettype($column)));
             }
         }
     }

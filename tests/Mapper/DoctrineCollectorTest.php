@@ -18,7 +18,6 @@ use PHPUnit\Framework\TestCase;
 use Sonata\Doctrine\Mapper\Builder\ColumnDefinitionBuilder;
 use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
 use Sonata\Doctrine\Mapper\DoctrineCollector;
-use stdClass;
 
 class DoctrineCollectorTest extends TestCase
 {
@@ -45,15 +44,15 @@ class DoctrineCollectorTest extends TestCase
     public function testClear(): void
     {
         $collector = DoctrineCollector::getInstance();
-        $collector->addIndex(stdClass::class, 'name', ['column']);
-        $collector->addUnique(stdClass::class, 'name', ['column']);
-        $collector->addInheritanceType(stdClass::class, ClassMetadataInfo::INHERITANCE_TYPE_SINGLE_TABLE);
-        $collector->addDiscriminatorColumn(stdClass::class, ColumnDefinitionBuilder::create()
+        $collector->addIndex(\stdClass::class, 'name', ['column']);
+        $collector->addUnique(\stdClass::class, 'name', ['column']);
+        $collector->addInheritanceType(\stdClass::class, ClassMetadataInfo::INHERITANCE_TYPE_SINGLE_TABLE);
+        $collector->addDiscriminatorColumn(\stdClass::class, ColumnDefinitionBuilder::create()
             ->add('columnDef', ''));
-        $collector->addAssociation(stdClass::class, 'type', OptionsBuilder::create()
+        $collector->addAssociation(\stdClass::class, 'type', OptionsBuilder::create()
             ->add('foo', 'bar'));
-        $collector->addDiscriminator(stdClass::class, 'key', 'discriminatorClass');
-        $collector->addOverride(stdClass::class, 'type', OptionsBuilder::create()
+        $collector->addDiscriminator(\stdClass::class, 'key', 'discriminatorClass');
+        $collector->addOverride(\stdClass::class, 'type', OptionsBuilder::create()
             ->add('foo', 'bar'));
 
         $collector->clear();
