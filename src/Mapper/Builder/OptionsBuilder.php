@@ -26,7 +26,7 @@ final class OptionsBuilder
     private $options = [];
 
     /**
-     * @var string
+     * @var string|null
      */
     private $type;
 
