@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.10.1](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.10.0...1.10.1) - 2020-10-21
+### Fixed
+- [[#255](https://github.com/sonata-project/sonata-doctrine-extensions/pull/255)] Compatibility with PHPUnit 9 ([@jordisala1991](https://github.com/jordisala1991))
+
 ## [1.10.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.9.1...1.10.0) - 2020-10-19
 ### Removed
 - [[#240](https://github.com/sonata-project/sonata-doctrine-extensions/pull/240)] Remove support for `doctrine/mongodb-odm` <2.0 ([@franmomu](https://github.com/franmomu))
