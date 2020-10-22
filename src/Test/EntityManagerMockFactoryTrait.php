@@ -59,6 +59,4 @@ trait EntityManagerMockFactoryTrait
 
         return $em;
     }
-
-    abstract protected function createMock($originalClassName): MockObject;
 }
