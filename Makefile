@@ -61,3 +61,11 @@ else
 	vendor/bin/simple-phpunit -c phpunit.xml.dist
 endif
 .PHONY: test
+
+phpstan:
+	vendor/bin/phpstan --memory-limit=1G analyse
+.PHONY: phpstan
+
+psalm:
+	vendor/bin/psalm
+.PHONY: psalm
