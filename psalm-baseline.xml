@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="3.17.2@9e526d9cb569fe4631e6a737bbb7948d05596e3f">
+    <file src="src/Adapter/AdapterInterface.php">
+        <UndefinedClass occurrences="1">
+            <code>\Sonata\CoreBundle\Model\Adapter\AdapterInterface</code>
+        </UndefinedClass>
+    </file>
+    <file src="src/Model/ManagerInterface.php">
+        <UndefinedClass occurrences="1">
+            <code>\Sonata\CoreBundle\Model\ManagerInterface</code>
+        </UndefinedClass>
+    </file>
+    <file src="src/Model/PageableManagerInterface.php">
+        <UndefinedClass occurrences="1">
+            <code>\Sonata\CoreBundle\Model\PageableManagerInterface</code>
+        </UndefinedClass>
+        <UndefinedDocblockClass occurrences="1">
+            <code>PagerInterface</code>
+        </UndefinedDocblockClass>
+    </file>
+    <file src="src/Test/EntityManagerMockFactory.php">
+        <UndefinedClass occurrences="1">
+            <code>TestCase</code>
+        </UndefinedClass>
+    </file>
+</files>

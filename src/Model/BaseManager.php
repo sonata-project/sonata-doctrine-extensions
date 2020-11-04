@@ -138,6 +138,8 @@ abstract class BaseManager implements ManagerInterface
 
     /**
      * @throws \InvalidArgumentException
+     *
+     * @return void
      */
     protected function checkObject($object): void
     {
