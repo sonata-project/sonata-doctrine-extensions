@@ -21,7 +21,7 @@
         }
     ],
     "require": {
-        "php": "^7.2",
+        "php": "^7.3",
         "doctrine/dbal": "^2.6",
         "doctrine/persistence": "^1.3.6 || ^2.0"
     },
@@ -38,12 +38,14 @@
         "doctrine/orm": "^2.5",
         "doctrine/phpcr-odm": "^1.5.2",
         "jackalope/jackalope-doctrine-dbal": "^1.0",
+        "matthiasnoback/symfony-config-test": "^4.2",
         "matthiasnoback/symfony-dependency-injection-test": "^4.0",
+        "phpstan/phpstan": "^0.12.54",
         "symfony/dependency-injection": "^4.4 || ^5.1",
         "symfony/expression-language": "^4.4 || ^5.1",
         "symfony/framework-bundle": "^4.4 || ^5.1",
-        "symfony/phpunit-bridge": "^5.1.1",
-        "vimeo/psalm": "^3.13.1"
+        "symfony/phpunit-bridge": "^5.1.8",
+        "vimeo/psalm": "^4.1"
     },
     "suggest": {
         "doctrine/orm": "If you use doctrine orm",
