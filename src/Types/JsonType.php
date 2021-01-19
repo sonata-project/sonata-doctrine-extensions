@@ -19,7 +19,7 @@ use Doctrine\DBAL\Types\Type;
 @trigger_error(
     'The '.__NAMESPACE__.'\JsonType class is deprecated since 1.2 in favor of '.
     'Doctrine\DBAL\Types\JsonType, and will be removed in 2.0.',
-    E_USER_DEPRECATED
+    \E_USER_DEPRECATED
 );
 
 /**
