@@ -108,7 +108,7 @@ final class DoctrineCollector
             @trigger_error(sprintf(
                 'Passing other type than int as argument 2 for method %s() is deprecated since sonata-project/doctrine-extensions 1.8. It will accept only int in version 2.0.',
                 __METHOD__
-            ), E_USER_DEPRECATED);
+            ), \E_USER_DEPRECATED);
         }
 
         if (!isset($this->inheritanceTypes[$class])) {
