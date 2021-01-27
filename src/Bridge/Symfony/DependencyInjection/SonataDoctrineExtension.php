@@ -25,7 +25,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  */
 class SonataDoctrineExtension extends Extension
 {
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.php');
@@ -35,7 +35,8 @@ class SonataDoctrineExtension extends Extension
             $loader->load('mapper_orm.php');
         }
 
-        if (class_exists(DocumentManager::class)) {
+        $bundles = $container->getParameter('kernel.bundles');
+        if (class_exists(DocumentManager::class) && isset($bundles['DoctrinePHPCRBundle'])) {
             $loader->load('doctrine_phpcr.php');
         }
     }
