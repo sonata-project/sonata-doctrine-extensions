@@ -20,6 +20,9 @@ final class SonataDoctrineExtensionTest extends AbstractExtensionTestCase
 {
     public function testServicesAreLoaded(): void
     {
+        //simulate DoctrinePHPCRBundle is installed
+        $this->container->getParameterBag()->set('kernel.bundles', ['DoctrinePHPCRBundle' => true]);
+
         $this->load();
 
         $this->assertContainerBuilderHasService('sonata.doctrine.model.adapter.chain');
