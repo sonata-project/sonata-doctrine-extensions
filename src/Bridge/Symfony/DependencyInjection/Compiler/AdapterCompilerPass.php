@@ -52,6 +52,4 @@ final class AdapterCompilerPass implements CompilerPassInterface
     {
         return $container->has('doctrine') && $container->has('sonata.doctrine.adapter.doctrine_phpcr');
     }
-
-
 }
