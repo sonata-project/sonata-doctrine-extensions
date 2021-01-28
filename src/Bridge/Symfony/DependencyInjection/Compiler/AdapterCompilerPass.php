@@ -50,6 +50,6 @@ final class AdapterCompilerPass implements CompilerPassInterface
 
     private function isDoctrinePHPCRLoaded(ContainerBuilder $container): bool
     {
-        return $container->has('doctrine') && $container->has('sonata.doctrine.adapter.doctrine_phpcr');
+        return $container->has('doctrine_phpcr') && $container->has('sonata.doctrine.adapter.doctrine_phpcr');
     }
 }
