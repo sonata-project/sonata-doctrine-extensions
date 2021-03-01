@@ -43,8 +43,10 @@ interface ManagerInterface
     /**
      * Find entities by a set of criteria.
      *
-     * @param int|null $limit
-     * @param int|null $offset
+     * @param array<string, mixed>       $criteria
+     * @param array<string, string>|null $orderBy
+     * @param int|null                   $limit
+     * @param int|null                   $offset
      *
      * @return object[]
      *
@@ -54,6 +56,9 @@ interface ManagerInterface
 
     /**
      * Find a single entity by a set of criteria.
+     *
+     * @param array<string, mixed>       $criteria
+     * @param array<string, string>|null $orderBy
      *
      * @return object|null
      *
