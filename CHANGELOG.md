@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.12.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.11.0...1.12.0) - 2021-03-11
+### Added
+- [[#303](https://github.com/sonata-project/sonata-doctrine-extensions/pull/303)] Add type hints to interfaces ([@core23](https://github.com/core23))
+- [[#288](https://github.com/sonata-project/sonata-doctrine-extensions/pull/288)] Support for PHP 8.x ([@franmomu](https://github.com/franmomu))
+
+### Fixed
+- [[#306](https://github.com/sonata-project/sonata-doctrine-extensions/pull/306)] Missing PHPStan type at `BaseManager::$class` property ([@franmomu](https://github.com/franmomu))
+
 ## [1.11.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.10.1...1.11.0) - 2021-01-04
 ### Added
 - [[#284](https://github.com/sonata-project/sonata-doctrine-extensions/pull/284)] Added PHP 8 support ([@VincentLanglet](https://github.com/VincentLanglet))
