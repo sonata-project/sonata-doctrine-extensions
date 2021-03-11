@@ -32,6 +32,8 @@ abstract class BaseManager implements ManagerInterface
 
     /**
      * @var string
+     *
+     * @phpstan-var class-string<T>
      */
     protected $class;
 
