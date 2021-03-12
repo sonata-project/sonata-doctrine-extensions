@@ -41,6 +41,9 @@ interface ManagerInterface
     /**
      * Find entities by a set of criteria.
      *
+     * @param array<string, mixed>       $criteria
+     * @param array<string, string>|null $orderBy
+     *
      * @return object[]
      *
      * @phpstan-return T[]
@@ -49,6 +52,9 @@ interface ManagerInterface
 
     /**
      * Find a single entity by a set of criteria.
+     *
+     * @param array<string, mixed>       $criteria
+     * @param array<string, string>|null $orderBy
      *
      * @phpstan-return T|null
      */
