@@ -69,8 +69,7 @@ final class OptionsBuilderTest extends TestCase
                 'name' => 'group_id',
                 'referencedColumnName' => 'id',
                 'onDelete' => 'CASCADE',
-            ]])
-        ;
+            ]]);
 
         $this->assertSame([
             'fieldName' => 'groups',
@@ -137,8 +136,7 @@ final class OptionsBuilderTest extends TestCase
                 'name' => 'another_parent_id',
                 'referencedColumnName' => 'id',
                 'onDelete' => 'CASCADE',
-            ])
-        ;
+            ]);
 
         $this->assertSame([
             'fieldName' => 'groups',
@@ -171,16 +169,14 @@ final class OptionsBuilderTest extends TestCase
                 'name' => 'another_parent_id',
                 'referencedColumnName' => 'id',
                 'onDelete' => 'CASCADE',
-            ])
-        ;
+            ]);
     }
 
     public function testOrderBy(): void
     {
         $builder = OptionsBuilder::createOneToMany('groups', 'App\Entity\Group')
             ->addOrder('position', 'ASC')
-            ->addOrder('name', 'DESC')
-        ;
+            ->addOrder('name', 'DESC');
 
         $this->assertSame([
             'fieldName' => 'groups',
@@ -197,8 +193,7 @@ final class OptionsBuilderTest extends TestCase
         $this->expectException(\RuntimeException::class);
 
         OptionsBuilder::createOneToOne('groups', 'App\Entity\Group')
-            ->addOrder('name', 'DESC')
-        ;
+            ->addOrder('name', 'DESC');
     }
 
     /**
