@@ -18,6 +18,5 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->services()
 
         ->set('sonata.doctrine.mapper', DoctrineORMMapper::class)
-            ->tag('doctrine.event_subscriber')
-    ;
+            ->tag('doctrine.event_subscriber');
 };

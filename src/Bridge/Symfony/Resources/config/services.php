@@ -18,6 +18,5 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->services()
 
         ->set('sonata.doctrine.model.adapter.chain', AdapterChain::class)
-            ->public()
-    ;
+            ->public();
 };

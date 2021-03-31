@@ -22,6 +22,5 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->set('sonata.doctrine.adapter.doctrine_orm', DoctrineORMAdapter::class)
             ->args([
                 new ReferenceConfigurator('doctrine'),
-            ])
-    ;
+            ]);
 };
