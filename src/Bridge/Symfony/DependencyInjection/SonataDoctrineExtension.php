@@ -35,7 +35,8 @@ class SonataDoctrineExtension extends Extension
             $loader->load('mapper_orm.php');
         }
 
-        if (class_exists(DocumentManager::class)) {
+        $bundles = $container->getParameter('kernel.bundles');
+        if (class_exists(DocumentManager::class) && isset($bundles['DoctrinePHPCRBundle'])) {
             $loader->load('doctrine_phpcr.php');
         }
     }
