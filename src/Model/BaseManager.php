@@ -23,7 +23,7 @@ use Doctrine\Persistence\ObjectRepository;
  * @phpstan-template T of object
  * @phpstan-implements ManagerInterface<T>
  */
-abstract class BaseManager implements ManagerInterface
+abstract class BaseManager implements ManagerInterface, ClearableManagerInterface
 {
     /**
      * @var ManagerRegistry
@@ -132,6 +132,11 @@ abstract class BaseManager implements ManagerInterface
     public function getTableName()
     {
         return $this->getObjectManager()->getClassMetadata($this->class)->table['name'];
+    }
+
+    public function clear(?string $objectName = null): void
+    {
+        $this->getObjectManager()->clear($objectName);
     }
 
     /**
