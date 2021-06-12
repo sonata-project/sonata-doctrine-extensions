@@ -21,7 +21,7 @@ namespace Sonata\Doctrine\Model;
 interface ClearableManagerInterface
 {
     /**
-     * Clears the object manager
+     * Clears the object manager.
      */
     public function clear(?string $objectName = null): void;
 }
