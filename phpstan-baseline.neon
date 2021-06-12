@@ -16,7 +16,7 @@ parameters:
 			path: src/Document/BaseDocumentManager.php
 
 		-
-			message: "#^Access to an undefined property Doctrine\\\\Persistence\\\\Mapping\\\\ClassMetadata\\:\\:\\$table\\.$#"
+			message: "#^Access to an undefined property Doctrine\\\\Persistence\\\\Mapping\\\\ClassMetadata<T of object>\\:\\:\\$table\\.$#"
 			count: 1
 			path: src/Model/BaseManager.php
 
