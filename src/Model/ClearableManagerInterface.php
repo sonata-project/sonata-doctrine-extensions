@@ -15,8 +15,6 @@ namespace Sonata\Doctrine\Model;
 
 /**
  * @author Jordi Sala <jordism91@gmail.com>
- *
- * @phpstan-template T of object
  */
 interface ClearableManagerInterface
 {
