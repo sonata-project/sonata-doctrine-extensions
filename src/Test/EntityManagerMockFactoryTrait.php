@@ -37,11 +37,27 @@ trait EntityManagerMockFactoryTrait
 
         $qb = $this->createMock(QueryBuilder::class);
 
-        $qb->method('select')->willReturn($qb);
         $qb->method('getQuery')->willReturn($query);
+        $qb->method('distinct')->willReturn($qb);
+        $qb->method('from')->willReturn($qb);
+        $qb->method('select')->willReturn($qb);
+        $qb->method('addSelect')->willReturn($qb);
         $qb->method('where')->willReturn($qb);
-        $qb->method('orderBy')->willReturn($qb);
         $qb->method('andWhere')->willReturn($qb);
+        $qb->method('orWhere')->willReturn($qb);
+        $qb->method('setParameter')->willReturn($qb);
+        $qb->method('setParameters')->willReturn($qb);
+        $qb->method('setFirstResult')->willReturn($qb);
+        $qb->method('setMaxResults')->willReturn($qb);
+        $qb->method('groupBy')->willReturn($qb);
+        $qb->method('addGroupBy')->willReturn($qb);
+        $qb->method('having')->willReturn($qb);
+        $qb->method('andHaving')->willReturn($qb);
+        $qb->method('orHaving')->willReturn($qb);
+        $qb->method('orderBy')->willReturn($qb);
+        $qb->method('addOrderBy')->willReturn($qb);
+        $qb->method('join')->willReturn($qb);
+        $qb->method('innerJoin')->willReturn($qb);
         $qb->method('leftJoin')->willReturn($qb);
 
         $qbCallback($qb);
