@@ -41,8 +41,8 @@ interface ManagerInterface
     /**
      * Find entities by a set of criteria.
      *
-     * @param array<string, mixed>       $criteria
-     * @param array<string, string>|null $orderBy
+     * @param array<string, mixed>                          $criteria
+     * @param array<string, 'asc'|'ASC'|'desc'|'DESC'>|null $orderBy
      *
      * @return object[]
      *

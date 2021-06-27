@@ -33,31 +33,31 @@ class DoctrinePHPCRAdapter implements AdapterInterface
         $this->registry = $registry;
     }
 
-    public function getNormalizedIdentifier($document)
+    public function getNormalizedIdentifier($model)
     {
-        if (null === $document) {
+        if (null === $model) {
             return null;
         }
 
-        if (!\is_object($document)) {
+        if (!\is_object($model)) {
             throw new \RuntimeException('Invalid argument, object or null required');
         }
 
-        $manager = $this->registry->getManagerForClass(\get_class($document));
+        $manager = $this->registry->getManagerForClass(\get_class($model));
 
         if (!$manager instanceof DocumentManager) {
             return null;
         }
 
-        if (!$manager->contains($document)) {
+        if (!$manager->contains($model)) {
             return null;
         }
 
-        $class = $manager->getClassMetadata(\get_class($document));
+        $class = $manager->getClassMetadata(\get_class($model));
 
         \assert($class instanceof ClassMetadata);
 
-        return $class->getIdentifierValue($document);
+        return $class->getIdentifierValue($model);
     }
 
     /**
@@ -67,9 +67,9 @@ class DoctrinePHPCRAdapter implements AdapterInterface
      *
      * {@inheritdoc}
      */
-    public function getUrlSafeIdentifier($document)
+    public function getUrlSafeIdentifier($model)
     {
-        $id = $this->getNormalizedIdentifier($document);
+        $id = $this->getNormalizedIdentifier($model);
 
         if (null !== $id) {
             return substr($id, 1);
