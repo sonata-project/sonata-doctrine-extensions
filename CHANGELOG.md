@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.13.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.12.0...1.13.0) - 2021-06-15
 ### Added
-- [[#323](https://github.com/sonata-project/sonata-doctrine-extensions/pull/323)] Added `ClearableManagerInterface` to be able to clear the Manager in an easy way. ([@jordisala1991](https://github.com/jordisala1991))
+- [[#323](https://github.com/sonata-project/sonata-doctrine-extensions/pull/323)] Added `ClearableManagerInterface` to be able to clear the manager in an easy way ([@jordisala1991](https://github.com/jordisala1991))
 
 ### Fixed
 - [[#298](https://github.com/sonata-project/sonata-doctrine-extensions/pull/298)] Dependency on a non-existent service "sonata.doctrine.adapter.doctrine_phpcr" ([@skydiablo](https://github.com/skydiablo))
