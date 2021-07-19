@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.13.1](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.13.0...1.13.1) - 2021-07-20
 ### Fixed
-- [[#327](https://github.com/sonata-project/sonata-doctrine-extensions/pull/327)] `EntityManagerMockFactoryTrait` now mocks all the basics methods of the QueryBuilder ([@VincentLanglet](https://github.com/VincentLanglet))
+- [[#327](https://github.com/sonata-project/sonata-doctrine-extensions/pull/327)] `EntityManagerMockFactoryTrait`  mocks all the basic methods of `QueryBuilder` ([@VincentLanglet](https://github.com/VincentLanglet))
 
 ## [1.13.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.12.0...1.13.0) - 2021-06-15
 ### Added
