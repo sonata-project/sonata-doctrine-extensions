@@ -30,7 +30,7 @@ final class DoctrinePHPCRAdapterTest extends TestCase
     protected function setUp(): void
     {
         if (!class_exists(UnitOfWork::class)) {
-            $this->markTestSkipped('Doctrine PHPCR not installed');
+            static::markTestSkipped('Doctrine PHPCR not installed');
         }
     }
 
@@ -63,30 +63,30 @@ final class DoctrinePHPCRAdapterTest extends TestCase
         $registry = $this->createMock(ManagerRegistry::class);
         $adapter = new DoctrinePHPCRAdapter($registry);
 
-        $this->assertNull($adapter->getNormalizedIdentifier(null));
+        static::assertNull($adapter->getNormalizedIdentifier(null));
     }
 
     public function testNormalizedIdentifierWithNoManager(): void
     {
         $registry = $this->createMock(ManagerRegistry::class);
-        $registry->expects($this->once())->method('getManagerForClass')->willReturn(null);
+        $registry->expects(static::once())->method('getManagerForClass')->willReturn(null);
 
         $adapter = new DoctrinePHPCRAdapter($registry);
 
-        $this->assertNull($adapter->getNormalizedIdentifier(new \stdClass()));
+        static::assertNull($adapter->getNormalizedIdentifier(new \stdClass()));
     }
 
     public function testNormalizedIdentifierWithNotManaged(): void
     {
         $manager = $this->getMockBuilder(DocumentManager::class)->disableOriginalConstructor()->getMock();
-        $manager->expects($this->once())->method('contains')->willReturn(false);
+        $manager->expects(static::once())->method('contains')->willReturn(false);
 
         $registry = $this->createMock(ManagerRegistry::class);
-        $registry->expects($this->once())->method('getManagerForClass')->willReturn($manager);
+        $registry->expects(static::once())->method('getManagerForClass')->willReturn($manager);
 
         $adapter = new DoctrinePHPCRAdapter($registry);
 
-        $this->assertNull($adapter->getNormalizedIdentifier(new \stdClass()));
+        static::assertNull($adapter->getNormalizedIdentifier(new \stdClass()));
     }
 
     /**
@@ -110,8 +110,8 @@ final class DoctrinePHPCRAdapterTest extends TestCase
         $instance = new MyDocument();
         $instance->path = $data;
 
-        $this->assertSame($data, $adapter->getNormalizedIdentifier($instance));
-        $this->assertSame($expected, $adapter->getUrlSafeIdentifier($instance));
+        static::assertSame($data, $adapter->getNormalizedIdentifier($instance));
+        static::assertSame($expected, $adapter->getUrlSafeIdentifier($instance));
     }
 
     public static function getFixtures()

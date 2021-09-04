@@ -32,6 +32,6 @@ final class BaseDocumentManagerTest extends TestCase
 
     public function test(): void
     {
-        $this->assertSame('classname', $this->getManager()->getClass());
+        static::assertSame('classname', $this->getManager()->getClass());
     }
 }

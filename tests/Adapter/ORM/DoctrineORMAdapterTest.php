@@ -24,7 +24,7 @@ final class DoctrineORMAdapterTest extends TestCase
     protected function setUp(): void
     {
         if (!class_exists(UnitOfWork::class)) {
-            $this->markTestSkipped('Doctrine ORM not installed');
+            static::markTestSkipped('Doctrine ORM not installed');
         }
     }
 
@@ -59,33 +59,33 @@ final class DoctrineORMAdapterTest extends TestCase
         $registry = $this->createMock(ManagerRegistry::class);
         $adapter = new DoctrineORMAdapter($registry);
 
-        $this->assertNull($adapter->getNormalizedIdentifier(null));
+        static::assertNull($adapter->getNormalizedIdentifier(null));
     }
 
     public function testNormalizedIdentifierWithNoManager(): void
     {
         $registry = $this->createMock(ManagerRegistry::class);
-        $registry->expects($this->once())->method('getManagerForClass')->willReturn(null);
+        $registry->expects(static::once())->method('getManagerForClass')->willReturn(null);
 
         $adapter = new DoctrineORMAdapter($registry);
 
-        $this->assertNull($adapter->getNormalizedIdentifier(new \stdClass()));
+        static::assertNull($adapter->getNormalizedIdentifier(new \stdClass()));
     }
 
     public function testNormalizedIdentifierWithNotManaged(): void
     {
         $unitOfWork = $this->getMockBuilder(UnitOfWork::class)->disableOriginalConstructor()->getMock();
-        $unitOfWork->expects($this->once())->method('isInIdentityMap')->willReturn(false);
+        $unitOfWork->expects(static::once())->method('isInIdentityMap')->willReturn(false);
 
         $manager = $this->createMock(EntityManagerInterface::class);
         $manager->method('getUnitOfWork')->willReturn($unitOfWork);
 
         $registry = $this->createMock(ManagerRegistry::class);
-        $registry->expects($this->once())->method('getManagerForClass')->willReturn($manager);
+        $registry->expects(static::once())->method('getManagerForClass')->willReturn($manager);
 
         $adapter = new DoctrineORMAdapter($registry);
 
-        $this->assertNull($adapter->getNormalizedIdentifier(new \stdClass()));
+        static::assertNull($adapter->getNormalizedIdentifier(new \stdClass()));
     }
 
     /**
@@ -94,18 +94,18 @@ final class DoctrineORMAdapterTest extends TestCase
     public function testNormalizedIdentifierWithValidObject($data, $expected): void
     {
         $unitOfWork = $this->getMockBuilder(UnitOfWork::class)->disableOriginalConstructor()->getMock();
-        $unitOfWork->expects($this->once())->method('isInIdentityMap')->willReturn(true);
-        $unitOfWork->expects($this->once())->method('getEntityIdentifier')->willReturn($data);
+        $unitOfWork->expects(static::once())->method('isInIdentityMap')->willReturn(true);
+        $unitOfWork->expects(static::once())->method('getEntityIdentifier')->willReturn($data);
 
         $manager = $this->createMock(EntityManagerInterface::class);
         $manager->method('getUnitOfWork')->willReturn($unitOfWork);
 
         $registry = $this->createMock(ManagerRegistry::class);
-        $registry->expects($this->once())->method('getManagerForClass')->willReturn($manager);
+        $registry->expects(static::once())->method('getManagerForClass')->willReturn($manager);
 
         $adapter = new DoctrineORMAdapter($registry);
 
-        $this->assertSame($expected, $adapter->getNormalizedIdentifier(new \stdClass()));
+        static::assertSame($expected, $adapter->getNormalizedIdentifier(new \stdClass()));
     }
 
     public static function getFixtures()
