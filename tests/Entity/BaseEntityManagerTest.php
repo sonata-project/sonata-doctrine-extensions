@@ -46,7 +46,7 @@ final class BaseEntityManagerTest extends TestCase
 
     public function testGetClassName(): void
     {
-        $this->assertSame('classname', $this->manager->getClass());
+        static::assertSame('classname', $this->manager->getClass());
     }
 
     public function testException(): void
@@ -62,14 +62,14 @@ final class BaseEntityManagerTest extends TestCase
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage('Unable to find the mapping information for the class classname. Please check the `auto_mapping` option (http://symfony.com/doc/current/reference/configuration/doctrine.html#configuration-overview) or add the bundle to the `mappings` section in the doctrine configuration');
 
-        $this->registry->expects($this->once())->method('getManagerForClass')->willReturn(null);
+        $this->registry->expects(static::once())->method('getManagerForClass')->willReturn(null);
 
         $this->manager->getObjectManager();
     }
 
     public function testGetEntityManager(): void
     {
-        $this->registry->expects($this->once())->method('getManagerForClass')->willReturn($this->objectManager);
+        $this->registry->expects(static::once())->method('getManagerForClass')->willReturn($this->objectManager);
 
         $this->manager->em;
     }
@@ -78,14 +78,14 @@ final class BaseEntityManagerTest extends TestCase
     {
         $entityRepository = $this->createMock(EntityRepository::class);
 
-        $this->objectManager->expects($this->once())->method('getRepository')->with('classname')->willReturn($entityRepository);
+        $this->objectManager->expects(static::once())->method('getRepository')->with('classname')->willReturn($entityRepository);
 
-        $this->registry->expects($this->once())->method('getManagerForClass')->willReturn($this->objectManager);
+        $this->registry->expects(static::once())->method('getManagerForClass')->willReturn($this->objectManager);
 
         $r = new \ReflectionObject($this->manager);
         $m = $r->getMethod('getRepository');
         $m->setAccessible(true);
 
-        $this->assertInstanceOf(EntityRepository::class, $m->invoke($this->manager));
+        static::assertInstanceOf(EntityRepository::class, $m->invoke($this->manager));
     }
 }

@@ -35,7 +35,7 @@ class JsonTypeTest extends TestCase
     {
         $platform = new MockPlatform();
 
-        $this->assertSame(
+        static::assertSame(
             '{"foo":"bar"}',
             Type::getType('json')->convertToDatabaseValue(['foo' => 'bar'], $platform)
         );
@@ -45,7 +45,7 @@ class JsonTypeTest extends TestCase
     {
         $platform = new MockPlatform();
 
-        $this->assertSame(
+        static::assertSame(
             ['foo' => 'bar'],
             Type::getType('json')->convertToPHPValue('{"foo":"bar"}', $platform)
         );

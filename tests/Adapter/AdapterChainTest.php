@@ -23,8 +23,8 @@ final class AdapterChainTest extends TestCase
     {
         $adapter = new AdapterChain();
 
-        $this->assertNull($adapter->getNormalizedIdentifier(new \stdClass()));
-        $this->assertNull($adapter->getUrlSafeIdentifier(new \stdClass()));
+        static::assertNull($adapter->getNormalizedIdentifier(new \stdClass()));
+        static::assertNull($adapter->getUrlSafeIdentifier(new \stdClass()));
     }
 
     public function testUrlSafeIdentifier()
@@ -32,13 +32,13 @@ final class AdapterChainTest extends TestCase
         $adapter = new AdapterChain();
 
         $adapter->addAdapter($fake1 = $this->createMock(AdapterInterface::class));
-        $fake1->expects($this->once())->method('getUrlSafeIdentifier')->willReturn(null);
+        $fake1->expects(static::once())->method('getUrlSafeIdentifier')->willReturn(null);
 
         $adapter->addAdapter($fake2 = $this->createMock(AdapterInterface::class));
 
-        $fake2->expects($this->once())->method('getUrlSafeIdentifier')->willReturn('voila');
+        $fake2->expects(static::once())->method('getUrlSafeIdentifier')->willReturn('voila');
 
-        $this->assertSame('voila', $adapter->getUrlSafeIdentifier(new \stdClass()));
+        static::assertSame('voila', $adapter->getUrlSafeIdentifier(new \stdClass()));
     }
 
     public function testNormalizedIdentifier()
@@ -46,12 +46,12 @@ final class AdapterChainTest extends TestCase
         $adapter = new AdapterChain();
 
         $adapter->addAdapter($fake1 = $this->createMock(AdapterInterface::class));
-        $fake1->expects($this->once())->method('getNormalizedIdentifier')->willReturn(null);
+        $fake1->expects(static::once())->method('getNormalizedIdentifier')->willReturn(null);
 
         $adapter->addAdapter($fake2 = $this->createMock(AdapterInterface::class));
 
-        $fake2->expects($this->once())->method('getNormalizedIdentifier')->willReturn('voila');
+        $fake2->expects(static::once())->method('getNormalizedIdentifier')->willReturn('voila');
 
-        $this->assertSame('voila', $adapter->getNormalizedIdentifier(new \stdClass()));
+        static::assertSame('voila', $adapter->getNormalizedIdentifier(new \stdClass()));
     }
 }

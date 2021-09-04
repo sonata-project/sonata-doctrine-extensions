@@ -22,7 +22,7 @@ final class OptionsBuilderTest extends TestCase
     {
         $builder = OptionsBuilder::createOneToOne('field', 'App\Entity\Address');
 
-        $this->assertSame([
+        static::assertSame([
             'fieldName' => 'field',
             'targetEntity' => 'App\Entity\Address',
         ], $builder->getOptions());
@@ -32,7 +32,7 @@ final class OptionsBuilderTest extends TestCase
     {
         $builder = OptionsBuilder::createManyToOne('address', 'App\Entity\Address');
 
-        $this->assertSame([
+        static::assertSame([
             'fieldName' => 'address',
             'targetEntity' => 'App\Entity\Address',
         ], $builder->getOptions());
@@ -42,7 +42,7 @@ final class OptionsBuilderTest extends TestCase
     {
         $builder = OptionsBuilder::createOneToMany('features', 'App\Entity\Feature');
 
-        $this->assertSame([
+        static::assertSame([
             'fieldName' => 'features',
             'targetEntity' => 'App\Entity\Feature',
         ], $builder->getOptions());
@@ -52,7 +52,7 @@ final class OptionsBuilderTest extends TestCase
     {
         $builder = OptionsBuilder::createManyToMany('groups', 'App\Entity\Group');
 
-        $this->assertSame([
+        static::assertSame([
             'fieldName' => 'groups',
             'targetEntity' => 'App\Entity\Group',
         ], $builder->getOptions());
@@ -71,7 +71,7 @@ final class OptionsBuilderTest extends TestCase
                 'onDelete' => 'CASCADE',
             ]]);
 
-        $this->assertSame([
+        static::assertSame([
             'fieldName' => 'groups',
             'targetEntity' => 'App\Entity\Group',
             'joinTable' => [
@@ -97,7 +97,7 @@ final class OptionsBuilderTest extends TestCase
         $builder = OptionsBuilder::createOneToMany('groups', 'App\Entity\Group')
             ->cascade(['persist', 'refresh']);
 
-        $this->assertSame([
+        static::assertSame([
             'fieldName' => 'groups',
             'targetEntity' => 'App\Entity\Group',
             'cascade' => ['persist', 'refresh'],
@@ -109,7 +109,7 @@ final class OptionsBuilderTest extends TestCase
         $builder = OptionsBuilder::createOneToMany('groups', 'App\Entity\Group')
             ->orphanRemoval();
 
-        $this->assertSame([
+        static::assertSame([
             'fieldName' => 'groups',
             'targetEntity' => 'App\Entity\Group',
             'orphanRemoval' => true,
@@ -138,7 +138,7 @@ final class OptionsBuilderTest extends TestCase
                 'onDelete' => 'CASCADE',
             ]);
 
-        $this->assertSame([
+        static::assertSame([
             'fieldName' => 'groups',
             'targetEntity' => 'App\Entity\Group',
             'joinColumns' => [[
@@ -178,7 +178,7 @@ final class OptionsBuilderTest extends TestCase
             ->addOrder('position', 'ASC')
             ->addOrder('name', 'DESC');
 
-        $this->assertSame([
+        static::assertSame([
             'fieldName' => 'groups',
             'targetEntity' => 'App\Entity\Group',
             'orderBy' => [
@@ -208,7 +208,7 @@ final class OptionsBuilderTest extends TestCase
                 'foo', 'bar',
             ]);
 
-        $this->assertSame([
+        static::assertSame([
             'foo' => 'bar',
             'bar' => 'foo',
             'foobar' => [
