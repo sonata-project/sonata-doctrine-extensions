@@ -90,7 +90,7 @@ final class MapperCompilerPassTest extends AbstractCompilerPassTestCase
             [TestEntity::class, 'mapManyToOne', [$options->getOptions()]]
         );
 
-        $this->assertInstanceOf(DoctrineORMMapper::class, $compiledMapper);
+        static::assertInstanceOf(DoctrineORMMapper::class, $compiledMapper);
 
         $collector->clear();
     }

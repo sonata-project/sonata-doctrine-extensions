@@ -70,7 +70,7 @@ final class BaseManagerTest extends TestCase
 
     public function testClearManager()
     {
-        $this->objectManager->expects($this->once())->method('clear');
+        $this->objectManager->expects(static::once())->method('clear');
 
         $this->manager->clear();
     }
