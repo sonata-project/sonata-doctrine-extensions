@@ -13,7 +13,7 @@ Symfony doctrine extensions
 Branch | Github Actions | Coverage |
 ------ | -------------- | -------- |
 1.x    | [![Test][test_stable_badge]][test_stable_link]     | [![Coverage Status][coverage_stable_badge]][coverage_stable_link]     |
-master | [![Test][test_unstable_badge]][test_unstable_link] | [![Coverage Status][coverage_unstable_badge]][coverage_unstable_link] |
+2.x    | [![Test][test_unstable_badge]][test_unstable_link] | [![Coverage Status][coverage_unstable_badge]][coverage_unstable_link] |
 
 ## Support
 
@@ -28,10 +28,10 @@ This package is available under the [MIT license](LICENSE).
 
 [test_stable_badge]: https://github.com/sonata-project/sonata-doctrine-extensions/workflows/Test/badge.svg?branch=1.x
 [test_stable_link]: https://github.com/sonata-project/sonata-doctrine-extensions/actions?query=workflow:test+branch:1.x
-[test_unstable_badge]: https://github.com/sonata-project/sonata-doctrine-extensions/workflows/Test/badge.svg?branch=master
-[test_unstable_link]: https://github.com/sonata-project/sonata-doctrine-extensions/actions?query=workflow:test+branch:master
+[test_unstable_badge]: https://github.com/sonata-project/sonata-doctrine-extensions/workflows/Test/badge.svg?branch=2.x
+[test_unstable_link]: https://github.com/sonata-project/sonata-doctrine-extensions/actions?query=workflow:test+branch:2.x
 
 [coverage_stable_badge]: https://codecov.io/gh/sonata-project/sonata-doctrine-extensions/branch/1.x/graph/badge.svg
 [coverage_stable_link]: https://codecov.io/gh/sonata-project/sonata-doctrine-extensions/branch/1.x
-[coverage_unstable_badge]: https://codecov.io/gh/sonata-project/sonata-doctrine-extensions/branch/master/graph/badge.svg
-[coverage_unstable_link]: https://codecov.io/gh/sonata-project/sonata-doctrine-extensions/branch/master
+[coverage_unstable_badge]: https://codecov.io/gh/sonata-project/sonata-doctrine-extensions/branch/2.x/graph/badge.svg
+[coverage_unstable_link]: https://codecov.io/gh/sonata-project/sonata-doctrine-extensions/branch/2.x
