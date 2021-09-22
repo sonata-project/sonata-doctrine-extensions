@@ -19,7 +19,7 @@ Doctrine2 behavioral extensions
 
 Branch | Github Actions | Code Coverage |
 ------ | -------------- | ------------- |
-1.x    | [![Test][test_stable_badge]][test_stable_link]     | [![Coverage Status][coverage_stable_badge]][coverage_stable_link]     |
+1.x | [![Test][test_stable_badge]][test_stable_link] | [![Coverage Status][coverage_stable_badge]][coverage_stable_link] |
 2.x | [![Test][test_unstable_badge]][test_unstable_link] | [![Coverage Status][coverage_unstable_badge]][coverage_unstable_link] |
 
 ## Support
@@ -44,4 +44,3 @@ This package is available under the [MIT license](LICENSE).
 [coverage_unstable_link]: https://codecov.io/gh/sonata-project/sonata-doctrine-extensions/branch/2.x
 [shepherd_stable_badge]: https://shepherd.dev/github/sonata-project/sonata-doctrine-extensions/coverage.svg
 [shepherd_stable_link]: https://shepherd.dev/github/sonata-project/sonata-doctrine-extensions
-
