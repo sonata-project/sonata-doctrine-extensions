@@ -44,3 +44,4 @@ This package is available under the [MIT license](LICENSE).
 [coverage_unstable_link]: https://codecov.io/gh/sonata-project/sonata-doctrine-extensions/branch/2.x
 [shepherd_stable_badge]: https://shepherd.dev/github/sonata-project/sonata-doctrine-extensions/coverage.svg
 [shepherd_stable_link]: https://shepherd.dev/github/sonata-project/sonata-doctrine-extensions
+
