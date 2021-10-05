@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.14.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.13.1...1.14.0) - 2021-10-05
+### Added
+- [[#363](https://github.com/sonata-project/sonata-doctrine-extensions/pull/363)] Added support for Doctrine DBAL 3. ([@jordisala1991](https://github.com/jordisala1991))
+
 ## [1.13.1](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.13.0...1.13.1) - 2021-07-20
 ### Fixed
 - [[#327](https://github.com/sonata-project/sonata-doctrine-extensions/pull/327)] `EntityManagerMockFactoryTrait`  mocks all the basic methods of `QueryBuilder` ([@VincentLanglet](https://github.com/VincentLanglet))
