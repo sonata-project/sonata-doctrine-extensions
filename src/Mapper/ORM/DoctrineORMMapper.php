@@ -21,7 +21,7 @@ use Doctrine\Persistence\Mapping\ClassMetadata;
 final class DoctrineORMMapper implements EventSubscriber
 {
     /**
-     * @var array<class-string, array<string, array<string, mixed>>>
+     * @var array<class-string, array<string, array<array<string, mixed>>>>
      */
     private $associations = [];
 
@@ -51,7 +51,7 @@ final class DoctrineORMMapper implements EventSubscriber
     private $uniques = [];
 
     /**
-     * @var array<class-string, array<string, array<string, mixed>>>
+     * @var array<class-string, array<string, array<array<string, mixed>>>>
      */
     private $overrides = [];
 
@@ -63,7 +63,7 @@ final class DoctrineORMMapper implements EventSubscriber
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param array<array<string, mixed>> $options
      *
      * @phpstan-param class-string $class
      */
@@ -176,7 +176,7 @@ final class DoctrineORMMapper implements EventSubscriber
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param array<array<string, mixed>> $options
      *
      * @phpstan-param class-string $class
      */

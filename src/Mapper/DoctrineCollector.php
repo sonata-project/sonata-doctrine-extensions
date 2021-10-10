@@ -19,7 +19,7 @@ use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
 final class DoctrineCollector
 {
     /**
-     * @var array<class-string, array<string, array<string, mixed>>>
+     * @var array<class-string, array<string, array<array<string, mixed>>>>
      */
     private $associations = [];
 
@@ -49,7 +49,7 @@ final class DoctrineCollector
     private $inheritanceTypes = [];
 
     /**
-     * @var array<class-string, array<string, array<string, mixed>>>
+     * @var array<class-string, array<string, array<array<string, mixed>>>>
      */
     private $overrides = [];
 
@@ -196,7 +196,7 @@ final class DoctrineCollector
     }
 
     /**
-     * @return array<class-string, array<string, array<string, mixed>>>
+     * @return array<class-string, array<string, array<array<string, mixed>>>>
      */
     public function getAssociations(): array
     {
@@ -244,7 +244,7 @@ final class DoctrineCollector
     }
 
     /**
-     * @return array<class-string, array<string, array<string, mixed>>>
+     * @return array<class-string, array<string, array<array<string, mixed>>>>
      */
     public function getOverrides(): array
     {
