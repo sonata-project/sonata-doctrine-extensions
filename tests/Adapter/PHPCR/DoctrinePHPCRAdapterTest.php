@@ -20,8 +20,11 @@ use Doctrine\Persistence\ManagerRegistry;
 use PHPUnit\Framework\TestCase;
 use Sonata\Doctrine\Adapter\PHPCR\DoctrinePHPCRAdapter;
 
-class MyDocument
+final class MyDocument
 {
+    /**
+     * @var mixed
+     */
     public $path;
 }
 
@@ -49,6 +52,9 @@ final class DoctrinePHPCRAdapterTest extends TestCase
         $adapter->getNormalizedIdentifier($document);
     }
 
+    /**
+     * @return iterable<array-key, array{mixed}>
+     */
     public function getWrongDocuments(): iterable
     {
         yield [0];
@@ -58,15 +64,23 @@ final class DoctrinePHPCRAdapterTest extends TestCase
         yield [[]];
     }
 
-    public function testNormalizedIdentifierWithNull()
+    /**
+     * NEXT_MAJOR: Remove this test.
+     *
+     * @group legacy
+     *
+     * @psalm-suppress NullArgument
+     */
+    public function testNormalizedIdentifierWithNull(): void
     {
         $registry = $this->createMock(ManagerRegistry::class);
         $adapter = new DoctrinePHPCRAdapter($registry);
 
+        // @phpstan-ignore-next-line
         static::assertNull($adapter->getNormalizedIdentifier(null));
     }
 
-    public function testNormalizedIdentifierWithNoManager()
+    public function testNormalizedIdentifierWithNoManager(): void
     {
         $registry = $this->createMock(ManagerRegistry::class);
         $registry->expects(static::once())->method('getManagerForClass')->willReturn(null);
@@ -76,7 +90,7 @@ final class DoctrinePHPCRAdapterTest extends TestCase
         static::assertNull($adapter->getNormalizedIdentifier(new \stdClass()));
     }
 
-    public function testNormalizedIdentifierWithNotManaged()
+    public function testNormalizedIdentifierWithNotManaged(): void
     {
         $manager = $this->getMockBuilder(DocumentManager::class)->disableOriginalConstructor()->getMock();
         $manager->expects(static::once())->method('contains')->willReturn(false);
@@ -92,7 +106,7 @@ final class DoctrinePHPCRAdapterTest extends TestCase
     /**
      * @dataProvider getFixtures
      */
-    public function testNormalizedIdentifierWithValidObject($data, $expected)
+    public function testNormalizedIdentifierWithValidObject(string $data, string $expected): void
     {
         $metadata = new ClassMetadata(MyDocument::class);
         $metadata->identifier = 'path';
@@ -114,7 +128,10 @@ final class DoctrinePHPCRAdapterTest extends TestCase
         static::assertSame($expected, $adapter->getUrlSafeIdentifier($instance));
     }
 
-    public static function getFixtures()
+    /**
+     * @return iterable<array-key, array{string, string}>
+     */
+    public static function getFixtures(): iterable
     {
         return [
             ['/salut', 'salut'],

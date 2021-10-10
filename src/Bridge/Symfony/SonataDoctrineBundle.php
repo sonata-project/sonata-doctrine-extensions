@@ -20,6 +20,9 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 final class SonataDoctrineBundle extends Bundle
 {
+    /**
+     * @return void
+     */
     public function build(ContainerBuilder $container)
     {
         $container->addCompilerPass(new AdapterCompilerPass());

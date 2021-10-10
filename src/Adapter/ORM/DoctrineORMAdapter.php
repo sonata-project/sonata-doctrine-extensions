@@ -34,12 +34,19 @@ class DoctrineORMAdapter implements AdapterInterface
 
     public function getNormalizedIdentifier($model)
     {
-        if (null === $model) {
-            return null;
-        }
-
+        // NEXT_MAJOR: Remove this check and add type hint instead.
         if (!\is_object($model)) {
-            throw new \RuntimeException('Invalid argument, object or null required');
+            if (null === $model) {
+                @trigger_error(sprintf(
+                    'Passing other type than object as argument 1 for method %s() is deprecated since'
+                    .' sonata-project/doctrine-extensions 1.x. It will accept only object in version 2.0.',
+                    __METHOD__
+                ), \E_USER_DEPRECATED);
+
+                return null;
+            }
+
+            throw new \RuntimeException('Invalid argument, object required');
         }
 
         $manager = $this->registry->getManagerForClass(\get_class($model));

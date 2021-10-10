@@ -25,6 +25,11 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  */
 class SonataDoctrineExtension extends Extension
 {
+    /**
+     * @param mixed[] $configs
+     *
+     * @return void
+     */
     public function load(array $configs, ContainerBuilder $container)
     {
         $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
@@ -36,6 +41,8 @@ class SonataDoctrineExtension extends Extension
         }
 
         $bundles = $container->getParameter('kernel.bundles');
+        \assert(\is_array($bundles));
+
         if (class_exists(DocumentManager::class) && isset($bundles['DoctrinePHPCRBundle'])) {
             $loader->load('doctrine_phpcr.php');
         }

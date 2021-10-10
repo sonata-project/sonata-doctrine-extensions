@@ -20,6 +20,9 @@ class AdapterChain implements AdapterInterface
      */
     protected $adapters = [];
 
+    /**
+     * @return void
+     */
     public function addAdapter(AdapterInterface $adapter)
     {
         $this->adapters[] = $adapter;
@@ -30,7 +33,7 @@ class AdapterChain implements AdapterInterface
         foreach ($this->adapters as $adapter) {
             $identifier = $adapter->getNormalizedIdentifier($model);
 
-            if ($identifier) {
+            if (null !== $identifier) {
                 return $identifier;
             }
         }
@@ -43,7 +46,7 @@ class AdapterChain implements AdapterInterface
         foreach ($this->adapters as $adapter) {
             $safeIdentifier = $adapter->getUrlSafeIdentifier($model);
 
-            if ($safeIdentifier) {
+            if (null !== $safeIdentifier) {
                 return $safeIdentifier;
             }
         }

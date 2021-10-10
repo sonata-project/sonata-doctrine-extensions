@@ -52,12 +52,15 @@ class DoctrineORMMapperTest extends KernelTestCase
     {
         self::bootKernel();
 
-        $mapper = self::$container->get('sonata.doctrine.mapper');
+        $mapper = self::getContainer()->get('sonata.doctrine.mapper');
 
         static::assertInstanceOf(DoctrineORMMapper::class, $mapper);
     }
 
-    protected static function getKernelClass()
+    /**
+     * @return class-string
+     */
+    protected static function getKernelClass(): string
     {
         return Kernel::class;
     }

@@ -29,11 +29,15 @@ use PHPUnit\Framework\TestCase;
 );
 
 /**
+ * NEXT_MAJOR: Remove this class.
+ *
  * @deprecated since sonata-project/doctrine-extensions 1.5, to be removed in 2.0.
  */
 class EntityManagerMockFactory
 {
     /**
+     * @param string[] $fields
+     *
      * @return EntityManagerInterface
      */
     public static function create(TestCase $test, \Closure $qbCallback, $fields)

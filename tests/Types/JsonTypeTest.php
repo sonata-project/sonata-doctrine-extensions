@@ -20,6 +20,8 @@ use PHPUnit\Framework\TestCase;
 use Sonata\Doctrine\Types\JsonType;
 
 /**
+ * NEXT_MAJOR: Remove this test.
+ *
  * @group legacy
  */
 class JsonTypeTest extends TestCase
@@ -33,7 +35,7 @@ class JsonTypeTest extends TestCase
         }
     }
 
-    public function testConvertToDatabaseValue()
+    public function testConvertToDatabaseValue(): void
     {
         $platform = new MockPlatform();
 
@@ -43,7 +45,7 @@ class JsonTypeTest extends TestCase
         );
     }
 
-    public function testConvertToPHPValue()
+    public function testConvertToPHPValue(): void
     {
         $platform = new MockPlatform();
 
@@ -59,32 +61,37 @@ class MockPlatform extends AbstractPlatform
     /**
      * Gets the SQL Snippet used to declare a BLOB column type.
      */
-    public function getBlobTypeDeclarationSQL(array $field)
+    public function getBlobTypeDeclarationSQL(array $column)
     {
         throw Exception::notSupported(__METHOD__);
     }
 
-    public function getBooleanTypeDeclarationSQL(array $columnDef)
+    public function getBooleanTypeDeclarationSQL(array $column)
     {
+        return '';
     }
 
-    public function getIntegerTypeDeclarationSQL(array $columnDef)
+    public function getIntegerTypeDeclarationSQL(array $column)
     {
+        return '';
     }
 
-    public function getBigIntTypeDeclarationSQL(array $columnDef)
+    public function getBigIntTypeDeclarationSQL(array $column)
     {
+        return '';
     }
 
-    public function getSmallIntTypeDeclarationSQL(array $columnDef)
+    public function getSmallIntTypeDeclarationSQL(array $column)
     {
+        return '';
     }
 
-    public function _getCommonIntegerTypeDeclarationSQL(array $columnDef)
+    public function _getCommonIntegerTypeDeclarationSQL(array $column)
     {
+        return '';
     }
 
-    public function getVarcharTypeDeclarationSQL(array $field)
+    public function getVarcharTypeDeclarationSQL(array $column)
     {
         return 'DUMMYVARCHAR()';
     }
@@ -95,7 +102,7 @@ class MockPlatform extends AbstractPlatform
     }
 
     /** @override */
-    public function getClobTypeDeclarationSQL(array $field)
+    public function getClobTypeDeclarationSQL(array $column)
     {
         return 'DUMMYCLOB';
     }
@@ -116,5 +123,6 @@ class MockPlatform extends AbstractPlatform
 
     protected function getVarcharTypeDeclarationSQLSnippet($length, $fixed)
     {
+        return '';
     }
 }

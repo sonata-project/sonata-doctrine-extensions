@@ -5,6 +5,11 @@
             <code>\Sonata\CoreBundle\Model\Adapter\AdapterInterface</code>
         </UndefinedClass>
     </file>
+    <file src="src/Bridge/Symfony/Bundle/SonataDoctrineBundle.php">
+        <TypeDoesNotContainType occurrences="1">
+            <code>false</code>
+        </TypeDoesNotContainType>
+    </file>
     <file src="src/Model/ManagerInterface.php">
         <UndefinedClass occurrences="1">
             <code>\Sonata\CoreBundle\Model\ManagerInterface</code>
@@ -19,8 +24,8 @@
         </UndefinedDocblockClass>
     </file>
     <file src="src/Test/EntityManagerMockFactory.php">
-        <UndefinedClass occurrences="1">
-            <code>TestCase</code>
-        </UndefinedClass>
+        <InaccessibleMethod occurrences="5">
+            <code>createMock</code>
+        </InaccessibleMethod>
     </file>
 </files>

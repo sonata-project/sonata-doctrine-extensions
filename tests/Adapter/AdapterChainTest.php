@@ -19,7 +19,7 @@ use Sonata\Doctrine\Adapter\AdapterInterface;
 
 final class AdapterChainTest extends TestCase
 {
-    public function testEmptyAdapter()
+    public function testEmptyAdapter(): void
     {
         $adapter = new AdapterChain();
 
@@ -27,7 +27,7 @@ final class AdapterChainTest extends TestCase
         static::assertNull($adapter->getUrlSafeIdentifier(new \stdClass()));
     }
 
-    public function testUrlSafeIdentifier()
+    public function testUrlSafeIdentifier(): void
     {
         $adapter = new AdapterChain();
 
@@ -41,7 +41,7 @@ final class AdapterChainTest extends TestCase
         static::assertSame('voila', $adapter->getUrlSafeIdentifier(new \stdClass()));
     }
 
-    public function testNormalizedIdentifier()
+    public function testNormalizedIdentifier(): void
     {
         $adapter = new AdapterChain();
 
