@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Types\Tests;
 
+use Doctrine\DBAL\Exception;
+use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 use PHPUnit\Framework\TestCase;
 use Sonata\Doctrine\Types\JsonType;
@@ -52,14 +54,14 @@ class JsonTypeTest extends TestCase
     }
 }
 
-class MockPlatform extends \Doctrine\DBAL\Platforms\AbstractPlatform
+class MockPlatform extends AbstractPlatform
 {
     /**
      * Gets the SQL Snippet used to declare a BLOB column type.
      */
     public function getBlobTypeDeclarationSQL(array $field): void
     {
-        throw DBALException::notSupported(__METHOD__);
+        throw Exception::notSupported(__METHOD__);
     }
 
     public function getBooleanTypeDeclarationSQL(array $columnDef): void
@@ -85,6 +87,11 @@ class MockPlatform extends \Doctrine\DBAL\Platforms\AbstractPlatform
     public function getVarcharTypeDeclarationSQL(array $field)
     {
         return 'DUMMYVARCHAR()';
+    }
+
+    public function getCurrentDatabaseExpression(): string
+    {
+        return '';
     }
 
     /** @override */
