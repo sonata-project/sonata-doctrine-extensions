@@ -3,6 +3,8 @@
     <projectFiles>
         <directory name="src"/>
         <ignoreFiles>
+            <!-- Deprecated class with strange usage of createMock function -->
+            <file name="src/Test/EntityManagerMockFactory.php"/>
             <directory name="vendor"/>
         </ignoreFiles>
     </projectFiles>
