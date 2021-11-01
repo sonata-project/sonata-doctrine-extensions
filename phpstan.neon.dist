@@ -2,13 +2,12 @@ includes:
     - phpstan-baseline.neon
 
 parameters:
-    level: 5
-
+    level: max
     paths:
         - src
-
-    excludes_analyse:
-        - src/Bridge/Symfony/Bundle/SonataDoctrineBundle.php
-        - src/Test/EntityManagerMockFactory.php
-        - tests/bootstrap.php
-
+        - tests
+    treatPhpDocTypesAsCertain: false
+    checkGenericClassInNonGenericObjectType: true
+    checkMissingIterableValueType: true
+    checkMissingVarTagTypehint: true
+    checkMissingTypehints: true

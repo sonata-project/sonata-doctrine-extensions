@@ -92,6 +92,8 @@ interface ManagerInterface
      * @param object $entity   The Entity to save
      * @param bool   $andFlush Flush the EntityManager after saving the object?
      *
+     * @return void
+     *
      * @phpstan-param T $entity
      */
     public function save($entity, $andFlush = true);
@@ -102,6 +104,8 @@ interface ManagerInterface
      * @param object $entity   The Entity to delete
      * @param bool   $andFlush Flush the EntityManager after deleting the object?
      *
+     * @return void
+     *
      * @phpstan-param T $entity
      */
     public function delete($entity, $andFlush = true);
@@ -109,12 +113,16 @@ interface ManagerInterface
     /**
      * Get the related table name.
      *
+     * NEXT_MAJOR: Remove this ORM-related method from the interface.
+     *
      * @return string
      */
     public function getTableName();
 
     /**
      * Get the DB driver connection.
+     *
+     * NEXT_MAJOR: Remove this ORM-related method from the interface.
      *
      * @return Connection
      */

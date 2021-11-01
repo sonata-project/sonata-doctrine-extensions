@@ -43,6 +43,9 @@ final class DoctrineORMAdapterTest extends TestCase
         $adapter->getNormalizedIdentifier($entity);
     }
 
+    /**
+     * @return iterable<array-key, array{mixed}>
+     */
     public function getWrongEntities(): iterable
     {
         yield [0];
@@ -54,15 +57,23 @@ final class DoctrineORMAdapterTest extends TestCase
         yield ['sonata-project'];
     }
 
-    public function testNormalizedIdentifierWithNull()
+    /**
+     * NEXT_MAJOR: Remove this test.
+     *
+     * @group legacy
+     *
+     * @psalm-suppress NullArgument
+     */
+    public function testNormalizedIdentifierWithNull(): void
     {
         $registry = $this->createMock(ManagerRegistry::class);
         $adapter = new DoctrineORMAdapter($registry);
 
+        // @phpstan-ignore-next-line
         static::assertNull($adapter->getNormalizedIdentifier(null));
     }
 
-    public function testNormalizedIdentifierWithNoManager()
+    public function testNormalizedIdentifierWithNoManager(): void
     {
         $registry = $this->createMock(ManagerRegistry::class);
         $registry->expects(static::once())->method('getManagerForClass')->willReturn(null);
@@ -72,7 +83,7 @@ final class DoctrineORMAdapterTest extends TestCase
         static::assertNull($adapter->getNormalizedIdentifier(new \stdClass()));
     }
 
-    public function testNormalizedIdentifierWithNotManaged()
+    public function testNormalizedIdentifierWithNotManaged(): void
     {
         $unitOfWork = $this->getMockBuilder(UnitOfWork::class)->disableOriginalConstructor()->getMock();
         $unitOfWork->expects(static::once())->method('isInIdentityMap')->willReturn(false);
@@ -89,9 +100,11 @@ final class DoctrineORMAdapterTest extends TestCase
     }
 
     /**
+     * @param int[] $data
+     *
      * @dataProvider getFixtures
      */
-    public function testNormalizedIdentifierWithValidObject($data, $expected)
+    public function testNormalizedIdentifierWithValidObject(array $data, string $expected): void
     {
         $unitOfWork = $this->getMockBuilder(UnitOfWork::class)->disableOriginalConstructor()->getMock();
         $unitOfWork->expects(static::once())->method('isInIdentityMap')->willReturn(true);
@@ -108,7 +121,10 @@ final class DoctrineORMAdapterTest extends TestCase
         static::assertSame($expected, $adapter->getNormalizedIdentifier(new \stdClass()));
     }
 
-    public static function getFixtures()
+    /**
+     * @return iterable<array-key, array{array<int>, string}>
+     */
+    public function getFixtures(): iterable
     {
         return [
             [[1], '1'],

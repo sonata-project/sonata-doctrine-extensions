@@ -51,7 +51,7 @@ class DoctrineCollectorTest extends TestCase
             ->add('columnDef', ''));
         $collector->addAssociation(\stdClass::class, 'type', OptionsBuilder::create()
             ->add('foo', 'bar'));
-        $collector->addDiscriminator(\stdClass::class, 'key', 'discriminatorClass');
+        $collector->addDiscriminator(\stdClass::class, 'key', \stdClass::class);
         $collector->addOverride(\stdClass::class, 'type', OptionsBuilder::create()
             ->add('foo', 'bar'));
 

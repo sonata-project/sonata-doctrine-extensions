@@ -24,13 +24,20 @@ abstract class TestEntity
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     *
+     * @var int
      */
     private $id;
 
+    /**
+     * @var mixed
+     */
     private $relation;
 
     /**
      * @ORM\Column(type="string", length=200)
+     *
+     * @var string
      */
     private $property;
 }

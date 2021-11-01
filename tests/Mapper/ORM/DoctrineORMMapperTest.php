@@ -57,7 +57,10 @@ class DoctrineORMMapperTest extends KernelTestCase
         static::assertInstanceOf(DoctrineORMMapper::class, $mapper);
     }
 
-    protected static function getKernelClass()
+    /**
+     * @return class-string
+     */
+    protected static function getKernelClass(): string
     {
         return Kernel::class;
     }
