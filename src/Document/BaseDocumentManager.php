@@ -37,7 +37,7 @@ abstract class BaseDocumentManager extends BaseManager
     {
         if ('dm' === $name) {
             @trigger_error(
-                'Accessing to the entity manager with the magic getter is deprecated since'
+                'Accessing to the document manager through the magic getter is deprecated since'
                 .' sonata-project/sonata-doctrine-extensions 1.x and will throw an exception in 2.0.'
                 .' Use the "getObjectManager()" method instead.',
                 \E_USER_DEPRECATED

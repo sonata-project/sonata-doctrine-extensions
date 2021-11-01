@@ -47,7 +47,11 @@ class DoctrinePHPCRAdapter implements AdapterInterface
                 return null;
             }
 
-            throw new \RuntimeException('Invalid argument, object required');
+            throw new \RuntimeException(sprintf(
+                'Argument 1 passed to "%s()" must be an object, %s given.',
+                __METHOD__,
+                \gettype($model)
+            ));
         }
 
         $manager = $this->registry->getManagerForClass(\get_class($model));
