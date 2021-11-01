@@ -25,7 +25,7 @@ class TestRelatedEntity
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      *
-     * @var int
+     * @var int|null
      */
-    private $id;
+    public $id;
 }
