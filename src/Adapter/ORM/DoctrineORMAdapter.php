@@ -39,7 +39,7 @@ class DoctrineORMAdapter implements AdapterInterface
             if (null === $model) {
                 @trigger_error(sprintf(
                     'Passing other type than object as argument 1 for method %s() is deprecated since'
-                    .' sonata-project/doctrine-extensions 1.x. It will accept only object in version 2.0.',
+                    .' sonata-project/doctrine-extensions 1.15. It will accept only object in version 2.0.',
                     __METHOD__
                 ), \E_USER_DEPRECATED);
 
