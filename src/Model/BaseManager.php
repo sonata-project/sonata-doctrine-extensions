@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Model;
 
+use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Persistence\ObjectRepository;
@@ -53,7 +54,7 @@ abstract class BaseManager implements ManagerInterface, ClearableManagerInterfac
     {
         $manager = $this->registry->getManagerForClass($this->class);
 
-        if (!$manager) {
+        if (null === $manager) {
             throw new \RuntimeException(sprintf(
                 'Unable to find the mapping information for the class %s.'
                 .' Please check the `auto_mapping` option'
@@ -125,9 +126,23 @@ abstract class BaseManager implements ManagerInterface, ClearableManagerInterfac
         }
     }
 
+    /**
+     * NEXT_MAJOR: Remove this method.
+     *
+     * @deprecated since sonata-project/sonata-doctrine-extensions 1.x
+     */
     public function getTableName(): string
     {
-        return $this->getObjectManager()->getClassMetadata($this->class)->table['name'];
+        @trigger_error(sprintf(
+            'The "%s()" method is deprecated since sonata-project/sonata-doctrine-extensions 1.x'
+            .' and will be removed in version 2.0.',
+            __METHOD__
+        ), \E_USER_DEPRECATED);
+
+        $metadata = $this->getObjectManager()->getClassMetadata($this->class);
+        \assert($metadata instanceof ClassMetadataInfo);
+
+        return $metadata->table['name'];
     }
 
     public function clear(?string $objectName = null): void
@@ -137,6 +152,10 @@ abstract class BaseManager implements ManagerInterface, ClearableManagerInterfac
 
     /**
      * Returns the related Object Repository.
+     *
+     * @return ObjectRepository<object>
+     *
+     * @phpstan-return ObjectRepository<T>
      */
     protected function getRepository(): ObjectRepository
     {
@@ -144,7 +163,11 @@ abstract class BaseManager implements ManagerInterface, ClearableManagerInterfac
     }
 
     /**
+     * @param object $object
+     *
      * @throws \InvalidArgumentException
+     *
+     * @phpstan-param T $object
      */
     protected function checkObject($object): void
     {

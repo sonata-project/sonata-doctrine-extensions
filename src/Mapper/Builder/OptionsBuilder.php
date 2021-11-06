@@ -56,6 +56,11 @@ final class OptionsBuilder
         return new self();
     }
 
+    /**
+     * @param mixed $value
+     *
+     * @return $this
+     */
     public function add(string $key, $value): self
     {
         $this->options[$key] = $value;
@@ -83,6 +88,9 @@ final class OptionsBuilder
         return new self(self::MANY_TO_MANY, $fieldName, $targetEntity);
     }
 
+    /**
+     * @return $this
+     */
     public function mappedBy(string $mappedBy): self
     {
         if (!\in_array($this->type, [self::ONE_TO_MANY, self::ONE_TO_ONE, self::MANY_TO_MANY], true)) {
@@ -96,6 +104,9 @@ final class OptionsBuilder
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function inversedBy(string $inversedBy): self
     {
         if (!\in_array($this->type, [self::ONE_TO_ONE, self::MANY_TO_ONE, self::MANY_TO_MANY], true)) {
@@ -144,6 +155,8 @@ final class OptionsBuilder
 
     /**
      * @param 'ASC'|'DESC' $orientation
+     *
+     * @return $this
      */
     public function addOrder(string $field, string $orientation): self
     {
@@ -171,6 +184,8 @@ final class OptionsBuilder
      *     onDelete?: string,
      *     columnDefinition?: string
      * } $joinColumn
+     *
+     * @return $this
      */
     public function addJoin(array $joinColumn): self
     {
@@ -190,6 +205,8 @@ final class OptionsBuilder
     }
 
     /**
+     * @return $this
+     *
      * @psalm-param list<'persist'|'remove'|'merge'|'detach'|'refresh'|'all'> $value
      */
     public function cascade(array $value): self
@@ -199,6 +216,9 @@ final class OptionsBuilder
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function orphanRemoval(): self
     {
         if (!\in_array($this->type, [self::ONE_TO_ONE, self::ONE_TO_MANY], true)) {
@@ -212,6 +232,9 @@ final class OptionsBuilder
         return $this;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getOptions(): array
     {
         return $this->options;

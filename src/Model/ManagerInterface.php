@@ -98,11 +98,15 @@ interface ManagerInterface
 
     /**
      * Get the related table name.
+     *
+     * NEXT_MAJOR: Remove this ORM-related method from the interface.
      */
     public function getTableName(): string;
 
     /**
      * Get the DB driver connection.
+     *
+     * NEXT_MAJOR: Remove this ORM-related method from the interface.
      */
     public function getConnection(): Connection;
 }

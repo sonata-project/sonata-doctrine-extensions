@@ -20,21 +20,19 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sonata\Doctrine\Model\BaseManager;
 
+/**
+ * @phpstan-extends BaseManager<object>
+ */
 class ManagerTest extends BaseManager
 {
-    /**
-     * Get the DB driver connection.
-     */
     public function getConnection(): Connection
     {
+        throw new \BadMethodCallException('Not implemented');
     }
 
-    /**
-     * @param $object
-     */
-    public function publicCheckObject($object)
+    public function publicCheckObject(object $object): void
     {
-        return $this->checkObject($object);
+        $this->checkObject($object);
     }
 }
 
@@ -48,6 +46,11 @@ final class BaseManagerTest extends TestCase
      */
     private $objectManager;
 
+    /**
+     * @var ManagerTest
+     */
+    private $manager;
+
     protected function setUp(): void
     {
         $this->objectManager = $this->createMock(ObjectManager::class);
@@ -55,18 +58,18 @@ final class BaseManagerTest extends TestCase
         $managerRegistry = $this->createStub(ManagerRegistry::class);
         $managerRegistry->method('getManagerForClass')->willReturn($this->objectManager);
 
-        $this->manager = new ManagerTest('class', $managerRegistry);
+        $this->manager = new ManagerTest(\stdClass::class, $managerRegistry);
     }
 
     public function testCheckObject(): void
     {
         $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('Object must be instance of class, DateTime given');
+        $this->expectExceptionMessage('Object must be instance of stdClass, DateTime given');
 
         $this->manager->publicCheckObject(new \DateTime());
     }
 
-    public function testClearManager()
+    public function testClearManager(): void
     {
         $this->objectManager->expects(static::once())->method('clear');
 

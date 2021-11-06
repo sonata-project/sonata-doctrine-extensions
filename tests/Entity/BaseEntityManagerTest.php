@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Tests\Entity;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ObjectManager;
@@ -23,24 +24,24 @@ use Sonata\Doctrine\Entity\BaseEntityManager;
 final class BaseEntityManagerTest extends TestCase
 {
     /**
-     * @var ManagerRegistry|MockObject
+     * @var ManagerRegistry&MockObject
      */
     private $registry;
 
     /**
-     * @var ObjectManager|MockObject
+     * @var ObjectManager&MockObject
      */
     private $objectManager;
 
     /**
-     * @var BaseEntityManager
+     * @var BaseEntityManager<object>&MockObject
      */
     private $manager;
 
     protected function setUp(): void
     {
         $this->registry = $this->createMock(ManagerRegistry::class);
-        $this->objectManager = $this->createMock(ObjectManager::class);
+        $this->objectManager = $this->createMock(EntityManagerInterface::class);
         $this->manager = $this->getMockForAbstractClass(BaseEntityManager::class, ['classname', $this->registry]);
     }
 
@@ -49,11 +50,15 @@ final class BaseEntityManagerTest extends TestCase
         static::assertSame('classname', $this->manager->getClass());
     }
 
+    /**
+     * NEXT_MAJOR: Remove this test.
+     */
     public function testException(): void
     {
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage('The property exception does not exists');
 
+        // @phpstan-ignore-next-line
         $this->manager->exception;
     }
 
@@ -67,10 +72,16 @@ final class BaseEntityManagerTest extends TestCase
         $this->manager->getObjectManager();
     }
 
+    /**
+     * NEXT_MAJOR: Remove this test.
+     *
+     * @group legacy
+     */
     public function testGetEntityManager(): void
     {
         $this->registry->expects(static::once())->method('getManagerForClass')->willReturn($this->objectManager);
 
+        // @phpstan-ignore-next-line
         $this->manager->em;
     }
 

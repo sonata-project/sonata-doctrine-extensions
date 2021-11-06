@@ -29,6 +29,11 @@ final class ColumnDefinitionBuilder
         return new self();
     }
 
+    /**
+     * @param mixed $value
+     *
+     * @return $this
+     */
     public function add(string $key, $value): self
     {
         $this->options[$key] = $value;
@@ -36,6 +41,9 @@ final class ColumnDefinitionBuilder
         return $this;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getOptions(): array
     {
         return $this->options;

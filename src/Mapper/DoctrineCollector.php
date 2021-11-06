@@ -19,37 +19,37 @@ use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
 final class DoctrineCollector
 {
     /**
-     * @var array
+     * @var array<class-string, array<string, array<array<string, mixed>>>>
      */
     private $associations = [];
 
     /**
-     * @var array
+     * @var array<class-string, array<string, array<string>>>
      */
     private $indexes = [];
 
     /**
-     * @var array
+     * @var array<class-string, array<string, array<string>>>
      */
     private $uniques = [];
 
     /**
-     * @var array
+     * @var array<class-string, array<string, class-string>>
      */
     private $discriminators = [];
 
     /**
-     * @var array
+     * @var array<class-string, array<string, mixed>>
      */
     private $discriminatorColumns = [];
 
     /**
-     * @var array
+     * @var array<class-string, int>
      */
     private $inheritanceTypes = [];
 
     /**
-     * @var array
+     * @var array<class-string, array<string, array<array<string, mixed>>>>
      */
     private $overrides = [];
 
@@ -77,8 +77,10 @@ final class DoctrineCollector
     /**
      * Add a discriminator to a class.
      *
-     * @param string $key                Key is the database value and values are the classes
-     * @param string $discriminatorClass The mapped class
+     * @param string $key Key is the database value and values are the classes
+     *
+     * @phpstan-param class-string $class
+     * @phpstan-param class-string $discriminatorClass
      */
     public function addDiscriminator(string $class, string $key, string $discriminatorClass): void
     {
@@ -91,6 +93,9 @@ final class DoctrineCollector
         }
     }
 
+    /**
+     * @phpstan-param class-string $class
+     */
     public function addDiscriminatorColumn(string $class, ColumnDefinitionBuilder $columnDef): void
     {
         if (!isset($this->discriminatorColumns[$class])) {
@@ -100,6 +105,8 @@ final class DoctrineCollector
 
     /**
      * @param int $type
+     *
+     * @phpstan-param class-string $class
      */
     public function addInheritanceType(string $class, $type): void
     {
@@ -116,6 +123,9 @@ final class DoctrineCollector
         }
     }
 
+    /**
+     * @phpstan-param class-string $class
+     */
     public function addAssociation(string $class, string $type, OptionsBuilder $options): void
     {
         if (!isset($this->associations[$class])) {
@@ -130,7 +140,9 @@ final class DoctrineCollector
     }
 
     /**
-     * @param array<string> $columns
+     * @param string[] $columns
+     *
+     * @phpstan-param class-string $class
      */
     public function addIndex(string $class, string $name, array $columns): void
     {
@@ -148,7 +160,9 @@ final class DoctrineCollector
     }
 
     /**
-     * @param array<string> $columns
+     * @param string[] $columns
+     *
+     * @phpstan-param class-string $class
      */
     public function addUnique(string $class, string $name, array $columns): void
     {
@@ -165,6 +179,9 @@ final class DoctrineCollector
         $this->uniques[$class][$name] = $columns;
     }
 
+    /**
+     * @phpstan-param class-string $class
+     */
     public function addOverride(string $class, string $type, OptionsBuilder $options): void
     {
         if (!isset($this->overrides[$class])) {
@@ -178,36 +195,57 @@ final class DoctrineCollector
         $this->overrides[$class][$type][] = $options->getOptions();
     }
 
+    /**
+     * @return array<class-string, array<string, array<array<string, mixed>>>>
+     */
     public function getAssociations(): array
     {
         return $this->associations;
     }
 
+    /**
+     * @return array<class-string, array<string, class-string>>
+     */
     public function getDiscriminators(): array
     {
         return $this->discriminators;
     }
 
+    /**
+     * @return array<class-string, array<string, mixed>>
+     */
     public function getDiscriminatorColumns(): array
     {
         return $this->discriminatorColumns;
     }
 
+    /**
+     * @return array<class-string, int>
+     */
     public function getInheritanceTypes(): array
     {
         return $this->inheritanceTypes;
     }
 
+    /**
+     * @return array<class-string, array<string, array<string>>>
+     */
     public function getIndexes(): array
     {
         return $this->indexes;
     }
 
+    /**
+     * @return array<class-string, array<string, array<string>>>
+     */
     public function getUniques(): array
     {
         return $this->uniques;
     }
 
+    /**
+     * @return array<class-string, array<string, array<array<string, mixed>>>>
+     */
     public function getOverrides(): array
     {
         return $this->overrides;
@@ -224,6 +262,9 @@ final class DoctrineCollector
         $this->overrides = [];
     }
 
+    /**
+     * @param string[] $columns
+     */
     private function verifyColumnNames(array $columns): void
     {
         foreach ($columns as $column) {

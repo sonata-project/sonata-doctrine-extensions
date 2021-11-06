@@ -21,37 +21,37 @@ use Doctrine\Persistence\Mapping\ClassMetadata;
 final class DoctrineORMMapper implements EventSubscriber
 {
     /**
-     * @var array
+     * @var array<class-string, array<string, array<array<string, mixed>>>>
      */
     private $associations = [];
 
     /**
-     * @var array
+     * @var array<class-string, array<string, class-string>>
      */
     private $discriminators = [];
 
     /**
-     * @var array
+     * @var array<class-string, array<string, mixed>>
      */
     private $discriminatorColumns = [];
 
     /**
-     * @var array
+     * @var array<class-string, int>
      */
     private $inheritanceTypes = [];
 
     /**
-     * @var array
+     * @var array<class-string, array<string, array<string>>>
      */
     private $indexes = [];
 
     /**
-     * @var array
+     * @var array<class-string, array<string, array<string>>>
      */
     private $uniques = [];
 
     /**
-     * @var array
+     * @var array<class-string, array<string, array<array<string, mixed>>>>
      */
     private $overrides = [];
 
@@ -63,7 +63,9 @@ final class DoctrineORMMapper implements EventSubscriber
     }
 
     /**
-     * @param array $options
+     * @param array<array<string, mixed>> $options
+     *
+     * @phpstan-param class-string $class
      */
     public function addAssociation(string $class, string $type, $options): void
     {
@@ -85,8 +87,10 @@ final class DoctrineORMMapper implements EventSubscriber
     /**
      * Add a discriminator to a class.
      *
-     * @param string $key                Key is the database value and values are the classes
-     * @param string $discriminatorClass The mapped class
+     * @param string $key Key is the database value and values are the classes
+     *
+     * @phpstan-param class-string $class
+     * @phpstan-param class-string $discriminatorClass
      */
     public function addDiscriminator(string $class, string $key, string $discriminatorClass): void
     {
@@ -100,7 +104,9 @@ final class DoctrineORMMapper implements EventSubscriber
     }
 
     /**
-     * @param array $columnDef
+     * @param array<string, mixed> $columnDef
+     *
+     * @phpstan-param class-string $class
      */
     public function addDiscriminatorColumn(string $class, $columnDef): void
     {
@@ -118,6 +124,8 @@ final class DoctrineORMMapper implements EventSubscriber
     }
 
     /**
+     * @phpstan-param class-string $class
+     *
      * @see ClassMetadata for supported types
      */
     public function addInheritanceType(string $class, int $type): void
@@ -128,7 +136,9 @@ final class DoctrineORMMapper implements EventSubscriber
     }
 
     /**
-     * @param array<string> $columns
+     * @param string[] $columns
+     *
+     * @phpstan-param class-string $class
      */
     public function addIndex(string $class, string $name, array $columns): void
     {
@@ -146,7 +156,9 @@ final class DoctrineORMMapper implements EventSubscriber
     }
 
     /**
-     * @param array<string> $columns
+     * @param string[] $columns
+     *
+     * @phpstan-param class-string $class
      */
     public function addUnique(string $class, string $name, array $columns): void
     {
@@ -164,7 +176,9 @@ final class DoctrineORMMapper implements EventSubscriber
     }
 
     /**
-     * @param array $options
+     * @param array<array<string, mixed>> $options
+     *
+     * @phpstan-param class-string $class
      */
     public function addOverride(string $class, string $type, $options): void
     {
@@ -198,6 +212,8 @@ final class DoctrineORMMapper implements EventSubscriber
     }
 
     /**
+     * @param ClassMetadata<object> $metadata
+     *
      * @throws \RuntimeException
      */
     private function loadAssociations(ClassMetadata $metadata): void
@@ -214,6 +230,7 @@ final class DoctrineORMMapper implements EventSubscriber
                         continue;
                     }
 
+                    // @phpstan-ignore-next-line https://github.com/phpstan/phpstan/issues/1105
                     \call_user_func([$metadata, $type], $mapping);
                 }
             }
@@ -223,6 +240,8 @@ final class DoctrineORMMapper implements EventSubscriber
     }
 
     /**
+     * @param ClassMetadata<object> $metadata
+     *
      * @throws \RuntimeException
      */
     private function loadDiscriminatorColumns(ClassMetadata $metadata): void
@@ -247,6 +266,8 @@ final class DoctrineORMMapper implements EventSubscriber
     }
 
     /**
+     * @param ClassMetadata<object> $metadata
+     *
      * @throws \RuntimeException
      */
     private function loadInheritanceTypes(ClassMetadata $metadata): void
@@ -267,6 +288,8 @@ final class DoctrineORMMapper implements EventSubscriber
     }
 
     /**
+     * @param ClassMetadata<object> $metadata
+     *
      * @throws \RuntimeException
      */
     private function loadDiscriminators(ClassMetadata $metadata): void
@@ -289,6 +312,9 @@ final class DoctrineORMMapper implements EventSubscriber
         }
     }
 
+    /**
+     * @param ClassMetadata<object> $metadata
+     */
     private function loadIndexes(ClassMetadata $metadata): void
     {
         if (!\array_key_exists($metadata->getName(), $this->indexes)) {
@@ -302,6 +328,9 @@ final class DoctrineORMMapper implements EventSubscriber
         }
     }
 
+    /**
+     * @param ClassMetadata<object> $metadata
+     */
     private function loadUniques(ClassMetadata $metadata): void
     {
         if (!\array_key_exists($metadata->getName(), $this->uniques)) {
@@ -315,6 +344,9 @@ final class DoctrineORMMapper implements EventSubscriber
         }
     }
 
+    /**
+     * @param ClassMetadata<object> $metadata
+     */
     private function loadOverrides(ClassMetadata $metadata): void
     {
         if (!\array_key_exists($metadata->getName(), $this->overrides)) {
@@ -324,6 +356,7 @@ final class DoctrineORMMapper implements EventSubscriber
         try {
             foreach ($this->overrides[$metadata->getName()] as $type => $overrides) {
                 foreach ($overrides as $override) {
+                    // @phpstan-ignore-next-line https://github.com/phpstan/phpstan/issues/1105
                     \call_user_func([$metadata, $type], $override['fieldName'], $override);
                 }
             }
@@ -336,6 +369,9 @@ final class DoctrineORMMapper implements EventSubscriber
         }
     }
 
+    /**
+     * @param string[] $columns
+     */
     private function verifyColumnNames(array $columns): void
     {
         foreach ($columns as $column) {

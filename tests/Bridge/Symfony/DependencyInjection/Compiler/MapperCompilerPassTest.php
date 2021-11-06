@@ -32,14 +32,14 @@ final class MapperCompilerPassTest extends AbstractCompilerPassTestCase
         $container->addCompilerPass(new MapperCompilerPass());
     }
 
-    public function testDefinitionsRemoved()
+    public function testDefinitionsRemoved(): void
     {
         $this->compile();
 
         $this->assertContainerBuilderNotHasService('sonata.doctrine.mapper');
     }
 
-    public function testDefinitionsRemovedWithMapper()
+    public function testDefinitionsRemovedWithMapper(): void
     {
         $this->registerService('sonata.doctrine.mapper', 'foo');
 
@@ -48,7 +48,7 @@ final class MapperCompilerPassTest extends AbstractCompilerPassTestCase
         $this->assertContainerBuilderNotHasService('sonata.doctrine.mapper');
     }
 
-    public function testDefinitionsRemovedWithDoctrine()
+    public function testDefinitionsRemovedWithDoctrine(): void
     {
         $this->registerService('doctrine', 'foo');
 
@@ -57,7 +57,7 @@ final class MapperCompilerPassTest extends AbstractCompilerPassTestCase
         $this->assertContainerBuilderNotHasService('sonata.doctrine.mapper');
     }
 
-    public function testDefinitionsNotRemoved()
+    public function testDefinitionsNotRemoved(): void
     {
         $this->registerService('sonata.doctrine.mapper', 'foo');
         $this->registerService('doctrine', 'foo');

@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Sonata\Doctrine\Entity;
 
 use Doctrine\DBAL\Connection;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Persistence\ObjectRepository;
@@ -31,41 +31,62 @@ abstract class BaseEntityManager extends BaseManager
     /**
      * Make sure the code is compatible with legacy code.
      *
+     * NEXT_MAJOR: Remove the magic getter.
+     *
+     * @param string $name
+     *
      * @return mixed
      */
     public function __get($name)
     {
         if ('em' === $name) {
+            @trigger_error(
+                'Accessing to the entity manager through the magic getter is deprecated since'
+                .' sonata-project/sonata-doctrine-extensions 1.x and will throw an exception in 2.0.'
+                .' Use the "getObjectManager()" method instead.',
+                \E_USER_DEPRECATED
+            );
+
             return $this->getObjectManager();
         }
 
         throw new \RuntimeException(sprintf('The property %s does not exists', $name));
     }
 
+    /**
+     * NEXT_MAJOR: Remove this method.
+     *
+     * @deprecated since sonata-project/sonata-doctrine-extensions 1.x
+     */
     public function getConnection(): Connection
     {
+        @trigger_error(sprintf(
+            'The "%s()" method is deprecated since sonata-project/sonata-doctrine-extensions 1.x'
+            .' and will be removed in version 2.0. Use "%s" instead.',
+            __METHOD__,
+            'getEntityManager()->getConnection()'
+        ), \E_USER_DEPRECATED);
+
         return $this->getEntityManager()->getConnection();
     }
 
     /**
-     * @return EntityManager
+     * @return EntityManagerInterface
      */
     public function getEntityManager(): ObjectManager
     {
         $objectManager = $this->getObjectManager();
-
-        \assert($objectManager instanceof EntityManager);
+        \assert($objectManager instanceof EntityManagerInterface);
 
         return $objectManager;
     }
 
+    /**
+     * @phpstan-return EntityRepository<T>
+     */
     protected function getRepository(): ObjectRepository
     {
-        $repository = $this->getEntityManager()->getRepository($this->class);
-
-        \assert($repository instanceof EntityRepository);
-
-        return $repository;
+        return $this->getEntityManager()->getRepository($this->class);
     }
 }
 

@@ -29,7 +29,7 @@ final class AdapterCompilerPassTest extends AbstractCompilerPassTestCase
         $container->addCompilerPass(new AdapterCompilerPass());
     }
 
-    public function testDefinitionsAdded()
+    public function testDefinitionsAdded(): void
     {
         $adapterChain = new Definition();
         $this->setDefinition('sonata.doctrine.model.adapter.chain', $adapterChain);
@@ -54,7 +54,7 @@ final class AdapterCompilerPassTest extends AbstractCompilerPassTestCase
         );
     }
 
-    public function testDefinitionsAddedWithoutOrm()
+    public function testDefinitionsAddedWithoutOrm(): void
     {
         $adapterChain = new Definition();
         $this->setDefinition('sonata.doctrine.model.adapter.chain', $adapterChain);
@@ -74,7 +74,7 @@ final class AdapterCompilerPassTest extends AbstractCompilerPassTestCase
         );
     }
 
-    public function testDefinitionsRemoved()
+    public function testDefinitionsRemoved(): void
     {
         $adapterChain = new Definition();
         $this->setDefinition('sonata.doctrine.model.adapter.chain', $adapterChain);

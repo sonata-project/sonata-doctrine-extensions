@@ -17,21 +17,24 @@ use Doctrine\Persistence\ManagerRegistry;
 use PHPUnit\Framework\TestCase;
 use Sonata\Doctrine\Document\BaseDocumentManager;
 
-class DocumentManager extends BaseDocumentManager
+/**
+ * @phpstan-extends BaseDocumentManager<object>
+ */
+final class DocumentManager extends BaseDocumentManager
 {
 }
 
 final class BaseDocumentManagerTest extends TestCase
 {
-    public function getManager()
+    public function getManager(): DocumentManager
     {
         $registry = $this->createMock(ManagerRegistry::class);
 
-        return new DocumentManager('classname', $registry);
+        return new DocumentManager(\stdClass::class, $registry);
     }
 
     public function test(): void
     {
-        static::assertSame('classname', $this->getManager()->getClass());
+        static::assertSame(\stdClass::class, $this->getManager()->getClass());
     }
 }

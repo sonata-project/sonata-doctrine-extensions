@@ -23,6 +23,8 @@ use Doctrine\DBAL\Types\Type;
 );
 
 /**
+ * NEXT_MAJOR: Remove this class.
+ *
  * Convert a value into a json string to be stored into the persistency layer.
  */
 class JsonType extends Type
