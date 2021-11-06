@@ -129,12 +129,12 @@ abstract class BaseManager implements ManagerInterface, ClearableManagerInterfac
     /**
      * NEXT_MAJOR: Remove this method.
      *
-     * @deprecated since sonata-project/sonata-doctrine-extensions 1.x
+     * @deprecated since sonata-project/sonata-doctrine-extensions 1.15
      */
     public function getTableName(): string
     {
         @trigger_error(sprintf(
-            'The "%s()" method is deprecated since sonata-project/sonata-doctrine-extensions 1.x'
+            'The "%s()" method is deprecated since sonata-project/sonata-doctrine-extensions 1.15'
             .' and will be removed in version 2.0.',
             __METHOD__
         ), \E_USER_DEPRECATED);
