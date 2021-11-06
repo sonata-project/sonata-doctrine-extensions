@@ -36,7 +36,7 @@ abstract class BasePHPCRManager extends BaseManager
         if ('dm' === $name) {
             @trigger_error(
                 'Accessing to the document manager through the magic getter is deprecated since'
-                .' sonata-project/sonata-doctrine-extensions 1.x and will throw an exception in 2.0.'
+                .' sonata-project/sonata-doctrine-extensions 1.15 and will throw an exception in 2.0.'
                 .' Use the "getObjectManager()" method instead.',
                 \E_USER_DEPRECATED
             );
@@ -50,7 +50,7 @@ abstract class BasePHPCRManager extends BaseManager
     /**
      * NEXT_MAJOR: Remove this method.
      *
-     * @deprecated since sonata-project/sonata-doctrine-extensions 1.x
+     * @deprecated since sonata-project/sonata-doctrine-extensions 1.15
      */
     public function getConnection()
     {
@@ -60,7 +60,7 @@ abstract class BasePHPCRManager extends BaseManager
     /**
      * NEXT_MAJOR: Remove this method.
      *
-     * @deprecated since sonata-project/sonata-doctrine-extensions 1.x
+     * @deprecated since sonata-project/sonata-doctrine-extensions 1.15
      */
     public function getTableName()
     {

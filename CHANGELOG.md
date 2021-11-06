@@ -2,6 +2,23 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.15.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.14.0...1.15.0) - 2021-11-06
+### Deprecated
+- [[#365](https://github.com/sonata-project/sonata-doctrine-extensions/pull/365)] Passing null to `DoctrineORMAdapter::getNormalizedIdentifier()` ([@VincentLanglet](https://github.com/VincentLanglet))
+- [[#365](https://github.com/sonata-project/sonata-doctrine-extensions/pull/365)] Passing null to `DoctrineORMAdapter::getUrlSafeIdentifier()` ([@VincentLanglet](https://github.com/VincentLanglet))
+- [[#365](https://github.com/sonata-project/sonata-doctrine-extensions/pull/365)] Passing null to `DoctrinePHPCRAdapter::getNormalizedIdentifier()` ([@VincentLanglet](https://github.com/VincentLanglet))
+- [[#365](https://github.com/sonata-project/sonata-doctrine-extensions/pull/365)] Passing null to `DoctrinePHPCRAdapter::getUrlSafeIdentifier()` ([@VincentLanglet](https://github.com/VincentLanglet))
+- [[#365](https://github.com/sonata-project/sonata-doctrine-extensions/pull/365)] `BaseDocumentManager::__get()` method ([@VincentLanglet](https://github.com/VincentLanglet))
+- [[#365](https://github.com/sonata-project/sonata-doctrine-extensions/pull/365)] `BasePHPCRManager::__get()` method ([@VincentLanglet](https://github.com/VincentLanglet))
+- [[#365](https://github.com/sonata-project/sonata-doctrine-extensions/pull/365)] `BaseEntityManager::__get()` method ([@VincentLanglet](https://github.com/VincentLanglet))
+- [[#365](https://github.com/sonata-project/sonata-doctrine-extensions/pull/365)] `ManagerInterface::getTableName()` method ([@VincentLanglet](https://github.com/VincentLanglet))
+- [[#365](https://github.com/sonata-project/sonata-doctrine-extensions/pull/365)] `ManagerInterface::getConnection()` method ([@VincentLanglet](https://github.com/VincentLanglet))
+- [[#365](https://github.com/sonata-project/sonata-doctrine-extensions/pull/365)] `BaseManager::getTableName()` method ([@VincentLanglet](https://github.com/VincentLanglet))
+- [[#365](https://github.com/sonata-project/sonata-doctrine-extensions/pull/365)] `BasePHPCRManager::getTableName()` method ([@VincentLanglet](https://github.com/VincentLanglet))
+- [[#365](https://github.com/sonata-project/sonata-doctrine-extensions/pull/365)] `BasePHPCRManager::getConnection()` method ([@VincentLanglet](https://github.com/VincentLanglet))
+- [[#365](https://github.com/sonata-project/sonata-doctrine-extensions/pull/365)] `BaseEntityManager::getConnection()` method ([@VincentLanglet](https://github.com/VincentLanglet))
+- [[#365](https://github.com/sonata-project/sonata-doctrine-extensions/pull/365)] `BaseDocumentManager::getConnection()` method ([@VincentLanglet](https://github.com/VincentLanglet))
+
 ## [1.14.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.13.1...1.14.0) - 2021-10-05
 ### Added
 - [[#363](https://github.com/sonata-project/sonata-doctrine-extensions/pull/363)] Added support for Doctrine DBAL 3. ([@jordisala1991](https://github.com/jordisala1991))

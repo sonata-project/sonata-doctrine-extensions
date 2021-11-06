@@ -39,7 +39,7 @@ abstract class BaseEntityManager extends BaseManager
         if ('em' === $name) {
             @trigger_error(
                 'Accessing to the entity manager through the magic getter is deprecated since'
-                .' sonata-project/sonata-doctrine-extensions 1.x and will throw an exception in 2.0.'
+                .' sonata-project/sonata-doctrine-extensions 1.15 and will throw an exception in 2.0.'
                 .' Use the "getObjectManager()" method instead.',
                 \E_USER_DEPRECATED
             );
@@ -53,12 +53,12 @@ abstract class BaseEntityManager extends BaseManager
     /**
      * NEXT_MAJOR: Remove this method.
      *
-     * @deprecated since sonata-project/sonata-doctrine-extensions 1.x
+     * @deprecated since sonata-project/sonata-doctrine-extensions 1.15
      */
     public function getConnection()
     {
         @trigger_error(sprintf(
-            'The "%s()" method is deprecated since sonata-project/sonata-doctrine-extensions 1.x'
+            'The "%s()" method is deprecated since sonata-project/sonata-doctrine-extensions 1.15'
             .' and will be removed in version 2.0. Use "%s" instead.',
             __METHOD__,
             'getEntityManager()->getConnection()'
