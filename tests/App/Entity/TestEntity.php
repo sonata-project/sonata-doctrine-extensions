@@ -25,19 +25,19 @@ abstract class TestEntity
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      *
-     * @var int
+     * @var int|null
      */
-    private $id;
+    public $id;
 
     /**
      * @var mixed
      */
-    private $relation;
+    public $relation;
 
     /**
      * @ORM\Column(type="string", length=200)
      *
      * @var string
      */
-    private $property;
+    public $property = '';
 }

@@ -1,11 +1,13 @@
 parameters:
-	ignoreErrors:
-		- # The class is deprecated and will be removed in NEXT_MAJOR
-			message: "#^Return typehint of method Sonata\\\\Doctrine\\\\Model\\\\PageableManagerInterface\\:\\:getPager\\(\\) has invalid type Sonata\\\\DatagridBundle\\\\Pager\\\\PagerInterface\\.$#"
-			count: 1
-			path: src/Model/PageableManagerInterface.php
-
-		- # The class is deprecated and will be removed in NEXT_MAJOR
-			message: "#^Call to protected method createMock\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\.$#"
-			count: 5
-			path: src/Test/EntityManagerMockFactory.php
+    ignoreErrors:
+        - # The class is deprecated and will be removed in NEXT_MAJOR
+            message: "#^Method Sonata\\\\Doctrine\\\\Model\\\\PageableManagerInterface\\:\\:getPager\\(\\) has invalid return type Sonata\\\\DatagridBundle\\\\Pager\\\\PagerInterface\\.$#"
+            count: 1
+            path: src/Model/PageableManagerInterface.php
+        - # The class is deprecated and will be removed in NEXT_MAJOR
+            message: "#^Call to protected method createMock\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\.$#"
+            count: 5
+            path: src/Test/EntityManagerMockFactory.php
+        - # https://github.com/doctrine/orm/pull/9168
+            message: "#^Property Doctrine\\\\ORM\\\\Mapping\\\\ClassMetadataInfo<object>\\:\\:\\$discriminatorColumn \\(array<string, mixed>\\) in isset\\(\\) is not nullable\\.$#"
+            path: src/Mapper/ORM/DoctrineORMMapper.php
