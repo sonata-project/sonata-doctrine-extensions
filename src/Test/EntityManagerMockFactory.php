@@ -21,13 +21,6 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\Mapping\ClassMetadata;
 use PHPUnit\Framework\TestCase;
 
-@trigger_error(
-    'The '.__NAMESPACE__.'\EntityManagerMockFactory class is deprecated since '.
-    'sonata-project/doctrine-extensions 1.5 in favor of '.
-    __NAMESPACE__.'\EntityManagerMockFactoryTrait, and will be removed in 2.0.',
-    \E_USER_DEPRECATED
-);
-
 /**
  * NEXT_MAJOR: Remove this class.
  *
