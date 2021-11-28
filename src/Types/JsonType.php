@@ -16,16 +16,12 @@ namespace Sonata\Doctrine\Types;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 
-@trigger_error(
-    'The '.__NAMESPACE__.'\JsonType class is deprecated since 1.2 in favor of '.
-    'Doctrine\DBAL\Types\JsonType, and will be removed in 2.0.',
-    \E_USER_DEPRECATED
-);
-
 /**
  * NEXT_MAJOR: Remove this class.
  *
  * Convert a value into a json string to be stored into the persistency layer.
+ *
+ * @deprecated since sonata-project/doctrine-extensions 1.2, to be removed in 2.0. Use JsonType from Doctrine DBAL instead.
  */
 class JsonType extends Type
 {

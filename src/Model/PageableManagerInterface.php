@@ -15,12 +15,6 @@ namespace Sonata\Doctrine\Model;
 
 use Sonata\DatagridBundle\Pager\PagerInterface;
 
-@trigger_error(
-    'The '.__NAMESPACE__.'\PageableManagerInterface class is deprecated since 1.3 in favor of '.
-    'Sonata\DatagridBundle\Pager\PageableInterface, and will be removed in 2.0.',
-    \E_USER_DEPRECATED
-);
-
 /**
  * @author Raphaël Benitte <benitteraphael@gmail.com>
  *
