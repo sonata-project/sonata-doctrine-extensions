@@ -61,37 +61,37 @@ class MockPlatform extends AbstractPlatform
     /**
      * Gets the SQL Snippet used to declare a BLOB column type.
      */
-    public function getBlobTypeDeclarationSQL(array $column)
+    public function getBlobTypeDeclarationSQL(array $column): string
     {
         throw Exception::notSupported(__METHOD__);
     }
 
-    public function getBooleanTypeDeclarationSQL(array $column)
+    public function getBooleanTypeDeclarationSQL(array $column): string
     {
         return '';
     }
 
-    public function getIntegerTypeDeclarationSQL(array $column)
+    public function getIntegerTypeDeclarationSQL(array $column): string
     {
         return '';
     }
 
-    public function getBigIntTypeDeclarationSQL(array $column)
+    public function getBigIntTypeDeclarationSQL(array $column): string
     {
         return '';
     }
 
-    public function getSmallIntTypeDeclarationSQL(array $column)
+    public function getSmallIntTypeDeclarationSQL(array $column): string
     {
         return '';
     }
 
-    public function _getCommonIntegerTypeDeclarationSQL(array $column)
+    public function _getCommonIntegerTypeDeclarationSQL(array $column): string
     {
         return '';
     }
 
-    public function getVarcharTypeDeclarationSQL(array $column)
+    public function getVarcharTypeDeclarationSQL(array $column): string
     {
         return 'DUMMYVARCHAR()';
     }
@@ -102,26 +102,26 @@ class MockPlatform extends AbstractPlatform
     }
 
     /** @override */
-    public function getClobTypeDeclarationSQL(array $column)
+    public function getClobTypeDeclarationSQL(array $column): string
     {
         return 'DUMMYCLOB';
     }
 
-    public function getVarcharDefaultLength()
+    public function getVarcharDefaultLength(): int
     {
         return 255;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return 'mock';
     }
 
-    protected function initializeDoctrineTypeMappings()
+    protected function initializeDoctrineTypeMappings(): void
     {
     }
 
-    protected function getVarcharTypeDeclarationSQLSnippet($length, $fixed)
+    protected function getVarcharTypeDeclarationSQLSnippet($length, $fixed): string
     {
         return '';
     }
