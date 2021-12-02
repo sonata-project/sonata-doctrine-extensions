@@ -46,10 +46,10 @@
         "phpstan/phpstan-strict-rules": "^1.0",
         "phpunit/phpunit": "^9.5",
         "psalm/plugin-phpunit": "^0.16",
-        "symfony/dependency-injection": "^4.4 || ^5.1",
-        "symfony/expression-language": "^4.4 || ^5.1",
-        "symfony/framework-bundle": "^4.4 || ^5.1",
-        "symfony/phpunit-bridge": "^5.1.8",
+        "symfony/dependency-injection": "^4.4 || ^5.3 || ^6.0",
+        "symfony/expression-language": "^4.4 || ^5.3 || ^6.0",
+        "symfony/framework-bundle": "^4.4 || ^5.3 || ^6.0",
+        "symfony/phpunit-bridge": "^6.0",
         "vimeo/psalm": "^4.1"
     },
     "suggest": {
