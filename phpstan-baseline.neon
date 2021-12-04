@@ -8,6 +8,3 @@ parameters:
             message: "#^Call to protected method createMock\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\.$#"
             count: 5
             path: src/Test/EntityManagerMockFactory.php
-        - # https://github.com/doctrine/orm/pull/9168
-            message: "#^Property Doctrine\\\\ORM\\\\Mapping\\\\ClassMetadataInfo<object>\\:\\:\\$discriminatorColumn \\(array<string, mixed>\\) in isset\\(\\) is not nullable\\.$#"
-            path: src/Mapper/ORM/DoctrineORMMapper.php
