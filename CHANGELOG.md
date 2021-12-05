@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.16.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.15.0...1.16.0) - 2021-12-04
+### Added
+- [[#376](https://github.com/sonata-project/sonata-doctrine-extensions/pull/376)] Added support for Symfony 6. ([@jordisala1991](https://github.com/jordisala1991))
+
+### Fixed
+- [[#374](https://github.com/sonata-project/sonata-doctrine-extensions/pull/374)] Deprecation on classes now rely on @deprecated annotation. ([@jordisala1991](https://github.com/jordisala1991))
+
 ## [1.15.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.14.0...1.15.0) - 2021-11-06
 ### Deprecated
 - [[#365](https://github.com/sonata-project/sonata-doctrine-extensions/pull/365)] Passing null to `DoctrineORMAdapter::getNormalizedIdentifier()` ([@VincentLanglet](https://github.com/VincentLanglet))
