@@ -23,9 +23,14 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
-final class Kernel extends BaseKernel
+final class AppKernel extends BaseKernel
 {
     use MicroKernelTrait;
+
+    public function __construct()
+    {
+        parent::__construct('test', true);
+    }
 
     public function registerBundles(): iterable
     {

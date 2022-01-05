@@ -18,10 +18,10 @@ use Sonata\Doctrine\Mapper\Builder\ColumnDefinitionBuilder;
 use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
 use Sonata\Doctrine\Mapper\DoctrineCollector;
 use Sonata\Doctrine\Mapper\ORM\DoctrineORMMapper;
+use Sonata\Doctrine\Tests\App\AppKernel;
 use Sonata\Doctrine\Tests\App\Entity\TestEntity;
 use Sonata\Doctrine\Tests\App\Entity\TestInheritanceEntity;
 use Sonata\Doctrine\Tests\App\Entity\TestRelatedEntity;
-use Sonata\Doctrine\Tests\App\Kernel;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class DoctrineORMMapperTest extends KernelTestCase
@@ -69,6 +69,6 @@ class DoctrineORMMapperTest extends KernelTestCase
      */
     protected static function getKernelClass(): string
     {
-        return Kernel::class;
+        return AppKernel::class;
     }
 }
