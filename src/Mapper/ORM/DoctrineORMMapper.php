@@ -37,6 +37,7 @@ final class DoctrineORMMapper implements EventSubscriber
 
     /**
      * @var array<class-string, int>
+     * @phpstan-var array<class-string, ORMClassMetadata::INHERITANCE_TYPE_*>
      */
     private $inheritanceTypes = [];
 
@@ -125,6 +126,7 @@ final class DoctrineORMMapper implements EventSubscriber
 
     /**
      * @phpstan-param class-string $class
+     * @phpstan-param ORMClassMetadata::INHERITANCE_TYPE_* $type
      *
      * @see ClassMetadata for supported types
      */
