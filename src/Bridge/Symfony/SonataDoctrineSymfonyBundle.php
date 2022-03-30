@@ -13,8 +13,10 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Bridge\Symfony;
 
-// This file and its class alias is required in order to let Symfony Flex
-// autodiscovery to find the bundle.
-// The string "Symfony\Component\HttpKernel\Bundle\Bundle" must also be present.
-// @see https://github.com/symfony/flex/pull/612/files.
+@trigger_error(sprintf(
+    'The %s\SonataDoctrineSymfonyBundle class is deprecated since sonata-project/doctrine-extensions 1.x, to be removed in version 2.0. Use %s instead.',
+    __NAMESPACE__,
+    SonataDoctrineBundle::class
+), \E_USER_DEPRECATED);
+
 class_alias(SonataDoctrineBundle::class, __NAMESPACE__.'\SonataDoctrineSymfonyBundle');
