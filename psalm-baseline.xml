@@ -27,4 +27,10 @@
             <code>PagerInterface</code>
         </UndefinedDocblockClass>
     </file>
+    <!-- NEXT_MAJOR: Remove the PHPCR support -->
+    <file src="src/Adapter/PHPCR/DoctrinePHPCRAdapter.php">
+        <UndefinedClass occurrences="1">
+            <code>DocumentManager</code>
+        </UndefinedClass>
+    </file>
 </files>

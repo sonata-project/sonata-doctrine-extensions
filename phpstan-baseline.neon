@@ -8,3 +8,6 @@ parameters:
             message: "#^Call to protected method createMock\\(\\) of class PHPUnit\\\\Framework\\\\TestCase\\.$#"
             count: 5
             path: src/Test/EntityManagerMockFactory.php
+        - # Support for PHPCR is deprecated and will be removed in NEXT_MAJOR
+            message: "#(class|Class) Doctrine\\\\ODM\\\\PHPCR.*#"
+            path: .

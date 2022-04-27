@@ -16,7 +16,17 @@ namespace Sonata\Doctrine\Document;
 use Doctrine\Persistence\ObjectManager;
 use Sonata\Doctrine\Model\BaseManager;
 
+@trigger_error(
+    'The Sonata\Doctrine\Document\BasePHPCRManager class is deprecated'
+    .' since sonata-project/doctrine-extensions 1.x, to be removed in version 2.0.',
+    \E_USER_DEPRECATED
+);
+
 /**
+ * NEXT_MAJOR: Remove this class.
+ *
+ * @deprecated since 1.x to be remove in 2.0.
+ *
  * @phpstan-template T of object
  * @phpstan-extends BaseManager<T>
  */
