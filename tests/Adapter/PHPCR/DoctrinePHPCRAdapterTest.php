@@ -28,6 +28,13 @@ final class MyDocument
     public $path;
 }
 
+/**
+ * NEXT_MAJOR: Remove this test.
+ *
+ * @group legacy
+ *
+ * @psalm-suppress UndefinedClass
+ */
 final class DoctrinePHPCRAdapterTest extends TestCase
 {
     protected function setUp(): void

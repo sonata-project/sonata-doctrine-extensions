@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Sonata\Doctrine\Mapper\ORM;
 
 use Doctrine\Common\EventSubscriber;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\ClassMetadata as ORMClassMetadata;
 use Doctrine\Persistence\Event\LoadClassMetadataEventArgs;
 use Doctrine\Persistence\Mapping\ClassMetadata;
@@ -199,6 +200,9 @@ final class DoctrineORMMapper implements EventSubscriber
         $this->overrides[$class][$type] = $options;
     }
 
+    /**
+     * @param LoadClassMetadataEventArgs<ClassMetadata<object>, EntityManagerInterface> $eventArgs
+     */
     public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs): void
     {
         $metadata = $eventArgs->getClassMetadata();
