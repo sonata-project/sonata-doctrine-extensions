@@ -41,6 +41,7 @@ class SonataDoctrineExtension extends Extension
         $bundles = $container->getParameter('kernel.bundles');
         \assert(\is_array($bundles));
 
+        // NEXT_MAJOR: Remove this
         if (class_exists(DocumentManager::class) && isset($bundles['DoctrinePHPCRBundle'])) {
             $loader->load('doctrine_phpcr.php');
         }

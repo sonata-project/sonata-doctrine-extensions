@@ -30,7 +30,6 @@
         "doctrine/doctrine-bundle": "^2.0",
         "doctrine/mongodb-odm": "^2.0",
         "doctrine/orm": "^2.5",
-        "doctrine/phpcr-odm": "^1.5.2",
         "friendsofphp/php-cs-fixer": "^3.4",
         "jackalope/jackalope-doctrine-dbal": "^1.0",
         "matthiasnoback/symfony-config-test": "^4.2",
@@ -51,8 +50,7 @@
         "doctrine/annotations": "<1.7",
         "doctrine/doctrine-bundle": "<2.0",
         "doctrine/mongodb-odm": "<2.0",
-        "doctrine/orm": "<2.5",
-        "doctrine/phpcr-odm": "<1.5.2"
+        "doctrine/orm": "<2.5"
     },
     "suggest": {
         "doctrine/orm": "If you use doctrine orm",
