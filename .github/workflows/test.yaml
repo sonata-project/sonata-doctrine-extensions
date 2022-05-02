@@ -45,10 +45,6 @@ jobs:
                       dependencies: lowest
                       allowed-to-fail: false
                       variant: normal
-                    - php-version: '8.1'
-                      dependencies: highest
-                      allowed-to-fail: false
-                      variant: doctrine/phpcr-odm:"1.6.*"
 
         steps:
             - name: Checkout
