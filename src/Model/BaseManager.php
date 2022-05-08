@@ -150,7 +150,7 @@ abstract class BaseManager implements ManagerInterface, ClearableManagerInterfac
     }
 
     /**
-     * NEXT_MAJOR: Remove $objectName parameter along with psalm and phpstan suppresions.
+     * NEXT_MAJOR: Remove $objectName parameter and argument along with psalm and phpstan suppressions.
      *
      * @psalm-suppress TooManyArguments
      */
