@@ -149,8 +149,21 @@ abstract class BaseManager implements ManagerInterface, ClearableManagerInterfac
         return $metadata->table['name'];
     }
 
+    /**
+     * NEXT_MAJOR: Remove $objectName parameter along with psalm and phpstan suppresions.
+     *
+     * @psalm-suppress TooManyArguments
+     */
     public function clear(?string $objectName = null): void
     {
+        if (\func_num_args() > 0) {
+            @trigger_error(sprintf(
+                'Passing an argument to "%s()" method is deprecated since sonata-project/sonata-doctrine-extensions 1.x.',
+                __METHOD__
+            ), \E_USER_DEPRECATED);
+        }
+
+        // @phpstan-ignore-next-line
         $this->getObjectManager()->clear($objectName);
     }
 
