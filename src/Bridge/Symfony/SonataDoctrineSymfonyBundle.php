@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Sonata\Doctrine\Bridge\Symfony;
 
 @trigger_error(sprintf(
-    'The %s\SonataDoctrineSymfonyBundle class is deprecated since sonata-project/doctrine-extensions 1.x, to be removed in version 2.0. Use %s instead.',
+    'The %s\SonataDoctrineSymfonyBundle class is deprecated since sonata-project/doctrine-extensions 1.17, to be removed in version 2.0. Use %s instead.',
     __NAMESPACE__,
     SonataDoctrineBundle::class
 ), \E_USER_DEPRECATED);

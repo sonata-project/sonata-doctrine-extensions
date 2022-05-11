@@ -20,14 +20,14 @@ use Sonata\Doctrine\Adapter\AdapterInterface;
 
 @trigger_error(
     'The Sonata\Doctrine\Adapter\PHPCR\DoctrinePHPCRAdapter class is deprecated'
-    .' since sonata-project/doctrine-extensions 1.x, to be removed in version 2.0.',
+    .' since sonata-project/doctrine-extensions 1.17, to be removed in version 2.0.',
     \E_USER_DEPRECATED
 );
 
 /**
  * NEXT_MAJOR: Remove this class.
  *
- * @deprecated since 1.x to be remove in 2.0.
+ * @deprecated since 1.17 to be remove in 2.0.
  */
 class DoctrinePHPCRAdapter implements AdapterInterface
 {
