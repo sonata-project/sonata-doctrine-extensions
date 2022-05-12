@@ -154,7 +154,7 @@ abstract class BaseManager implements ManagerInterface, ClearableManagerInterfac
     {
         if (\func_num_args() > 0) {
             @trigger_error(sprintf(
-                'Passing an argument to "%s()" method is deprecated since sonata-project/sonata-doctrine-extensions 1.x.',
+                'Passing an argument to "%s()" method is deprecated since sonata-project/sonata-doctrine-extensions 1.17.',
                 __METHOD__
             ), \E_USER_DEPRECATED);
         }

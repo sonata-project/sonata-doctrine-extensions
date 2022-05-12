@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.17.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.16.0...1.17.0) - 2022-05-11
+### Added
+- [[#412](https://github.com/sonata-project/sonata-doctrine-extensions/pull/412)] Added support for `doctrine/persistence` 3 ([@franmomu](https://github.com/franmomu))
+
+### Deprecated
+- [[#412](https://github.com/sonata-project/sonata-doctrine-extensions/pull/412)] Deprecated passing an argument to `ClearableManagerInterface::clear()` ([@franmomu](https://github.com/franmomu))
+- [[#408](https://github.com/sonata-project/sonata-doctrine-extensions/pull/408)] ODM\PHPCR support ([@VincentLanglet](https://github.com/VincentLanglet))
+- [[#406](https://github.com/sonata-project/sonata-doctrine-extensions/pull/406)] Deprecated custom bundle file for flex recipe. ([@jordisala1991](https://github.com/jordisala1991))
+
 ## [1.16.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.15.0...1.16.0) - 2021-12-04
 ### Added
 - [[#376](https://github.com/sonata-project/sonata-doctrine-extensions/pull/376)] Added support for Symfony 6. ([@jordisala1991](https://github.com/jordisala1991))
