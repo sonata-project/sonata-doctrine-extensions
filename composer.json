@@ -22,7 +22,7 @@
     "homepage": "https://github.com/sonata-project/sonata-doctrine-extensions",
     "require": {
         "php": "^8.0",
-        "doctrine/dbal": "^3.1",
+        "doctrine/dbal": "^3.3",
         "doctrine/persistence": "^2.0 || ^3.0"
     },
     "require-dev": {
