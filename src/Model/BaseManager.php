@@ -27,24 +27,12 @@ use Doctrine\Persistence\ObjectRepository;
 abstract class BaseManager implements ManagerInterface, ClearableManagerInterface
 {
     /**
-     * @var ManagerRegistry
-     */
-    protected $registry;
-
-    /**
-     * @var string
-     *
-     * @phpstan-var class-string<T>
-     */
-    protected $class;
-
-    /**
      * @phpstan-param class-string<T> $class
      */
-    public function __construct(string $class, ManagerRegistry $registry)
-    {
-        $this->registry = $registry;
-        $this->class = $class;
+    public function __construct(
+        protected string $class,
+        protected ManagerRegistry $registry
+    ) {
     }
 
     /**
@@ -188,7 +176,7 @@ abstract class BaseManager implements ManagerInterface, ClearableManagerInterfac
             throw new \InvalidArgumentException(sprintf(
                 'Object must be instance of %s, %s given',
                 $this->class,
-                \is_object($object) ? \get_class($object) : \gettype($object)
+                get_debug_type($object)
             ));
         }
     }

@@ -18,7 +18,7 @@ class AdapterChain implements AdapterInterface
     /**
      * @var AdapterInterface[]
      */
-    protected $adapters = [];
+    private $adapters = [];
 
     public function addAdapter(AdapterInterface $adapter): void
     {

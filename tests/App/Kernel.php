@@ -74,12 +74,7 @@ final class Kernel extends BaseKernel
         ]);
     }
 
-    /**
-     * TODO: Add typehint when support for Symfony < 5.1 is dropped.
-     *
-     * @param RoutingConfigurator $routes
-     */
-    protected function configureRoutes($routes): void
+    protected function configureRoutes(RoutingConfigurator $routes): void
     {
     }
 

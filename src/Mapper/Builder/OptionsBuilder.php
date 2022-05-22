@@ -25,15 +25,11 @@ final class OptionsBuilder
      */
     private array $options = [];
 
-    private ?string $type;
-
     /**
      * NEXT_MAJOR: Make the arguments mandatory.
      */
-    private function __construct(?string $type = null, ?string $fieldName = null, ?string $targetEntity = null)
+    private function __construct(private ?string $type = null, ?string $fieldName = null, ?string $targetEntity = null)
     {
-        $this->type = $type;
-
         if (null !== $fieldName) {
             $this->options['fieldName'] = $fieldName;
         }

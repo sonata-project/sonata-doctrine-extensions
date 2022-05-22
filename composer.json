@@ -21,9 +21,9 @@
     ],
     "homepage": "https://github.com/sonata-project/sonata-doctrine-extensions",
     "require": {
-        "php": "^7.4 || ^8.0",
+        "php": "^8.0",
         "doctrine/dbal": "^2.13 || ^3.1",
-        "doctrine/persistence": "^1.3.6 || ^2.0 || ^3.0"
+        "doctrine/persistence": "^2.0 || ^3.0"
     },
     "require-dev": {
         "doctrine/common": "^2.7 || ^3.0",
@@ -41,9 +41,9 @@
         "phpunit/phpunit": "^9.5.13",
         "psalm/plugin-phpunit": "^0.16",
         "rector/rector": "^0.12",
-        "symfony/dependency-injection": "^4.4 || ^5.3 || ^6.0",
-        "symfony/expression-language": "^4.4 || ^5.3 || ^6.0",
-        "symfony/framework-bundle": "^4.4 || ^5.3 || ^6.0",
+        "symfony/dependency-injection": "^5.4 || ^6.0",
+        "symfony/expression-language": "^5.4 || ^6.0",
+        "symfony/framework-bundle": "^5.4 || ^6.0",
         "symfony/phpunit-bridge": "^6.0",
         "vimeo/psalm": "^4.1"
     },
@@ -55,7 +55,7 @@
     },
     "suggest": {
         "doctrine/orm": "If you use doctrine orm",
-        "doctrine/phpcr-odm": "If you use doctrine phpcr",
+        "doctrine/mongodb-odm": "If you use mongo",
         "symfony/framework-bundle": "If you want to use symfony"
     },
     "autoload": {
