@@ -46,10 +46,7 @@ final class BaseManagerTest extends TestCase
      */
     private $objectManager;
 
-    /**
-     * @var ManagerTest
-     */
-    private $manager;
+    private ManagerTest $manager;
 
     protected function setUp(): void
     {

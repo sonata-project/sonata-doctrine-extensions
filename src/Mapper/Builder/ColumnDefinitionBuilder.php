@@ -18,7 +18,7 @@ final class ColumnDefinitionBuilder
     /**
      * @var array<string, mixed>
      */
-    private $options = [];
+    private array $options = [];
 
     private function __construct()
     {

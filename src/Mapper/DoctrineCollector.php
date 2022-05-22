@@ -21,42 +21,39 @@ final class DoctrineCollector
     /**
      * @var array<class-string, array<string, array<array<string, mixed>>>>
      */
-    private $associations = [];
+    private array $associations = [];
 
     /**
      * @var array<class-string, array<string, array<string>>>
      */
-    private $indexes = [];
+    private array $indexes = [];
 
     /**
      * @var array<class-string, array<string, array<string>>>
      */
-    private $uniques = [];
+    private array $uniques = [];
 
     /**
      * @var array<class-string, array<string, class-string>>
      */
-    private $discriminators = [];
+    private array $discriminators = [];
 
     /**
      * @var array<class-string, array<string, mixed>>
      */
-    private $discriminatorColumns = [];
+    private array $discriminatorColumns = [];
 
     /**
      * @var array<class-string, int>
      */
-    private $inheritanceTypes = [];
+    private array $inheritanceTypes = [];
 
     /**
      * @var array<class-string, array<string, array<array<string, mixed>>>>
      */
-    private $overrides = [];
+    private array $overrides = [];
 
-    /**
-     * @var DoctrineCollector
-     */
-    private static $instance;
+    private static ?DoctrineCollector $instance = null;
 
     private function __construct()
     {
