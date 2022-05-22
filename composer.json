@@ -22,7 +22,7 @@
     "homepage": "https://github.com/sonata-project/sonata-doctrine-extensions",
     "require": {
         "php": "^8.0",
-        "doctrine/dbal": "^3.3",
+        "doctrine/dbal": "^3.3.6",
         "doctrine/persistence": "^2.0 || ^3.0"
     },
     "require-dev": {
@@ -31,7 +31,7 @@
         "doctrine/mongodb-odm": "^2.0",
         "doctrine/orm": "^2.5",
         "friendsofphp/php-cs-fixer": "^3.4",
-        "jackalope/jackalope-doctrine-dbal": "^1.0",
+        "jackalope/jackalope-doctrine-dbal": "^1.7",
         "matthiasnoback/symfony-config-test": "^4.2",
         "matthiasnoback/symfony-dependency-injection-test": "^4.0",
         "phpstan/extension-installer": "^1.0",
