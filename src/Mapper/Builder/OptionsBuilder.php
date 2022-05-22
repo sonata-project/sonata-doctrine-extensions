@@ -23,12 +23,9 @@ final class OptionsBuilder
     /**
      * @var array<string, mixed>
      */
-    private $options = [];
+    private array $options = [];
 
-    /**
-     * @var string|null
-     */
-    private $type;
+    private ?string $type;
 
     /**
      * NEXT_MAJOR: Make the arguments mandatory.
