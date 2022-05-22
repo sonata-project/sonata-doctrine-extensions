@@ -11,16 +11,15 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+namespace Symfony\Component\DependencyInjection\Loader\Configurator;
+
 use Sonata\Doctrine\Adapter\ORM\DoctrineORMAdapter;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
-    // Use "service" function for creating references to services when dropping support for Symfony 4.4
     $containerConfigurator->services()
 
         ->set('sonata.doctrine.adapter.doctrine_orm', DoctrineORMAdapter::class)
             ->args([
-                new ReferenceConfigurator('doctrine'),
+                service('doctrine'),
             ]);
 };

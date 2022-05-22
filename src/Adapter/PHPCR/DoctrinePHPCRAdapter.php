@@ -31,14 +31,8 @@ use Sonata\Doctrine\Adapter\AdapterInterface;
  */
 class DoctrinePHPCRAdapter implements AdapterInterface
 {
-    /**
-     * @var ManagerRegistry
-     */
-    protected $registry;
-
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(private ManagerRegistry $registry)
     {
-        $this->registry = $registry;
     }
 
     public function getNormalizedIdentifier($model)
@@ -62,7 +56,7 @@ class DoctrinePHPCRAdapter implements AdapterInterface
             ));
         }
 
-        $manager = $this->registry->getManagerForClass(\get_class($model));
+        $manager = $this->registry->getManagerForClass($model::class);
 
         if (!$manager instanceof DocumentManager) {
             return null;
@@ -72,7 +66,7 @@ class DoctrinePHPCRAdapter implements AdapterInterface
             return null;
         }
 
-        $class = $manager->getClassMetadata(\get_class($model));
+        $class = $manager->getClassMetadata($model::class);
 
         \assert($class instanceof ClassMetadata);
 

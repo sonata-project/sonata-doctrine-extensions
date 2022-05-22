@@ -22,14 +22,8 @@ use Sonata\Doctrine\Adapter\AdapterInterface;
  */
 class DoctrineORMAdapter implements AdapterInterface
 {
-    /**
-     * @var ManagerRegistry
-     */
-    protected $registry;
-
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(private ManagerRegistry $registry)
     {
-        $this->registry = $registry;
     }
 
     public function getNormalizedIdentifier($model)
@@ -53,7 +47,7 @@ class DoctrineORMAdapter implements AdapterInterface
             ));
         }
 
-        $manager = $this->registry->getManagerForClass(\get_class($model));
+        $manager = $this->registry->getManagerForClass($model::class);
 
         if (!$manager instanceof EntityManagerInterface) {
             return null;

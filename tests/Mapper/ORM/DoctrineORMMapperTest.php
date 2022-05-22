@@ -52,14 +52,7 @@ class DoctrineORMMapperTest extends KernelTestCase
     {
         self::bootKernel();
 
-        /**
-         * TODO: Simplify when Symfony 4.4 support is dropped.
-         *
-         * @phpstan-ignore-next-line
-         * @psalm-suppress UndefinedPropertyFetch
-         */
-        $container = method_exists($this, 'getContainer') ? static::getContainer() : static::$container;
-        $mapper = $container->get('sonata.doctrine.mapper');
+        $mapper = static::getContainer()->get('sonata.doctrine.mapper');
 
         static::assertInstanceOf(DoctrineORMMapper::class, $mapper);
     }
