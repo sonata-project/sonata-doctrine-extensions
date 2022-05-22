@@ -26,12 +26,11 @@
         "doctrine/persistence": "^2.5 || ^3.0"
     },
     "require-dev": {
-        "doctrine/common": "^2.7 || ^3.0",
+        "doctrine/common": "^3.0",
         "doctrine/doctrine-bundle": "^2.6",
         "doctrine/mongodb-odm": "^2.2",
         "doctrine/orm": "^2.10",
         "friendsofphp/php-cs-fixer": "^3.4",
-        "jackalope/jackalope-doctrine-dbal": "^1.7.6",
         "matthiasnoback/symfony-config-test": "^4.2",
         "matthiasnoback/symfony-dependency-injection-test": "^4.2.1",
         "phpstan/extension-installer": "^1.0",
