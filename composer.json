@@ -54,8 +54,8 @@
         "doctrine/orm": "<2.5"
     },
     "suggest": {
-        "doctrine/orm": "If you use doctrine orm",
         "doctrine/mongodb-odm": "If you use mongo",
+        "doctrine/orm": "If you use doctrine orm",
         "symfony/framework-bundle": "If you want to use symfony"
     },
     "autoload": {
