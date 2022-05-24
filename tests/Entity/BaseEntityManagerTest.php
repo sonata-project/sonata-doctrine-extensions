@@ -50,18 +50,6 @@ final class BaseEntityManagerTest extends TestCase
         static::assertSame('classname', $this->manager->getClass());
     }
 
-    /**
-     * NEXT_MAJOR: Remove this test.
-     */
-    public function testException(): void
-    {
-        $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('The property exception does not exists');
-
-        // @phpstan-ignore-next-line
-        $this->manager->exception;
-    }
-
     public function testExceptionOnNonMappedEntity(): void
     {
         $this->expectException(\RuntimeException::class);
@@ -70,19 +58,6 @@ final class BaseEntityManagerTest extends TestCase
         $this->registry->expects(static::once())->method('getManagerForClass')->willReturn(null);
 
         $this->manager->getObjectManager();
-    }
-
-    /**
-     * NEXT_MAJOR: Remove this test.
-     *
-     * @group legacy
-     */
-    public function testGetEntityManager(): void
-    {
-        $this->registry->expects(static::once())->method('getManagerForClass')->willReturn($this->objectManager);
-
-        // @phpstan-ignore-next-line
-        $this->manager->em;
     }
 
     public function testGetRepository(): void

@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Document;
 
-use Doctrine\DBAL\Connection;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\Persistence\ObjectManager;
 use Sonata\Doctrine\Model\BaseManager;
@@ -27,41 +26,6 @@ use Sonata\Doctrine\Model\BaseManager;
 abstract class BaseDocumentManager extends BaseManager
 {
     /**
-     * Make sure the code is compatible with legacy code.
-     *
-     * NEXT_MAJOR: Remove the magic getter.
-     *
-     * @param string $name
-     *
-     * @return mixed
-     */
-    public function __get($name)
-    {
-        if ('dm' === $name) {
-            @trigger_error(
-                'Accessing to the document manager through the magic getter is deprecated since'
-                .' sonata-project/sonata-doctrine-extensions 1.15 and will throw an exception in 2.0.'
-                .' Use the "getObjectManager()" method instead.',
-                \E_USER_DEPRECATED
-            );
-
-            return $this->getObjectManager();
-        }
-
-        throw new \RuntimeException(sprintf('The property %s does not exists', $name));
-    }
-
-    /**
-     * NEXT_MAJOR: Remove this method.
-     *
-     * @deprecated since sonata-project/sonata-doctrine-extensions 1.15
-     */
-    public function getConnection(): Connection
-    {
-        throw new \LogicException('MongoDB does not use a database connection.');
-    }
-
-    /**
      * @return DocumentManager
      */
     public function getDocumentManager(): ObjectManager
@@ -73,5 +37,3 @@ abstract class BaseDocumentManager extends BaseManager
         return $dm;
     }
 }
-
-class_exists(\Sonata\CoreBundle\Model\BaseDocumentManager::class);

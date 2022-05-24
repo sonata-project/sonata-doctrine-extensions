@@ -69,16 +69,8 @@ final class DoctrineORMMapper implements EventSubscriber
      *
      * @phpstan-param class-string $class
      */
-    public function addAssociation(string $class, string $type, $options): void
+    public function addAssociation(string $class, string $type, array $options): void
     {
-        // NEXT_MAJOR: Move array check to method signature
-        if (!\is_array($options)) {
-            @trigger_error(sprintf(
-                'Passing other type than array as argument 3 for method %s() is deprecated since sonata-project/doctrine-extensions 1.8. It will accept only array in version 2.0.',
-                __METHOD__
-            ), \E_USER_DEPRECATED);
-        }
-
         if (!isset($this->associations[$class])) {
             $this->associations[$class] = [];
         }
@@ -110,16 +102,8 @@ final class DoctrineORMMapper implements EventSubscriber
      *
      * @phpstan-param class-string $class
      */
-    public function addDiscriminatorColumn(string $class, $columnDef): void
+    public function addDiscriminatorColumn(string $class, array $columnDef): void
     {
-        // NEXT_MAJOR: Move array check to method signature
-        if (!\is_array($columnDef)) {
-            @trigger_error(sprintf(
-                'Passing other type than array as argument 2 for method %s() is deprecated since sonata-project/doctrine-extensions 1.8. It will accept only array in version 2.0.',
-                __METHOD__
-            ), \E_USER_DEPRECATED);
-        }
-
         if (!isset($this->discriminatorColumns[$class])) {
             $this->discriminatorColumns[$class] = $columnDef;
         }
@@ -183,16 +167,8 @@ final class DoctrineORMMapper implements EventSubscriber
      *
      * @phpstan-param class-string $class
      */
-    public function addOverride(string $class, string $type, $options): void
+    public function addOverride(string $class, string $type, array $options): void
     {
-        // NEXT_MAJOR: Move array check to method signature
-        if (!\is_array($options)) {
-            @trigger_error(sprintf(
-                'Passing other type than array as argument 3 for method %s() is deprecated since sonata-project/doctrine-extensions 1.8. It will accept only array in version 2.0.',
-                __METHOD__
-            ), \E_USER_DEPRECATED);
-        }
-
         if (!isset($this->overrides[$class])) {
             $this->overrides[$class] = [];
         }

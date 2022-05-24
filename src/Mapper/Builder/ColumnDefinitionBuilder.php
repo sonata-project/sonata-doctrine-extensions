@@ -30,11 +30,9 @@ final class ColumnDefinitionBuilder
     }
 
     /**
-     * @param mixed $value
-     *
      * @return $this
      */
-    public function add(string $key, $value): self
+    public function add(string $key, mixed $value): self
     {
         $this->options[$key] = $value;
 
