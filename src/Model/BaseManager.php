@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Model;
 
-use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Persistence\ObjectRepository;
@@ -70,15 +69,8 @@ abstract class BaseManager implements ManagerInterface, ClearableManagerInterfac
         return $this->getRepository()->findBy($criteria, $orderBy, $limit, $offset);
     }
 
-    public function findOneBy(array $criteria, ?array $orderBy = null): ?object
+    public function findOneBy(array $criteria): ?object
     {
-        if (null !== $orderBy) {
-            @trigger_error(
-                'The $orderBy argument of '.__METHOD__.' is deprecated since sonata-project/doctrine-extensions 1.4, to be removed in 2.0.',
-                \E_USER_DEPRECATED
-            );
-        }
-
         return $this->getRepository()->findOneBy($criteria);
     }
 
@@ -114,41 +106,9 @@ abstract class BaseManager implements ManagerInterface, ClearableManagerInterfac
         }
     }
 
-    /**
-     * NEXT_MAJOR: Remove this method.
-     *
-     * @deprecated since sonata-project/sonata-doctrine-extensions 1.15
-     */
-    public function getTableName(): string
+    public function clear(): void
     {
-        @trigger_error(sprintf(
-            'The "%s()" method is deprecated since sonata-project/sonata-doctrine-extensions 1.15'
-            .' and will be removed in version 2.0.',
-            __METHOD__
-        ), \E_USER_DEPRECATED);
-
-        $metadata = $this->getObjectManager()->getClassMetadata($this->class);
-        \assert($metadata instanceof ClassMetadataInfo);
-
-        return $metadata->table['name'];
-    }
-
-    /**
-     * NEXT_MAJOR: Remove $objectName parameter and argument along with psalm and phpstan suppressions.
-     *
-     * @psalm-suppress TooManyArguments
-     */
-    public function clear(?string $objectName = null): void
-    {
-        if (\func_num_args() > 0) {
-            @trigger_error(sprintf(
-                'Passing an argument to "%s()" method is deprecated since sonata-project/sonata-doctrine-extensions 1.17.',
-                __METHOD__
-            ), \E_USER_DEPRECATED);
-        }
-
-        // @phpstan-ignore-next-line
-        $this->getObjectManager()->clear($objectName);
+        $this->getObjectManager()->clear();
     }
 
     /**
@@ -164,13 +124,11 @@ abstract class BaseManager implements ManagerInterface, ClearableManagerInterfac
     }
 
     /**
-     * @param object $object
-     *
      * @throws \InvalidArgumentException
      *
      * @phpstan-param T $object
      */
-    protected function checkObject($object): void
+    protected function checkObject(object $object): void
     {
         if (!$object instanceof $this->class) {
             throw new \InvalidArgumentException(sprintf(
@@ -181,5 +139,3 @@ abstract class BaseManager implements ManagerInterface, ClearableManagerInterfac
         }
     }
 }
-
-class_exists(\Sonata\CoreBundle\Model\BaseManager::class);

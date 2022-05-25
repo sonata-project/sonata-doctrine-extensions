@@ -195,25 +195,4 @@ final class OptionsBuilderTest extends TestCase
         OptionsBuilder::createOneToOne('groups', 'App\Entity\Group')
             ->addOrder('name', 'DESC');
     }
-
-    /**
-     * @group legacy
-     */
-    public function testCreate(): void
-    {
-        $builder = OptionsBuilder::create()
-            ->add('foo', 'bar')
-            ->add('bar', 'foo')
-            ->add('foobar', [
-                'foo', 'bar',
-            ]);
-
-        static::assertSame([
-            'foo' => 'bar',
-            'bar' => 'foo',
-            'foobar' => [
-                'foo', 'bar',
-            ],
-        ], $builder->getOptions());
-    }
 }

@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Model;
 
-use Doctrine\DBAL\Connection;
-
 /**
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  *
@@ -53,12 +51,11 @@ interface ManagerInterface
     /**
      * Find a single entity by a set of criteria.
      *
-     * @param array<string, mixed>       $criteria
-     * @param array<string, string>|null $orderBy
+     * @param array<string, mixed> $criteria
      *
      * @phpstan-return T|null
      */
-    public function findOneBy(array $criteria, ?array $orderBy = null): ?object;
+    public function findOneBy(array $criteria): ?object;
 
     /**
      * Finds an entity by its primary key / identifier.
@@ -95,20 +92,4 @@ interface ManagerInterface
      * @phpstan-param T $entity
      */
     public function delete(object $entity, bool $andFlush = true): void;
-
-    /**
-     * Get the related table name.
-     *
-     * NEXT_MAJOR: Remove this ORM-related method from the interface.
-     */
-    public function getTableName(): string;
-
-    /**
-     * Get the DB driver connection.
-     *
-     * NEXT_MAJOR: Remove this ORM-related method from the interface.
-     */
-    public function getConnection(): Connection;
 }
-
-interface_exists(\Sonata\CoreBundle\Model\ManagerInterface::class);

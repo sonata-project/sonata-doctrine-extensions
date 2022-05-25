@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Bridge\Symfony\DependencyInjection;
 
-use Doctrine\ODM\PHPCR\DocumentManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -23,7 +22,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 /**
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
-class SonataDoctrineExtension extends Extension
+final class SonataDoctrineExtension extends Extension
 {
     /**
      * @param mixed[] $configs
@@ -40,10 +39,5 @@ class SonataDoctrineExtension extends Extension
 
         $bundles = $container->getParameter('kernel.bundles');
         \assert(\is_array($bundles));
-
-        // NEXT_MAJOR: Remove this
-        if (class_exists(DocumentManager::class) && isset($bundles['DoctrinePHPCRBundle'])) {
-            $loader->load('doctrine_phpcr.php');
-        }
     }
 }

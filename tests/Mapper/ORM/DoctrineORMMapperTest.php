@@ -31,7 +31,7 @@ class DoctrineORMMapperTest extends KernelTestCase
         $options = OptionsBuilder::createManyToOne('relation', TestRelatedEntity::class)
             ->add('joinColumns', [['referencedColumnName' => 'id']]);
 
-        $override = OptionsBuilder::create()
+        $override = OptionsBuilder::createOneToOne('foo', 'bar')
             ->add('fieldName', 'property')
             ->add('length', 100);
 

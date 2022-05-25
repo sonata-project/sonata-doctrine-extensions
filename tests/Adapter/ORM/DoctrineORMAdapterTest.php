@@ -28,51 +28,6 @@ final class DoctrineORMAdapterTest extends TestCase
         }
     }
 
-    /**
-     * @dataProvider getWrongEntities
-     *
-     * @param mixed $entity
-     */
-    public function testNormalizedIdentifierWithInvalidEntity($entity): void
-    {
-        $registry = $this->createMock(ManagerRegistry::class);
-        $adapter = new DoctrineORMAdapter($registry);
-
-        $this->expectException(\RuntimeException::class);
-
-        $adapter->getNormalizedIdentifier($entity);
-    }
-
-    /**
-     * @return iterable<array-key, array{mixed}>
-     */
-    public function getWrongEntities(): iterable
-    {
-        yield [0];
-        yield [1];
-        yield [false];
-        yield [true];
-        yield [[]];
-        yield [''];
-        yield ['sonata-project'];
-    }
-
-    /**
-     * NEXT_MAJOR: Remove this test.
-     *
-     * @group legacy
-     *
-     * @psalm-suppress NullArgument
-     */
-    public function testNormalizedIdentifierWithNull(): void
-    {
-        $registry = $this->createMock(ManagerRegistry::class);
-        $adapter = new DoctrineORMAdapter($registry);
-
-        // @phpstan-ignore-next-line
-        static::assertNull($adapter->getNormalizedIdentifier(null));
-    }
-
     public function testNormalizedIdentifierWithNoManager(): void
     {
         $registry = $this->createMock(ManagerRegistry::class);

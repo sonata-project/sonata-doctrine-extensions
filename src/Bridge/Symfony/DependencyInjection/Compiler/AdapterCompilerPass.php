@@ -35,25 +35,10 @@ final class AdapterCompilerPass implements CompilerPassInterface
         } else {
             $container->removeDefinition('sonata.doctrine.adapter.doctrine_orm');
         }
-
-        // NEXT_MAJOR: Remove this code.
-        if ($this->isDoctrinePHPCRLoaded($container)) {
-            $definition->addMethodCall('addAdapter', [new Reference('sonata.doctrine.adapter.doctrine_phpcr')]);
-        } else {
-            $container->removeDefinition('sonata.doctrine.adapter.doctrine_phpcr');
-        }
     }
 
     private function isDoctrineOrmLoaded(ContainerBuilder $container): bool
     {
         return $container->has('doctrine') && $container->has('sonata.doctrine.adapter.doctrine_orm');
-    }
-
-    /**
-     * NEXT_MAJOR: Remove this method.
-     */
-    private function isDoctrinePHPCRLoaded(ContainerBuilder $container): bool
-    {
-        return $container->has('doctrine_phpcr') && $container->has('sonata.doctrine.adapter.doctrine_phpcr');
     }
 }

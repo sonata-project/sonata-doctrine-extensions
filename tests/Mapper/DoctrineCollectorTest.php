@@ -49,10 +49,10 @@ class DoctrineCollectorTest extends TestCase
         $collector->addInheritanceType(\stdClass::class, ClassMetadataInfo::INHERITANCE_TYPE_SINGLE_TABLE);
         $collector->addDiscriminatorColumn(\stdClass::class, ColumnDefinitionBuilder::create()
             ->add('columnDef', ''));
-        $collector->addAssociation(\stdClass::class, 'type', OptionsBuilder::create()
+        $collector->addAssociation(\stdClass::class, 'type', OptionsBuilder::createOneToOne('foo', 'bar')
             ->add('foo', 'bar'));
         $collector->addDiscriminator(\stdClass::class, 'key', \stdClass::class);
-        $collector->addOverride(\stdClass::class, 'type', OptionsBuilder::create()
+        $collector->addOverride(\stdClass::class, 'type', OptionsBuilder::createOneToOne('foo', 'bar')
             ->add('foo', 'bar'));
 
         $collector->clear();

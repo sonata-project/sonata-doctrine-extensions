@@ -25,39 +25,19 @@ final class OptionsBuilder
      */
     private array $options = [];
 
-    /**
-     * NEXT_MAJOR: Make the arguments mandatory.
-     */
     private function __construct(
-        private ?string $type = null,
-        ?string $fieldName = null,
-        ?string $targetEntity = null
+        private string $type,
+        string $fieldName,
+        string $targetEntity
     ) {
-        if (null !== $fieldName) {
-            $this->options['fieldName'] = $fieldName;
-        }
-
-        if (null !== $targetEntity) {
-            $this->options['targetEntity'] = $targetEntity;
-        }
+        $this->options['fieldName'] = $fieldName;
+        $this->options['targetEntity'] = $targetEntity;
     }
 
     /**
-     * NEXT_MAJOR: Remove this method.
-     *
-     * @deprecated since sonata-project/doctrine-extensions 1.6, to be removed in 2.0.
-     */
-    public static function create(): self
-    {
-        return new self();
-    }
-
-    /**
-     * @param mixed $value
-     *
      * @return $this
      */
-    public function add(string $key, $value): self
+    public function add(string $key, mixed $value): self
     {
         $this->options[$key] = $value;
 
