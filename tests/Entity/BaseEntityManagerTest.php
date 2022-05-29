@@ -57,7 +57,7 @@ final class BaseEntityManagerTest extends TestCase
 
         $this->registry->expects(static::once())->method('getManagerForClass')->willReturn(null);
 
-        $this->manager->getObjectManager();
+        $this->manager->clear(); // To trigger a getObjectManager call
     }
 
     public function testGetRepository(): void
