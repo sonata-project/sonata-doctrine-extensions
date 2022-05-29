@@ -48,6 +48,11 @@ class DoctrineORMMapperTest extends KernelTestCase
         $collector->addOverride(TestEntity::class, 'setAttributeOverride', $override);
     }
 
+    /**
+     * @psalm-suppress InternalMethod
+     *
+     * @see https://github.com/symfony/symfony/issues/46483
+     */
     public function testDoctrineMappingLoaded(): void
     {
         self::bootKernel();
