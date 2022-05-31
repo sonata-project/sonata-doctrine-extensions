@@ -41,10 +41,10 @@
         "phpunit/phpunit": "^9.5.13",
         "psalm/plugin-phpunit": "^0.16",
         "rector/rector": "^0.12",
-        "symfony/dependency-injection": "^4.4 || ^5.3 || ^6.0",
-        "symfony/expression-language": "^4.4 || ^5.3 || ^6.0",
-        "symfony/framework-bundle": "^4.4 || ^5.3 || ^6.0",
-        "symfony/phpunit-bridge": "^6.0",
+        "symfony/dependency-injection": "^4.4 || ^5.4 || ^6.0",
+        "symfony/expression-language": "^4.4 || ^5.4 || ^6.0",
+        "symfony/framework-bundle": "^4.4 || ^5.4 || ^6.0",
+        "symfony/phpunit-bridge": "^6.1",
         "vimeo/psalm": "^4.1"
     },
     "conflict": {
