@@ -45,6 +45,7 @@
         "symfony/expression-language": "^5.4 || ^6.0",
         "symfony/framework-bundle": "^5.4 || ^6.0",
         "symfony/phpunit-bridge": "^6.0",
+        "symfony/phpunit-bridge": "^6.1",
         "vimeo/psalm": "^4.1"
     },
     "conflict": {
