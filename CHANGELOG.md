@@ -2,6 +2,16 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.0.0-alpha-1](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.x...2.0.0-alpha-1) - 2022-06-14
+### Changed
+- [[#423](https://github.com/sonata-project/sonata-doctrine-extensions/pull/423)] Visibility of BaseManager::getObjectManager to protected ([@VincentLanglet](https://github.com/VincentLanglet))
+
+### Removed
+- [[#416](https://github.com/sonata-project/sonata-doctrine-extensions/pull/416)] Support for doctrine/persistence 1 ([@VincentLanglet](https://github.com/VincentLanglet))
+- [[#416](https://github.com/sonata-project/sonata-doctrine-extensions/pull/416)] Support for php 7.4 ([@VincentLanglet](https://github.com/VincentLanglet))
+
+See UPGRADE-2.0.md for all the changes
+
 ## [1.17.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.16.0...1.17.0) - 2022-05-11
 ### Added
 - [[#412](https://github.com/sonata-project/sonata-doctrine-extensions/pull/412)] Added support for `doctrine/persistence` 3 ([@franmomu](https://github.com/franmomu))
