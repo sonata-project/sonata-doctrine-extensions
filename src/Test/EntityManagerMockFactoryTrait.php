@@ -21,6 +21,11 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\Mapping\ClassMetadata;
 use PHPUnit\Framework\MockObject\MockObject;
 
+/**
+ * NEXT_MAJOR: Remove this class.
+ *
+ * @deprecated since sonata-project/doctrine-extensions 1.x, to be removed in 2.0.
+ */
 trait EntityManagerMockFactoryTrait
 {
     /**
