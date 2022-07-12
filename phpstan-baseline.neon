@@ -11,3 +11,6 @@ parameters:
         - # Support for PHPCR is deprecated and will be removed in NEXT_MAJOR
             message: "#(class|Class) Doctrine\\\\ODM\\\\PHPCR.*#"
             path: .
+        - # Trait is deprecated and will be removed in NEXT_MAJOR
+            message: "#^Trait Sonata\\\\Doctrine\\\\Test\\\\EntityManagerMockFactoryTrait is used zero times and is not analysed\\.$#"
+            path: src/Test/EntityManagerMockFactoryTrait.php
