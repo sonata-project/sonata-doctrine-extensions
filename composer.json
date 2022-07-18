@@ -39,7 +39,7 @@
         "phpstan/phpstan-strict-rules": "^1.0",
         "phpunit/phpunit": "^9.5.13",
         "psalm/plugin-phpunit": "^0.16",
-        "rector/rector": "^0.12",
+        "rector/rector": "^0.13",
         "symfony/dependency-injection": "^5.4 || ^6.1",
         "symfony/doctrine-bridge": "^5.4 || ^6.1",
         "symfony/expression-language": "^5.4 || ^6.1",
@@ -69,6 +69,10 @@
         }
     },
     "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "phpstan/extension-installer": true
+        },
         "sort-packages": true
     }
 }
