@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [2.0.0-rc-1](https://github.com/sonata-project/sonata-doctrine-extensions/compare/2.0.0-alpha1...2.0.0-rc-1) - 2022-07-28
+## [2.0.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/2.0.0-alpha1...2.0.0) - 2022-07-28
 ### Removed
 - [[#429](https://github.com/sonata-project/sonata-doctrine-extensions/pull/429)] EntityManagerMockFactoryTrait ([@VincentLanglet](https://github.com/VincentLanglet))
 
