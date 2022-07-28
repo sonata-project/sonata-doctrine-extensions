@@ -19,8 +19,8 @@ Doctrine2 behavioral extensions
 
 Branch | Github Actions | Code Coverage |
 ------ | -------------- | ------------- |
-1.x | [![Test][test_stable_badge]][test_stable_link] | [![Coverage Status][coverage_stable_badge]][coverage_stable_link] |
-2.x | [![Test][test_unstable_badge]][test_unstable_link] | [![Coverage Status][coverage_unstable_badge]][coverage_unstable_link] |
+2.x | [![Test][test_stable_badge]][test_stable_link] | [![Coverage Status][coverage_stable_badge]][coverage_stable_link] |
+3.x | [![Test][test_unstable_badge]][test_unstable_link] | [![Coverage Status][coverage_unstable_badge]][coverage_unstable_link] |
 
 ## Support
 
@@ -33,13 +33,13 @@ If you think you found a bug or you have a feature idea to propose, feel free to
 
 This package is available under the [MIT license](LICENSE).
 
-[test_stable_badge]: https://github.com/sonata-project/sonata-doctrine-extensions/workflows/Test/badge.svg?branch=1.x
-[test_stable_link]: https://github.com/sonata-project/sonata-doctrine-extensions/actions?query=workflow:test+branch:1.x
-[test_unstable_badge]: https://github.com/sonata-project/sonata-doctrine-extensions/workflows/Test/badge.svg?branch=2.x
-[test_unstable_link]: https://github.com/sonata-project/sonata-doctrine-extensions/actions?query=workflow:test+branch:2.x
-[coverage_stable_badge]: https://codecov.io/gh/sonata-project/sonata-doctrine-extensions/branch/1.x/graph/badge.svg
-[coverage_stable_link]: https://codecov.io/gh/sonata-project/sonata-doctrine-extensions/branch/1.x
-[coverage_unstable_badge]: https://codecov.io/gh/sonata-project/sonata-doctrine-extensions/branch/2.x/graph/badge.svg
-[coverage_unstable_link]: https://codecov.io/gh/sonata-project/sonata-doctrine-extensions/branch/2.x
+[test_stable_badge]: https://github.com/sonata-project/sonata-doctrine-extensions/workflows/Test/badge.svg?branch=2.x
+[test_stable_link]: https://github.com/sonata-project/sonata-doctrine-extensions/actions?query=workflow:test+branch:2.x
+[test_unstable_badge]: https://github.com/sonata-project/sonata-doctrine-extensions/workflows/Test/badge.svg?branch=3.x
+[test_unstable_link]: https://github.com/sonata-project/sonata-doctrine-extensions/actions?query=workflow:test+branch:3.x
+[coverage_stable_badge]: https://codecov.io/gh/sonata-project/sonata-doctrine-extensions/branch/2.x/graph/badge.svg
+[coverage_stable_link]: https://codecov.io/gh/sonata-project/sonata-doctrine-extensions/branch/2.x
+[coverage_unstable_badge]: https://codecov.io/gh/sonata-project/sonata-doctrine-extensions/branch/3.x/graph/badge.svg
+[coverage_unstable_link]: https://codecov.io/gh/sonata-project/sonata-doctrine-extensions/branch/3.x
 [shepherd_stable_badge]: https://shepherd.dev/github/sonata-project/sonata-doctrine-extensions/coverage.svg
 [shepherd_stable_link]: https://shepherd.dev/github/sonata-project/sonata-doctrine-extensions
