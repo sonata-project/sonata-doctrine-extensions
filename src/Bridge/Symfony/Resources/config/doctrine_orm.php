@@ -16,10 +16,11 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 use Sonata\Doctrine\Adapter\ORM\DoctrineORMAdapter;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
+    // Use "service" function for creating references to services when dropping support for Symfony 4.4 (and add conflict)
     $containerConfigurator->services()
 
         ->set('sonata.doctrine.adapter.doctrine_orm', DoctrineORMAdapter::class)
             ->args([
-                service('doctrine'),
+                new ReferenceConfigurator('doctrine'),
             ]);
 };
