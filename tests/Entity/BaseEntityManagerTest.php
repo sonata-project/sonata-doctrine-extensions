@@ -20,6 +20,7 @@ use Doctrine\Persistence\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sonata\Doctrine\Entity\BaseEntityManager;
+use Sonata\Doctrine\Exception\TransactionException;
 
 final class BaseEntityManagerTest extends TestCase
 {
@@ -98,5 +99,55 @@ final class BaseEntityManagerTest extends TestCase
         $m->setAccessible(true);
 
         static::assertInstanceOf(EntityRepository::class, $m->invoke($this->manager));
+    }
+
+    public function testTransactionsFields(): void
+    {
+        // Mocks
+        $entityManagerMock = $this->createMock(EntityManagerInterface::class);
+        $entityManagerMock
+            ->expects(static::once())
+            ->method('beginTransaction');
+
+        $entityManagerMock
+            ->expects(static::once())
+            ->method('commit');
+
+        $entityManagerMock
+            ->expects(static::once())
+            ->method('rollback');
+
+        $baseEntityManagerMock = $this->createPartialMock(BaseEntityManager::class, ['getEntityManager']);
+        $baseEntityManagerMock
+            ->method('getEntityManager')
+            ->willReturn($entityManagerMock);
+
+        // Run code
+        $baseEntityManagerMock->beginTransaction();
+        $baseEntityManagerMock->commit();
+        $baseEntityManagerMock->rollBack();
+    }
+
+    public function testTransactionException(): void
+    {
+        // Asserts exception
+        static::expectException(TransactionException::class);
+        static::expectExceptionMessage('Foo message');
+        static::expectExceptionCode(123);
+
+        // Mocks
+        $entityManagerMock = $this->createMock(EntityManagerInterface::class);
+        $entityManagerMock
+            ->expects(static::once())
+            ->method('commit')
+            ->willThrowException(new TransactionException('Foo message', 123, new \Exception()));
+
+        $baseEntityManagerMock = $this->createPartialMock(BaseEntityManager::class, ['getEntityManager']);
+        $baseEntityManagerMock
+            ->method('getEntityManager')
+            ->willReturn($entityManagerMock);
+
+        // Run code
+        $baseEntityManagerMock->commit();
     }
 }
