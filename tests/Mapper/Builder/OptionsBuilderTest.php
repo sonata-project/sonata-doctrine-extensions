@@ -150,7 +150,6 @@ final class OptionsBuilderTest extends TestCase
                 'name' => 'another_parent_id',
                 'referencedColumnName' => 'id',
                 'onDelete' => 'CASCADE',
-
             ], ],
         ], $builder->getOptions());
     }
