@@ -15,7 +15,9 @@ namespace Sonata\Doctrine\Entity;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
+use Sonata\Doctrine\Exception\TransactionException;
 use Sonata\Doctrine\Model\BaseManager;
+use Sonata\Doctrine\Model\TransactionalManagerInterface;
 
 /**
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
@@ -23,7 +25,7 @@ use Sonata\Doctrine\Model\BaseManager;
  * @phpstan-template T of object
  * @phpstan-extends BaseManager<T>
  */
-abstract class BaseEntityManager extends BaseManager
+abstract class BaseEntityManager extends BaseManager implements TransactionalManagerInterface
 {
     /**
      * Make sure the code is compatible with legacy code.
@@ -76,6 +78,25 @@ abstract class BaseEntityManager extends BaseManager
         \assert($objectManager instanceof EntityManagerInterface);
 
         return $objectManager;
+    }
+
+    public function beginTransaction(): void
+    {
+        $this->getEntityManager()->beginTransaction();
+    }
+
+    public function commit(): void
+    {
+        try {
+            $this->getEntityManager()->commit();
+        } catch (\Throwable $exception) {
+            throw new TransactionException($exception->getMessage(), (int) $exception->getCode(), $exception);
+        }
+    }
+
+    public function rollBack(): void
+    {
+        $this->getEntityManager()->rollback();
     }
 
     /**
