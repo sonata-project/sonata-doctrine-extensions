@@ -20,6 +20,16 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 See UPGRADE-2.0.md for all the changes
 
+## [1.18.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.17.0...1.18.0) - 2022-08-16
+### Added
+- [[#443](https://github.com/sonata-project/sonata-doctrine-extensions/pull/443)] Added `TransactionalManagerInterface::class` interface. ([@eerison](https://github.com/eerison))
+
+### Changed
+- [[#443](https://github.com/sonata-project/sonata-doctrine-extensions/pull/443)] Implements `TransactionalManagerInterface` in `BaseEntityManager` abstract class ([@eerison](https://github.com/eerison))
+
+### Removed
+- [[#424](https://github.com/sonata-project/sonata-doctrine-extensions/pull/424)] Support of Symfony 5.3 ([@franmomu](https://github.com/franmomu))
+
 ## [1.17.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.16.0...1.17.0) - 2022-05-11
 ### Added
 - [[#412](https://github.com/sonata-project/sonata-doctrine-extensions/pull/412)] Added support for `doctrine/persistence` 3 ([@franmomu](https://github.com/franmomu))
