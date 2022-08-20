@@ -50,9 +50,9 @@ abstract class BaseManager implements ManagerInterface, ClearableManagerInterfac
     }
 
     /**
-     * @throws \RuntimeException
-     *
      * @return ObjectManager
+     *
+     * @throws \RuntimeException
      */
     public function getObjectManager()
     {
@@ -182,9 +182,9 @@ abstract class BaseManager implements ManagerInterface, ClearableManagerInterfac
     /**
      * @param object $object
      *
-     * @throws \InvalidArgumentException
-     *
      * @return void
+     *
+     * @throws \InvalidArgumentException
      *
      * @phpstan-param T $object
      */
