@@ -29,17 +29,19 @@ class JsonType extends Type
 
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
-        if ($value === null) {
+        if (null === $value) {
             return null;
         }
+
         return json_decode((string) $value, true, 512, \JSON_THROW_ON_ERROR);
     }
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
-        if ($value === null) {
+        if (null === $value) {
             return null;
         }
+
         return json_encode($value, \JSON_THROW_ON_ERROR);
     }
 

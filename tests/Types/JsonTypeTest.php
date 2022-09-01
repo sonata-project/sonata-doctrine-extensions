@@ -44,8 +44,7 @@ class JsonTypeTest extends TestCase
             Type::getType('json')->convertToDatabaseValue(['foo' => 'bar'], $platform)
         );
 
-        static::assertSame(
-            null,
+        static::assertNull(
             Type::getType('json')->convertToDatabaseValue(null, $platform)
         );
     }
@@ -59,8 +58,7 @@ class JsonTypeTest extends TestCase
             Type::getType('json')->convertToPHPValue('{"foo":"bar"}', $platform)
         );
 
-        static::assertSame(
-            null,
+        static::assertNull(
             Type::getType('json')->convertToPHPValue(null, $platform)
         );
     }
