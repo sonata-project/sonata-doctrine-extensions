@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.18.1](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.18.0...1.18.1) - 2022-09-01
+### Fixed
+- [[#448](https://github.com/sonata-project/sonata-doctrine-extensions/pull/448)] JsonType::convertToPHPValue and JsonType::convertToDatabaseValue can return null ([@dmitryuk](https://github.com/dmitryuk))
+
 ## [1.18.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/1.17.0...1.18.0) - 2022-08-16
 ### Added
 - [[#443](https://github.com/sonata-project/sonata-doctrine-extensions/pull/443)] Added `TransactionalManagerInterface::class` interface. ([@eerison](https://github.com/eerison))
