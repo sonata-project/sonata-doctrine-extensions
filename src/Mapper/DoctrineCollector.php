@@ -59,9 +59,6 @@ final class DoctrineCollector
     {
     }
 
-    /**
-     * @return DoctrineCollector
-     */
     public static function getInstance(): self
     {
         if (null === self::$instance) {
