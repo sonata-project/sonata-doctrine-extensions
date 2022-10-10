@@ -19,6 +19,15 @@ use Doctrine\ORM\Mapping\ClassMetadata as ORMClassMetadata;
 use Doctrine\Persistence\Event\LoadClassMetadataEventArgs;
 use Doctrine\Persistence\Mapping\ClassMetadata;
 
+/**
+ * @phpstan-type DiscriminatorColumn = array{
+ *     name: string|null,
+ *     fieldName?: string,
+ *     type?: string,
+ *     length?: int,
+ *     columnDefinition?: string|null
+ * }
+ */
 final class DoctrineORMMapper implements EventSubscriber
 {
     /**
@@ -33,6 +42,8 @@ final class DoctrineORMMapper implements EventSubscriber
 
     /**
      * @var array<class-string, array<string, mixed>>
+     *
+     * @phpstan-var array<class-string, DiscriminatorColumn>
      */
     private array $discriminatorColumns = [];
 
@@ -102,6 +113,7 @@ final class DoctrineORMMapper implements EventSubscriber
      * @param array<string, mixed> $columnDef
      *
      * @phpstan-param class-string $class
+     * @phpstan-param DiscriminatorColumn $columnDef
      */
     public function addDiscriminatorColumn(string $class, array $columnDef): void
     {
