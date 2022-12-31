@@ -44,7 +44,7 @@ final class BaseManagerTest extends TestCase
     /**
      * @var MockObject&ObjectManager
      */
-    private $objectManager;
+    private ObjectManager $objectManager;
 
     private ManagerTest $manager;
 
