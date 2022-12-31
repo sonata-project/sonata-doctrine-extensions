@@ -27,17 +27,17 @@ final class BaseEntityManagerTest extends TestCase
     /**
      * @var ManagerRegistry&MockObject
      */
-    private $registry;
+    private ManagerRegistry $registry;
 
     /**
      * @var ObjectManager&MockObject
      */
-    private $objectManager;
+    private ObjectManager $objectManager;
 
     /**
      * @var BaseEntityManager<object>&MockObject
      */
-    private $manager;
+    private BaseEntityManager $manager;
 
     protected function setUp(): void
     {
