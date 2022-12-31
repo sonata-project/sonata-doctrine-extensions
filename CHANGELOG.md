@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.1.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/2.0.1...2.1.0) - 2022-12-31
+### Added
+- [[#443](https://github.com/sonata-project/sonata-doctrine-extensions/pull/443)] Added `TransactionalManagerInterface::class` interface. ([@eerison](https://github.com/eerison))
+
 ## [2.0.1](https://github.com/sonata-project/sonata-doctrine-extensions/compare/2.0.0...2.0.1) - 2022-08-02
 ### Fixed
 - [[#434](https://github.com/sonata-project/sonata-doctrine-extensions/pull/434)] Symfony 4.4 compatibility ([@VincentLanglet](https://github.com/VincentLanglet))
