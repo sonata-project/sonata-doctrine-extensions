@@ -30,8 +30,15 @@ use Doctrine\Persistence\Mapping\ClassMetadata;
  */
 final class DoctrineORMMapper implements EventSubscriber
 {
+    public const MAP_MANY_TO_MANY = 'mapManyToMany';
+    public const MAP_ONE_TO_ONE = 'mapOneToOne';
+    public const MAP_MANY_TO_ONE = 'mapManyToOne';
+    public const MAP_ONE_TO_MANY = 'mapOneToMany';
+
     /**
      * @var array<class-string, array<string, array<array<string, mixed>>>>
+     *
+     * @phpstan-var array<class-string, array<string, array<array<DoctrineORMMapper::MAP_*, mixed>>>>
      */
     private array $associations = [];
 
@@ -80,6 +87,7 @@ final class DoctrineORMMapper implements EventSubscriber
      * @param array<array<string, mixed>> $options
      *
      * @phpstan-param class-string $class
+     * @phpstan-param DoctrineORMMapper::MAP_* $type
      */
     public function addAssociation(string $class, string $type, array $options): void
     {

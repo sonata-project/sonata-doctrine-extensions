@@ -15,11 +15,14 @@ namespace Sonata\Doctrine\Mapper;
 
 use Sonata\Doctrine\Mapper\Builder\ColumnDefinitionBuilder;
 use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
+use Sonata\Doctrine\Mapper\ORM\DoctrineORMMapper;
 
 final class DoctrineCollector
 {
     /**
      * @var array<class-string, array<string, array<array<string, mixed>>>>
+     *
+     * @phpstan-var array<class-string, array<string, array<array<DoctrineORMMapper::MAP_*, mixed>>>>
      */
     private array $associations = [];
 
@@ -109,6 +112,7 @@ final class DoctrineCollector
 
     /**
      * @phpstan-param class-string $class
+     * @phpstan-param DoctrineORMMapper::MAP_* $type
      */
     public function addAssociation(string $class, string $type, OptionsBuilder $options): void
     {
@@ -181,6 +185,8 @@ final class DoctrineCollector
 
     /**
      * @return array<class-string, array<string, array<array<string, mixed>>>>
+     *
+     * @phpstan-return array<class-string, array<string, array<array<DoctrineORMMapper::MAP_*, mixed>>>>
      */
     public function getAssociations(): array
     {

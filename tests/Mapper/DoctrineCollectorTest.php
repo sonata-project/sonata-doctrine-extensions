@@ -18,6 +18,7 @@ use PHPUnit\Framework\TestCase;
 use Sonata\Doctrine\Mapper\Builder\ColumnDefinitionBuilder;
 use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
 use Sonata\Doctrine\Mapper\DoctrineCollector;
+use Sonata\Doctrine\Mapper\ORM\DoctrineORMMapper;
 
 class DoctrineCollectorTest extends TestCase
 {
@@ -49,8 +50,12 @@ class DoctrineCollectorTest extends TestCase
         $collector->addInheritanceType(\stdClass::class, ClassMetadataInfo::INHERITANCE_TYPE_SINGLE_TABLE);
         $collector->addDiscriminatorColumn(\stdClass::class, ColumnDefinitionBuilder::create()
             ->add('columnDef', ''));
-        $collector->addAssociation(\stdClass::class, 'type', OptionsBuilder::createOneToOne('foo', 'bar')
-            ->add('foo', 'bar'));
+        $collector->addAssociation(
+            \stdClass::class,
+            DoctrineORMMapper::MAP_ONE_TO_ONE,
+            OptionsBuilder::createOneToOne('foo', 'bar')
+            ->add('foo', 'bar')
+        );
         $collector->addDiscriminator(\stdClass::class, 'key', \stdClass::class);
         $collector->addOverride(\stdClass::class, 'type', OptionsBuilder::createOneToOne('foo', 'bar')
             ->add('foo', 'bar'));
