@@ -24,7 +24,7 @@ abstract class TestEntity
     #[ORM\GeneratedValue]
     public ?int $id = null;
 
-    public mixed $relation;
+    public mixed $relation = null;
 
     #[ORM\Column(type: Types::STRING, length: 200)]
     public string $property = '';
