@@ -16,34 +16,16 @@ namespace Sonata\Doctrine\Tests\App\Entity;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- */
 #[ORM\Entity]
 abstract class TestEntity
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     *
-     * @var int|null
-     */
     #[ORM\Id]
     #[ORM\Column(type: Types::INTEGER)]
     #[ORM\GeneratedValue]
-    public $id;
+    public ?int $id = null;
 
-    /**
-     * @var mixed
-     */
-    public $relation;
+    public mixed $relation;
 
-    /**
-     * @ORM\Column(type="string", length=200)
-     *
-     * @var string
-     */
     #[ORM\Column(type: Types::STRING, length: 200)]
-    public $property = '';
+    public string $property = '';
 }

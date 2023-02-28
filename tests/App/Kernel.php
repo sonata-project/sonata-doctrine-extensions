@@ -65,7 +65,7 @@ final class Kernel extends BaseKernel
             'orm' => [
                 'mappings' => [
                     'Entity' => [
-                        'type' => version_compare(PHP_VERSION, '8.0.0', '>=') ? 'attribute' : 'annotation',
+                        'type' => 'attribute',
                         'dir' => '%kernel.project_dir%/Entity',
                         'prefix' => TestEntity::class,
                         'is_bundle' => false,
