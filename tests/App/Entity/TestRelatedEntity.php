@@ -18,6 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  */
+#[ORM\Entity]
 class TestRelatedEntity
 {
     /**
@@ -27,5 +28,8 @@ class TestRelatedEntity
      *
      * @var int|null
      */
+    #[ORM\Id]
+    #[ORM\Column(type: Types::INTEGER)]
+    #[ORM\GeneratedValue]
     public $id;
 }
