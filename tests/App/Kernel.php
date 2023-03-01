@@ -54,6 +54,7 @@ final class Kernel extends BaseKernel
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
         $container->loadFromExtension('framework', [
+            'http_method_override' => true,
             'test' => true,
             'router' => ['utf8' => true],
             'secret' => 'secret',
@@ -64,7 +65,7 @@ final class Kernel extends BaseKernel
             'orm' => [
                 'mappings' => [
                     'Entity' => [
-                        'type' => 'annotation',
+                        'type' => 'attribute',
                         'dir' => '%kernel.project_dir%/Entity',
                         'prefix' => TestEntity::class,
                         'is_bundle' => false,
