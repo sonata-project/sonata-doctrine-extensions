@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.2.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/2.1.0...2.2.0) - 2023-03-09
+### Removed
+- [[#463](https://github.com/sonata-project/sonata-doctrine-extensions/pull/463)] Drop support for `doctrine/persistence` ^2.0. ([@jordisala1991](https://github.com/jordisala1991))
+
 ## [2.1.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/2.0.1...2.1.0) - 2022-12-31
 ### Added
 - [[#443](https://github.com/sonata-project/sonata-doctrine-extensions/pull/443)] Added `TransactionalManagerInterface::class` interface. ([@eerison](https://github.com/eerison))
