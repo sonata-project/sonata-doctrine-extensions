@@ -26,6 +26,7 @@
         "doctrine/persistence": "^3.0.2"
     },
     "require-dev": {
+        "doctrine/event-manager": "^1.2 || ^2.0",
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/mongodb-odm": "^2.4",
         "doctrine/orm": "^2.14",
