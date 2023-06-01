@@ -22,9 +22,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 final class MapperCompilerPass implements CompilerPassInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function process(ContainerBuilder $container): void
     {
         if (!$this->isDoctrineOrmLoaded($container)) {

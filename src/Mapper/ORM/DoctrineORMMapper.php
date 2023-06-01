@@ -27,6 +27,8 @@ use Doctrine\Persistence\Mapping\ClassMetadata;
  *     length?: int,
  *     columnDefinition?: string|null
  * }
+ *
+ * NEXT_MAJOR: do not implement EventSubscriber interface anymore
  */
 final class DoctrineORMMapper implements EventSubscriber
 {
@@ -69,6 +71,9 @@ final class DoctrineORMMapper implements EventSubscriber
      */
     private array $overrides = [];
 
+    /**
+     * NEXT_MAJOR: remove this method.
+     */
     public function getSubscribedEvents(): array
     {
         return [
