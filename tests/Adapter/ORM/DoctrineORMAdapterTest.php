@@ -40,7 +40,7 @@ final class DoctrineORMAdapterTest extends TestCase
 
     public function testNormalizedIdentifierWithNotManaged(): void
     {
-        $unitOfWork = $this->getMockBuilder(UnitOfWork::class)->disableOriginalConstructor()->getMock();
+        $unitOfWork = $this->createMock(UnitOfWork::class);
         $unitOfWork->expects(static::once())->method('isInIdentityMap')->willReturn(false);
 
         $manager = $this->createMock(EntityManagerInterface::class);
@@ -57,11 +57,11 @@ final class DoctrineORMAdapterTest extends TestCase
     /**
      * @param int[] $data
      *
-     * @dataProvider getFixtures
+     * @dataProvider provideNormalizedIdentifierWithValidObjectCases
      */
     public function testNormalizedIdentifierWithValidObject(array $data, string $expected): void
     {
-        $unitOfWork = $this->getMockBuilder(UnitOfWork::class)->disableOriginalConstructor()->getMock();
+        $unitOfWork = $this->createMock(UnitOfWork::class);
         $unitOfWork->expects(static::once())->method('isInIdentityMap')->willReturn(true);
         $unitOfWork->expects(static::once())->method('getEntityIdentifier')->willReturn($data);
 
@@ -79,11 +79,9 @@ final class DoctrineORMAdapterTest extends TestCase
     /**
      * @return iterable<array-key, array{array<int>, string}>
      */
-    public function getFixtures(): iterable
+    public function provideNormalizedIdentifierWithValidObjectCases(): iterable
     {
-        return [
-            [[1], '1'],
-            [[1, 2], '1~2'],
-        ];
+        yield [[1], '1'];
+        yield [[1, 2], '1~2'];
     }
 }
