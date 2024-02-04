@@ -63,6 +63,7 @@ final class Kernel extends BaseKernel
         $container->loadFromExtension('doctrine', [
             'dbal' => ['url' => 'sqlite://:memory:'],
             'orm' => [
+                'report_fields_where_declared' => true,
                 'mappings' => [
                     'Entity' => [
                         'type' => 'attribute',

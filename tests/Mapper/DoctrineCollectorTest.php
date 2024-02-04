@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Tests\Mapper;
 
-use Doctrine\ORM\Mapping\ClassMetadataInfo;
+use Doctrine\ORM\Mapping\ClassMetadata;
 use PHPUnit\Framework\TestCase;
 use Sonata\Doctrine\Mapper\Builder\ColumnDefinitionBuilder;
 use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
@@ -46,7 +46,7 @@ class DoctrineCollectorTest extends TestCase
         $collector = DoctrineCollector::getInstance();
         $collector->addIndex(\stdClass::class, 'name', ['column']);
         $collector->addUnique(\stdClass::class, 'name', ['column']);
-        $collector->addInheritanceType(\stdClass::class, ClassMetadataInfo::INHERITANCE_TYPE_SINGLE_TABLE);
+        $collector->addInheritanceType(\stdClass::class, ClassMetadata::INHERITANCE_TYPE_SINGLE_TABLE);
         $collector->addDiscriminatorColumn(\stdClass::class, ColumnDefinitionBuilder::create()
             ->add('columnDef', ''));
         $collector->addAssociation(\stdClass::class, 'type', OptionsBuilder::createOneToOne('foo', 'bar')
