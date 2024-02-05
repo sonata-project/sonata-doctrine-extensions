@@ -94,7 +94,7 @@ class DoctrineORMMapperTest extends KernelTestCase
             ? DiscriminatorColumnMapping::fromMappingArray($expectedDefinition)
             : $expectedDefinition);
         ksort($expected);
-        
+
         $actual = (array) $classMetadata->discriminatorColumn;
         ksort($actual);
 
