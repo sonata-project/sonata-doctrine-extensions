@@ -90,12 +90,15 @@ class DoctrineORMMapperTest extends KernelTestCase
             'length' => 10,
         ];
 
-        static::assertSame(
-            (array) ($classMetadata->discriminatorColumn instanceof DiscriminatorColumnMapping
-                ? DiscriminatorColumnMapping::fromMappingArray($expectedDefinition)
-                : $expectedDefinition),
-            (array) $classMetadata->discriminatorColumn
-        );
+        $expected = (array) ($classMetadata->discriminatorColumn instanceof DiscriminatorColumnMapping
+            ? DiscriminatorColumnMapping::fromMappingArray($expectedDefinition)
+            : $expectedDefinition);
+        ksort($expected);
+        
+        $actual = (array) $classMetadata->discriminatorColumn;
+        ksort($actual);
+
+        static::assertSame($expected, $actual);
     }
 
     /**
