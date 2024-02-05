@@ -81,10 +81,7 @@ class DoctrineORMMapperTest extends KernelTestCase
             'length' => 10,
         ]);
 
-        $mapper->loadClassMetadata(new LoadClassMetadataEventArgs(
-            $classMetadata,
-            static::getContainer()->get('doctrine.orm.entity_manager')
-        ));
+        $mapper->loadClassMetadata(new LoadClassMetadataEventArgs($classMetadata, $entityManager));
 
         $expectedDefinition = [
             'type' => 'string',
@@ -93,7 +90,7 @@ class DoctrineORMMapperTest extends KernelTestCase
             'length' => 10,
         ];
 
-        self::assertEquals(
+        static::assertEquals(
             $classMetadata->discriminatorColumn instanceof DiscriminatorColumnMapping
                 ? DiscriminatorColumnMapping::fromMappingArray($expectedDefinition)
                 : $expectedDefinition,

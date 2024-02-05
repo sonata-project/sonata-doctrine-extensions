@@ -16,7 +16,6 @@ namespace Sonata\Doctrine\Mapper\ORM;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\ClassMetadata as ORMClassMetadata;
-use Doctrine\ORM\Mapping\DiscriminatorColumnMapping;
 use Doctrine\Persistence\Event\LoadClassMetadataEventArgs;
 use Doctrine\Persistence\Mapping\ClassMetadata;
 
@@ -257,19 +256,10 @@ final class DoctrineORMMapper implements EventSubscriber
             if (isset($this->discriminatorColumns[$metadata->getName()])) {
                 $arrayDiscriminatorColumns = $this->discriminatorColumns[$metadata->getName()];
                 if (isset($metadata->discriminatorColumn)) {
-                    $metadataDiscriminatorColumnAsArray = $metadata->discriminatorColumn instanceof DiscriminatorColumnMapping
-                        ? [
-                            'name' => $metadata->discriminatorColumn->name,
-                            'fieldName' => $metadata->discriminatorColumn->fieldName,
-                            'type' => $metadata->discriminatorColumn->type,
-                            'length' => $metadata->discriminatorColumn->length,
-                            'columnDefinition' => $metadata->discriminatorColumn->columnDefinition,
-                            'enumType' => $metadata->discriminatorColumn->enumType,
-                            'options' => $metadata->discriminatorColumn->options,
-                        ]
-                        : $metadata->discriminatorColumn;
-
-                    $arrayDiscriminatorColumns = array_merge($metadataDiscriminatorColumnAsArray, $this->discriminatorColumns[$metadata->getName()]);
+                    $arrayDiscriminatorColumns = array_merge(
+                        (array) $metadata->discriminatorColumn,
+                        $this->discriminatorColumns[$metadata->getName()]
+                    );
                 }
 
                 $metadata->setDiscriminatorColumn($arrayDiscriminatorColumns);
