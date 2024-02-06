@@ -60,11 +60,9 @@ interface ManagerInterface
     /**
      * Finds an entity by its primary key / identifier.
      *
-     * @param mixed $id The identifier
-     *
      * @phpstan-return T|null
      */
-    public function find($id): ?object;
+    public function find(mixed $id): ?object;
 
     /**
      * Create an empty Entity instance.

@@ -54,7 +54,7 @@ abstract class BaseManager implements ManagerInterface, ClearableManagerInterfac
         return $this->getRepository()->findOneBy($criteria);
     }
 
-    public function find($id): ?object
+    public function find(mixed $id): ?object
     {
         return $this->getRepository()->find($id);
     }
