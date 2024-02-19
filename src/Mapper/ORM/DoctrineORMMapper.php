@@ -256,8 +256,18 @@ final class DoctrineORMMapper implements EventSubscriber
             if (isset($this->discriminatorColumns[$metadata->getName()])) {
                 $arrayDiscriminatorColumns = $this->discriminatorColumns[$metadata->getName()];
                 if (isset($metadata->discriminatorColumn)) {
-                    $arrayDiscriminatorColumns = array_merge($metadata->discriminatorColumn, $this->discriminatorColumns[$metadata->getName()]);
+                    $arrayDiscriminatorColumns = array_merge(
+                        (array) $metadata->discriminatorColumn,
+                        $this->discriminatorColumns[$metadata->getName()]
+                    );
                 }
+
+                /**
+                 * ignored until https://github.com/doctrine/orm/pull/11226 is merged.
+                 *
+                 * @psalm-suppress InvalidArgument
+                 * @phpstan-ignore-next-line
+                 */
                 $metadata->setDiscriminatorColumn($arrayDiscriminatorColumns);
             }
         } catch (\ReflectionException $e) {

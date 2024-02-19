@@ -22,14 +22,14 @@
     "homepage": "https://github.com/sonata-project/sonata-doctrine-extensions",
     "require": {
         "php": "^8.0",
-        "doctrine/dbal": "^3.4",
+        "doctrine/dbal": "^3.4 || ^4.0",
         "doctrine/persistence": "^3.0.2"
     },
     "require-dev": {
-        "doctrine/doctrine-bundle": "^2.7",
+        "doctrine/doctrine-bundle": "^2.10",
         "doctrine/event-manager": "^1.2 || ^2.0",
         "doctrine/mongodb-odm": "^2.4",
-        "doctrine/orm": "^2.14",
+        "doctrine/orm": "^2.16 || ^3.0",
         "friendsofphp/php-cs-fixer": "^3.4",
         "matthiasnoback/symfony-config-test": "^4.2 || ^5.0",
         "matthiasnoback/symfony-dependency-injection-test": "^4.2.1 || ^5.0",
@@ -50,7 +50,7 @@
     "conflict": {
         "doctrine/doctrine-bundle": "<2.7",
         "doctrine/mongodb-odm": "<2.4",
-        "doctrine/orm": "<2.14"
+        "doctrine/orm": "<2.16"
     },
     "suggest": {
         "doctrine/mongodb-odm": "If you use mongo",
