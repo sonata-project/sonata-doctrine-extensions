@@ -13,7 +13,10 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Tests\Mapper\ORM;
 
-use Doctrine\ORM\Mapping\ClassMetadataInfo;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\ClassMetadata;
+use Doctrine\ORM\Mapping\DiscriminatorColumnMapping;
+use Doctrine\Persistence\Event\LoadClassMetadataEventArgs;
 use Sonata\Doctrine\Mapper\Builder\ColumnDefinitionBuilder;
 use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
 use Sonata\Doctrine\Mapper\DoctrineCollector;
@@ -43,7 +46,7 @@ class DoctrineORMMapperTest extends KernelTestCase
 
         $collector->addDiscriminator(TestEntity::class, 'test', TestInheritanceEntity::class);
         $collector->addDiscriminatorColumn(TestEntity::class, $columnDefinition);
-        $collector->addInheritanceType(TestEntity::class, ClassMetadataInfo::INHERITANCE_TYPE_SINGLE_TABLE);
+        $collector->addInheritanceType(TestEntity::class, ClassMetadata::INHERITANCE_TYPE_SINGLE_TABLE);
         $collector->addAssociation(TestEntity::class, 'mapManyToOne', $options);
         $collector->addOverride(TestEntity::class, 'setAttributeOverride', $override);
     }
@@ -60,6 +63,42 @@ class DoctrineORMMapperTest extends KernelTestCase
         $mapper = static::getContainer()->get('sonata.doctrine.mapper');
 
         static::assertInstanceOf(DoctrineORMMapper::class, $mapper);
+    }
+
+    public function testLoadClassMetadata(): void
+    {
+        self::bootKernel();
+
+        /** @var DoctrineORMMapper $mapper */
+        $mapper = static::getContainer()->get('sonata.doctrine.mapper');
+
+        /** @var EntityManagerInterface $entityManager */
+        $entityManager = static::getContainer()->get('doctrine.orm.entity_manager');
+
+        $classMetadata = $entityManager->getClassMetadata(TestEntity::class);
+        $classMetadata->setDiscriminatorColumn([
+            'name' => 'discriminator',
+            'length' => 10,
+        ]);
+
+        $mapper->loadClassMetadata(new LoadClassMetadataEventArgs($classMetadata, $entityManager));
+
+        $expectedDefinition = [
+            'type' => 'string',
+            'fieldName' => 'discriminator',
+            'name' => 'discriminator',
+            'length' => 10,
+        ];
+
+        $expected = (array) ($classMetadata->discriminatorColumn instanceof DiscriminatorColumnMapping
+            ? DiscriminatorColumnMapping::fromMappingArray($expectedDefinition)
+            : $expectedDefinition);
+        ksort($expected);
+
+        $actual = (array) $classMetadata->discriminatorColumn;
+        ksort($actual);
+
+        static::assertSame($expected, $actual);
     }
 
     /**
