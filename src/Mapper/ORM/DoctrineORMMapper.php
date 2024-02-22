@@ -262,12 +262,6 @@ final class DoctrineORMMapper implements EventSubscriber
                     );
                 }
 
-                /**
-                 * ignored until https://github.com/doctrine/orm/pull/11226 is merged.
-                 *
-                 * @psalm-suppress InvalidArgument
-                 * @phpstan-ignore-next-line
-                 */
                 $metadata->setDiscriminatorColumn($arrayDiscriminatorColumns);
             }
         } catch (\ReflectionException $e) {
