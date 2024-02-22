@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.4.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/2.3.0...2.4.0) - 2024-02-21
+### Added
+- [[#494](https://github.com/sonata-project/sonata-doctrine-extensions/pull/494)] Compatibility with `doctrine/dbal` 4 and `doctrine/orm` 3 ([@dmaicher](https://github.com/dmaicher))
+
 ## [2.3.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/2.2.0...2.3.0) - 2023-06-04
 ### Fixed
 - [[#487](https://github.com/sonata-project/sonata-doctrine-extensions/pull/487)] Fixed Symfony 6.3 deprecation: `DoctrineORMMapper` is now registered as Doctrine event listener ([@dmaicher](https://github.com/dmaicher))
