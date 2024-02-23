@@ -24,8 +24,10 @@ use Doctrine\Persistence\Mapping\ClassMetadata;
  *     name: string|null,
  *     fieldName?: string,
  *     type?: string,
- *     length?: int,
- *     columnDefinition?: string|null
+ *     length?: int|null,
+ *     columnDefinition?: string|null,
+ *     enumType?: class-string<\BackedEnum>|null,
+ *     options?: array<string, mixed>,
  * }
  *
  * NEXT_MAJOR: do not implement EventSubscriber interface anymore
@@ -256,18 +258,13 @@ final class DoctrineORMMapper implements EventSubscriber
             if (isset($this->discriminatorColumns[$metadata->getName()])) {
                 $arrayDiscriminatorColumns = $this->discriminatorColumns[$metadata->getName()];
                 if (isset($metadata->discriminatorColumn)) {
+                    /** @phpstan-var DiscriminatorColumn $arrayDiscriminatorColumns */
                     $arrayDiscriminatorColumns = array_merge(
                         (array) $metadata->discriminatorColumn,
                         $this->discriminatorColumns[$metadata->getName()]
                     );
                 }
 
-                /**
-                 * ignored until https://github.com/doctrine/orm/pull/11226 is merged.
-                 *
-                 * @psalm-suppress InvalidArgument
-                 * @phpstan-ignore-next-line
-                 */
                 $metadata->setDiscriminatorColumn($arrayDiscriminatorColumns);
             }
         } catch (\ReflectionException $e) {
