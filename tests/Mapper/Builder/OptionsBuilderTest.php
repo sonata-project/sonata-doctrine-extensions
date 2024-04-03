@@ -141,16 +141,18 @@ final class OptionsBuilderTest extends TestCase
         static::assertSame([
             'fieldName' => 'groups',
             'targetEntity' => 'App\Entity\Group',
-            'joinColumns' => [[
-                'name' => 'parent_id',
-                'referencedColumnName' => 'id',
-                'onDelete' => 'CASCADE',
+            'joinColumns' => [
+                [
+                    'name' => 'parent_id',
+                    'referencedColumnName' => 'id',
+                    'onDelete' => 'CASCADE',
+                ],
+                [
+                    'name' => 'another_parent_id',
+                    'referencedColumnName' => 'id',
+                    'onDelete' => 'CASCADE',
+                ],
             ],
-            [
-                'name' => 'another_parent_id',
-                'referencedColumnName' => 'id',
-                'onDelete' => 'CASCADE',
-            ], ],
         ], $builder->getOptions());
     }
 
