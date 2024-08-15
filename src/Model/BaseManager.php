@@ -111,7 +111,7 @@ abstract class BaseManager implements ManagerInterface, ClearableManagerInterfac
     protected function checkObject(object $object): void
     {
         if (!$object instanceof $this->class) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new \InvalidArgumentException(\sprintf(
                 'Object must be instance of %s, %s given',
                 $this->class,
                 get_debug_type($object)
@@ -127,7 +127,7 @@ abstract class BaseManager implements ManagerInterface, ClearableManagerInterfac
         $manager = $this->registry->getManagerForClass($this->class);
 
         if (null === $manager) {
-            throw new \RuntimeException(sprintf(
+            throw new \RuntimeException(\sprintf(
                 'Unable to find the mapping information for the class %s.'
                 .' Please check the `auto_mapping` option'
                 .' (http://symfony.com/doc/current/reference/configuration/doctrine.html#configuration-overview)'
