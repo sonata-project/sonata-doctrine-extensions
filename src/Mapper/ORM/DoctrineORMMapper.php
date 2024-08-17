@@ -237,7 +237,7 @@ final class DoctrineORMMapper implements EventSubscriber
                 }
             }
         } catch (\ReflectionException $e) {
-            throw new \RuntimeException(sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
+            throw new \RuntimeException(\sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
         }
     }
 
@@ -268,7 +268,7 @@ final class DoctrineORMMapper implements EventSubscriber
                 $metadata->setDiscriminatorColumn($arrayDiscriminatorColumns);
             }
         } catch (\ReflectionException $e) {
-            throw new \RuntimeException(sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
+            throw new \RuntimeException(\sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
         }
     }
 
@@ -290,7 +290,7 @@ final class DoctrineORMMapper implements EventSubscriber
                 $metadata->setInheritanceType($this->inheritanceTypes[$metadata->getName()]);
             }
         } catch (\ReflectionException $e) {
-            throw new \RuntimeException(sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
+            throw new \RuntimeException(\sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
         }
     }
 
@@ -315,7 +315,7 @@ final class DoctrineORMMapper implements EventSubscriber
                 $metadata->setDiscriminatorMap([$key => $class]);
             }
         } catch (\ReflectionException $e) {
-            throw new \RuntimeException(sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
+            throw new \RuntimeException(\sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()), 404, $e);
         }
     }
 
@@ -369,7 +369,7 @@ final class DoctrineORMMapper implements EventSubscriber
             }
         } catch (\ReflectionException $e) {
             throw new \RuntimeException(
-                sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()),
+                \sprintf('Error with class %s : %s', $metadata->getName(), $e->getMessage()),
                 404,
                 $e
             );
@@ -383,7 +383,7 @@ final class DoctrineORMMapper implements EventSubscriber
     {
         foreach ($columns as $column) {
             if (!\is_string($column)) {
-                throw new \InvalidArgumentException(sprintf('The column is not a valid string, %s given', \gettype($column)));
+                throw new \InvalidArgumentException(\sprintf('The column is not a valid string, %s given', \gettype($column)));
             }
         }
     }

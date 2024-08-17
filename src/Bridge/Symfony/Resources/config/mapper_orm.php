@@ -19,5 +19,5 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->services()
 
         ->set('sonata.doctrine.mapper', DoctrineORMMapper::class)
-            ->tag('doctrine.event_listener', ['event' => 'loadClassMetadata']);
+            ->tag('doctrine.event_listener', ['event' => 'loadClassMetadata', 'priority' => 10]);
 };
