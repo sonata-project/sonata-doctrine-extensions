@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.4.1](https://github.com/sonata-project/sonata-doctrine-extensions/compare/2.4.0...2.4.1) - 2024-08-18
+### Changed
+- [[#514](https://github.com/sonata-project/sonata-doctrine-extensions/pull/514)] Load mapping earlier (priority 10) ([@core23](https://github.com/core23))
+
+### Fixed
+- [[#511](https://github.com/sonata-project/sonata-doctrine-extensions/pull/511)] Symfony 7.1 deprecation about `Symfony\Component\HttpKernel\DependencyInjection\Extension` usage ([@VincentLanglet](https://github.com/VincentLanglet))
+
 ## [2.4.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/2.3.0...2.4.0) - 2024-02-21
 ### Added
 - [[#494](https://github.com/sonata-project/sonata-doctrine-extensions/pull/494)] Compatibility with `doctrine/dbal` 4 and `doctrine/orm` 3 ([@dmaicher](https://github.com/dmaicher))
