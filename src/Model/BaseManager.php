@@ -30,7 +30,7 @@ abstract class BaseManager implements ManagerInterface, ClearableManagerInterfac
      */
     public function __construct(
         protected string $class,
-        protected ManagerRegistry $registry
+        protected ManagerRegistry $registry,
     ) {
     }
 
