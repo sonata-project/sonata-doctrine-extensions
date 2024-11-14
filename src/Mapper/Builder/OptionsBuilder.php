@@ -28,7 +28,7 @@ final class OptionsBuilder
     private function __construct(
         private string $type,
         string $fieldName,
-        string $targetEntity
+        string $targetEntity,
     ) {
         $this->options['fieldName'] = $fieldName;
         $this->options['targetEntity'] = $targetEntity;
