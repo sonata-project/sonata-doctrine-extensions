@@ -22,7 +22,7 @@ use Sonata\Doctrine\Adapter\AdapterInterface;
  */
 final class DoctrineORMAdapter implements AdapterInterface
 {
-    public function __construct(private readonly ManagerRegistry $registry)
+    public function __construct(private ManagerRegistry $registry)
     {
     }
 

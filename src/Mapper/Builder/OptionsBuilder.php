@@ -26,7 +26,7 @@ final class OptionsBuilder
     private array $options = [];
 
     private function __construct(
-        private readonly string $type,
+        private string $type,
         string $fieldName,
         string $targetEntity,
     ) {
