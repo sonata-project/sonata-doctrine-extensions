@@ -64,6 +64,9 @@ final class Kernel extends BaseKernel
             'dbal' => ['url' => 'sqlite://:memory:'],
             'orm' => [
                 'report_fields_where_declared' => true,
+                'controller_resolver' => [
+                    'auto_mapping' => false,
+                ],
                 'mappings' => [
                     'Entity' => [
                         'type' => 'attribute',
