@@ -52,7 +52,7 @@ final class BaseManagerTest extends TestCase
     {
         $this->objectManager = $this->createMock(ObjectManager::class);
 
-        $managerRegistry = $this->createStub(ManagerRegistry::class);
+        $managerRegistry = static::createStub(ManagerRegistry::class);
         $managerRegistry->method('getManagerForClass')->willReturn($this->objectManager);
 
         $this->manager = new ManagerTest(\stdClass::class, $managerRegistry);
