@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.5.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/2.4.1...2.5.0) - 2025-02-03
+### Added
+- [[#525](https://github.com/sonata-project/sonata-doctrine-extensions/pull/525)] Support for `doctrine/persistence` ^4.0 ([@dmaicher](https://github.com/dmaicher))
+
 ## [2.4.1](https://github.com/sonata-project/sonata-doctrine-extensions/compare/2.4.0...2.4.1) - 2024-08-18
 ### Changed
 - [[#514](https://github.com/sonata-project/sonata-doctrine-extensions/pull/514)] Load mapping earlier (priority 10) ([@core23](https://github.com/core23))
