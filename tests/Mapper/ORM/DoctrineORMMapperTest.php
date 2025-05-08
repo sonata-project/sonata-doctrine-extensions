@@ -27,7 +27,7 @@ use Sonata\Doctrine\Tests\App\Entity\TestRelatedEntity;
 use Sonata\Doctrine\Tests\App\Kernel;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class DoctrineORMMapperTest extends KernelTestCase
+final class DoctrineORMMapperTest extends KernelTestCase
 {
     public static function setUpBeforeClass(): void
     {

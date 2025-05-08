@@ -19,7 +19,7 @@ use Sonata\Doctrine\Mapper\Builder\ColumnDefinitionBuilder;
 use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
 use Sonata\Doctrine\Mapper\DoctrineCollector;
 
-class DoctrineCollectorTest extends TestCase
+final class DoctrineCollectorTest extends TestCase
 {
     /**
      * @covers \Sonata\Doctrine\Mapper\DoctrineCollector::getIndexes
