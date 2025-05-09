@@ -23,7 +23,7 @@ use Sonata\Doctrine\Model\BaseManager;
 /**
  * @phpstan-extends BaseManager<object>
  */
-class ManagerTest extends BaseManager
+final class ManagerTest extends BaseManager
 {
     public function getConnection(): Connection
     {
