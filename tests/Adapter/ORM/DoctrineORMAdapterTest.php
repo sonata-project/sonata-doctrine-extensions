@@ -16,6 +16,7 @@ namespace Sonata\Doctrine\Tests\Adapter\ORM;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\UnitOfWork;
 use Doctrine\Persistence\ManagerRegistry;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Sonata\Doctrine\Adapter\ORM\DoctrineORMAdapter;
 
@@ -56,9 +57,8 @@ final class DoctrineORMAdapterTest extends TestCase
 
     /**
      * @param int[] $data
-     *
-     * @dataProvider provideNormalizedIdentifierWithValidObjectCases
      */
+    #[DataProvider('provideNormalizedIdentifierWithValidObjectCases')]
     public function testNormalizedIdentifierWithValidObject(array $data, string $expected): void
     {
         $unitOfWork = $this->createMock(UnitOfWork::class);
@@ -79,7 +79,7 @@ final class DoctrineORMAdapterTest extends TestCase
     /**
      * @return iterable<array-key, array{array<int>, string}>
      */
-    public function provideNormalizedIdentifierWithValidObjectCases(): iterable
+    public static function provideNormalizedIdentifierWithValidObjectCases(): iterable
     {
         yield [[1], '1'];
         yield [[1, 2], '1~2'];
