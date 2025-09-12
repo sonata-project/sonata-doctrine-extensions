@@ -43,7 +43,7 @@ final class BaseEntityManagerTest extends TestCase
     {
         $this->registry = $this->createMock(ManagerRegistry::class);
         $this->objectManager = $this->createMock(EntityManagerInterface::class);
-        $this->manager = $this->getMockForAbstractClass(BaseEntityManager::class, ['classname', $this->registry]);
+        $this->manager = new class('classname', $this->registry) extends BaseEntityManager {};
     }
 
     public function testGetClassName(): void
