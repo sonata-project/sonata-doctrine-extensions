@@ -51,6 +51,12 @@ final class DoctrineORMMapperTest extends KernelTestCase
         $collector->addOverride(TestEntity::class, 'setAttributeOverride', $override);
     }
 
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        restore_exception_handler();
+    }
+
     /**
      * @psalm-suppress InternalMethod
      *
