@@ -73,7 +73,6 @@ final class BaseEntityManagerTest extends TestCase
 
         $r = new \ReflectionObject($this->manager);
         $m = $r->getMethod('getRepository');
-        $m->setAccessible(true);
 
         static::assertInstanceOf(EntityRepository::class, $m->invoke($this->manager));
     }
