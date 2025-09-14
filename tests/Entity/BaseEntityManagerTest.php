@@ -21,6 +21,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sonata\Doctrine\Entity\BaseEntityManager;
 use Sonata\Doctrine\Exception\TransactionException;
+use Sonata\Doctrine\Tests\App\Entity\TestEntity;
 
 final class BaseEntityManagerTest extends TestCase
 {
@@ -35,7 +36,7 @@ final class BaseEntityManagerTest extends TestCase
     private ObjectManager $objectManager;
 
     /**
-     * @var BaseEntityManager<object>&MockObject
+     * @var BaseEntityManager<object>
      */
     private BaseEntityManager $manager;
 
@@ -43,18 +44,19 @@ final class BaseEntityManagerTest extends TestCase
     {
         $this->registry = $this->createMock(ManagerRegistry::class);
         $this->objectManager = $this->createMock(EntityManagerInterface::class);
-        $this->manager = new class('classname', $this->registry) extends BaseEntityManager {};
+        /** @psalm-suppress MissingTemplateParam */
+        $this->manager = new class(TestEntity::class, $this->registry) extends BaseEntityManager {};
     }
 
     public function testGetClassName(): void
     {
-        static::assertSame('classname', $this->manager->getClass());
+        static::assertSame(TestEntity::class, $this->manager->getClass());
     }
 
     public function testExceptionOnNonMappedEntity(): void
     {
         $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('Unable to find the mapping information for the class classname. Please check the `auto_mapping` option (http://symfony.com/doc/current/reference/configuration/doctrine.html#configuration-overview) or add the bundle to the `mappings` section in the doctrine configuration');
+        $this->expectExceptionMessage('Unable to find the mapping information for the class Sonata\Doctrine\Tests\App\Entity\TestEntity. Please check the `auto_mapping` option (http://symfony.com/doc/current/reference/configuration/doctrine.html#configuration-overview) or add the bundle to the `mappings` section in the doctrine configuration');
 
         $this->registry->expects(static::once())->method('getManagerForClass')->willReturn(null);
 
@@ -65,7 +67,7 @@ final class BaseEntityManagerTest extends TestCase
     {
         $entityRepository = $this->createMock(EntityRepository::class);
 
-        $this->objectManager->expects(static::once())->method('getRepository')->with('classname')->willReturn($entityRepository);
+        $this->objectManager->expects(static::once())->method('getRepository')->with(TestEntity::class)->willReturn($entityRepository);
 
         $this->registry->expects(static::once())->method('getManagerForClass')->willReturn($this->objectManager);
 
