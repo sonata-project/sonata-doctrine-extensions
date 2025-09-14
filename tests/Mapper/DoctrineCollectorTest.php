@@ -13,19 +13,19 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Tests\Mapper;
 
-use PHPUnit\Framework\Attributes\CoversMethod;
 use Doctrine\ORM\Mapping\ClassMetadata;
+use PHPUnit\Framework\Attributes\CoversMethod;
 use PHPUnit\Framework\TestCase;
 use Sonata\Doctrine\Mapper\Builder\ColumnDefinitionBuilder;
 use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
 use Sonata\Doctrine\Mapper\DoctrineCollector;
 
-#[CoversMethod(\Sonata\Doctrine\Mapper\DoctrineCollector::class, 'getIndexes')]
-#[CoversMethod(\Sonata\Doctrine\Mapper\DoctrineCollector::class, 'getUniques')]
-#[CoversMethod(\Sonata\Doctrine\Mapper\DoctrineCollector::class, 'getInheritanceTypes')]
-#[CoversMethod(\Sonata\Doctrine\Mapper\DoctrineCollector::class, 'getDiscriminatorColumns')]
-#[CoversMethod(\Sonata\Doctrine\Mapper\DoctrineCollector::class, 'getAssociations')]
-#[CoversMethod(\Sonata\Doctrine\Mapper\DoctrineCollector::class, 'getDiscriminators')]
+#[CoversMethod(DoctrineCollector::class, 'getIndexes')]
+#[CoversMethod(DoctrineCollector::class, 'getUniques')]
+#[CoversMethod(DoctrineCollector::class, 'getInheritanceTypes')]
+#[CoversMethod(DoctrineCollector::class, 'getDiscriminatorColumns')]
+#[CoversMethod(DoctrineCollector::class, 'getAssociations')]
+#[CoversMethod(DoctrineCollector::class, 'getDiscriminators')]
 final class DoctrineCollectorTest extends TestCase
 {
     public function testDefaultValues(): void
