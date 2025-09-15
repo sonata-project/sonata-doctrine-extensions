@@ -14,21 +14,20 @@ declare(strict_types=1);
 namespace Sonata\Doctrine\Tests\Mapper;
 
 use Doctrine\ORM\Mapping\ClassMetadata;
+use PHPUnit\Framework\Attributes\CoversMethod;
 use PHPUnit\Framework\TestCase;
 use Sonata\Doctrine\Mapper\Builder\ColumnDefinitionBuilder;
 use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
 use Sonata\Doctrine\Mapper\DoctrineCollector;
 
+#[CoversMethod(DoctrineCollector::class, 'getIndexes')]
+#[CoversMethod(DoctrineCollector::class, 'getUniques')]
+#[CoversMethod(DoctrineCollector::class, 'getInheritanceTypes')]
+#[CoversMethod(DoctrineCollector::class, 'getDiscriminatorColumns')]
+#[CoversMethod(DoctrineCollector::class, 'getAssociations')]
+#[CoversMethod(DoctrineCollector::class, 'getDiscriminators')]
 final class DoctrineCollectorTest extends TestCase
 {
-    /**
-     * @covers \Sonata\Doctrine\Mapper\DoctrineCollector::getIndexes
-     * @covers \Sonata\Doctrine\Mapper\DoctrineCollector::getUniques
-     * @covers \Sonata\Doctrine\Mapper\DoctrineCollector::getInheritanceTypes
-     * @covers \Sonata\Doctrine\Mapper\DoctrineCollector::getDiscriminatorColumns
-     * @covers \Sonata\Doctrine\Mapper\DoctrineCollector::getAssociations
-     * @covers \Sonata\Doctrine\Mapper\DoctrineCollector::getDiscriminators
-     */
     public function testDefaultValues(): void
     {
         $collector = DoctrineCollector::getInstance();
