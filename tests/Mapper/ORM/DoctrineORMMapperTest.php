@@ -108,6 +108,8 @@ final class DoctrineORMMapperTest extends KernelTestCase
     }
 
     /**
+     * @phpstan-throws void
+     *
      * @return class-string
      */
     protected static function getKernelClass(): string
