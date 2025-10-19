@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Sonata\Doctrine\Tests\App;
 
+use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\CacheCompatibilityPass;
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Sonata\Doctrine\Bridge\Symfony\SonataDoctrineBundle;
-use Sonata\Doctrine\Tests\App\Entity\TestEntity;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -63,7 +63,6 @@ final class Kernel extends BaseKernel
         $container->loadFromExtension('doctrine', [
             'dbal' => ['url' => 'sqlite://:memory:'],
             'orm' => [
-                'report_fields_where_declared' => true,
                 'controller_resolver' => [
                     'auto_mapping' => false,
                 ],
@@ -71,12 +70,25 @@ final class Kernel extends BaseKernel
                     'Entity' => [
                         'type' => 'attribute',
                         'dir' => '%kernel.project_dir%/Entity',
-                        'prefix' => TestEntity::class,
+                        'prefix' => 'Sonata\Doctrine\Tests\App\Entity',
                         'is_bundle' => false,
                     ],
                 ],
             ],
         ]);
+
+        if (class_exists(CacheCompatibilityPass::class)) {
+            // doctrine-bundle v2
+            $container->loadFromExtension('doctrine', [
+                'dbal' => [
+                    'use_savepoints' => true,
+                ],
+                'orm' => [
+                    'auto_generate_proxy_classes' => true,
+                    'report_fields_where_declared' => true,
+                ],
+            ]);
+        }
     }
 
     protected function configureRoutes(RoutingConfigurator $routes): void
