@@ -10,7 +10,6 @@ Doctrine2 behavioral extensions
 
 [![Latest Stable Version](https://poser.pugx.org/sonata-project/doctrine-extensions/v/stable)](https://packagist.org/packages/sonata-project/doctrine-extensions)
 [![Latest Unstable Version](https://poser.pugx.org/sonata-project/doctrine-extensions/v/unstable)](https://packagist.org/packages/sonata-project/doctrine-extensions)
-[![Psalm Type Coverage][shepherd_stable_badge]][shepherd_stable_link]
 [![License](https://poser.pugx.org/sonata-project/doctrine-extensions/license)](https://packagist.org/packages/sonata-project/doctrine-extensions)
 
 [![Total Downloads](https://poser.pugx.org/sonata-project/doctrine-extensions/downloads)](https://packagist.org/packages/sonata-project/doctrine-extensions)
