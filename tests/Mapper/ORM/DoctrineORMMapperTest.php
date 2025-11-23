@@ -57,11 +57,6 @@ final class DoctrineORMMapperTest extends KernelTestCase
         restore_exception_handler();
     }
 
-    /**
-     * @psalm-suppress InternalMethod
-     *
-     * @see https://github.com/symfony/symfony/issues/46483
-     */
     public function testDoctrineMappingLoaded(): void
     {
         self::bootKernel();

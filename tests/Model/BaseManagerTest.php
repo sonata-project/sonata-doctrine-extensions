@@ -43,9 +43,14 @@ final class BaseManagerTest extends TestCase
 {
     /**
      * @var MockObject&ObjectManager
+     *
+     * @phpstan-ignore property.uninitialized
      */
     private ObjectManager $objectManager;
 
+    /**
+     * @phpstan-ignore property.uninitialized
+     */
     private ManagerTest $manager;
 
     protected function setUp(): void
