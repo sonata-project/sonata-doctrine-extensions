@@ -27,16 +27,22 @@ final class BaseEntityManagerTest extends TestCase
 {
     /**
      * @var ManagerRegistry&MockObject
+     *
+     * @phpstan-ignore property.uninitialized
      */
     private ManagerRegistry $registry;
 
     /**
      * @var ObjectManager&MockObject
+     *
+     * @phpstan-ignore property.uninitialized
      */
     private ObjectManager $objectManager;
 
     /**
      * @var BaseEntityManager<object>
+     *
+     * @phpstan-ignore property.uninitialized
      */
     private BaseEntityManager $manager;
 
@@ -44,7 +50,6 @@ final class BaseEntityManagerTest extends TestCase
     {
         $this->registry = $this->createMock(ManagerRegistry::class);
         $this->objectManager = $this->createMock(EntityManagerInterface::class);
-        /** @psalm-suppress MissingTemplateParam */
         $this->manager = new class(TestEntity::class, $this->registry) extends BaseEntityManager {};
     }
 

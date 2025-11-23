@@ -21,7 +21,7 @@
     ],
     "homepage": "https://github.com/sonata-project/sonata-doctrine-extensions",
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "doctrine/dbal": "^3.4 || ^4.0",
         "doctrine/persistence": "^3.0.2 || ^4.0"
     },
@@ -34,17 +34,14 @@
         "matthiasnoback/symfony-config-test": "^6.1",
         "matthiasnoback/symfony-dependency-injection-test": "^6.1",
         "phpstan/extension-installer": "^1.0",
-        "phpstan/phpstan": "^1.1 || ^2.0",
-        "phpstan/phpstan-phpunit": "^1.0 || ^2.0",
         "phpstan/phpstan-strict-rules": "^1.0 || ^2.0",
         "phpunit/phpunit": "^10.5.54 || ^11.5.38 || ^12.3.10",
         "psalm/plugin-phpunit": "^0.18 || ^0.19",
         "rector/rector": "^1.1 || ^2.0",
-        "symfony/dependency-injection": "^6.4 || ^7.1",
-        "symfony/doctrine-bridge": "^6.4 || ^7.1",
-        "symfony/expression-language": "^6.4 || ^7.1",
-        "symfony/framework-bundle": "^6.4 || ^7.1",
-        "vimeo/psalm": "^5.0 || ^6.0"
+        "symfony/dependency-injection": "^6.4 || ^7.3 || ^8.0",
+        "symfony/doctrine-bridge": "^6.4 || ^7.3 || ^8.0",
+        "symfony/expression-language": "^6.4 || ^7.3 || ^8.0",
+        "symfony/framework-bundle": "^6.4 || ^7.3 || ^8.0"
     },
     "conflict": {
         "doctrine/doctrine-bundle": "<2.7",
@@ -56,6 +53,8 @@
         "doctrine/orm": "If you use doctrine orm",
         "symfony/framework-bundle": "If you want to use symfony"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Sonata\\Doctrine\\": "src/",
