@@ -27,22 +27,16 @@ final class BaseEntityManagerTest extends TestCase
 {
     /**
      * @var ManagerRegistry&MockObject
-     *
-     * @phpstan-ignore property.uninitialized
      */
     private ManagerRegistry $registry;
 
     /**
      * @var ObjectManager&MockObject
-     *
-     * @phpstan-ignore property.uninitialized
      */
     private ObjectManager $objectManager;
 
     /**
      * @var BaseEntityManager<object>
-     *
-     * @phpstan-ignore property.uninitialized
      */
     private BaseEntityManager $manager;
 
