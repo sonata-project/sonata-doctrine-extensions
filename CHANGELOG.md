@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.7.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/2.6.0...2.7.0) - 2026-11-15
+### Removed
+- [[#548](https://github.com/sonata-project/sonata-doctrine-extensions/pull/548)] Support for Symfony 7.3 and 8.0 ([@dmaicher](https://github.com/dmaicher))
+
 ## [2.6.0](https://github.com/sonata-project/sonata-doctrine-extensions/compare/2.5.0...2.6.0) - 2025-11-23
 ### Removed
 - [[#539](https://github.com/sonata-project/sonata-doctrine-extensions/pull/539)] Support for PHP 8.1 ([@dmaicher](https://github.com/dmaicher))
