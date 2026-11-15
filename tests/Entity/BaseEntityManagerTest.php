@@ -64,7 +64,7 @@ final class BaseEntityManagerTest extends TestCase
 
     public function testGetRepository(): void
     {
-        $entityRepository = $this->createMock(EntityRepository::class);
+        $entityRepository = static::createStub(EntityRepository::class);
 
         $this->objectManager->expects(static::once())->method('getRepository')->with(TestEntity::class)->willReturn($entityRepository);
 

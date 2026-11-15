@@ -28,9 +28,7 @@ final class BaseDocumentManagerTest extends TestCase
 {
     public function getManager(): DocumentManager
     {
-        $registry = $this->createMock(ManagerRegistry::class);
-
-        return new DocumentManager(\stdClass::class, $registry);
+        return new DocumentManager(\stdClass::class, static::createStub(ManagerRegistry::class));
     }
 
     public function test(): void
