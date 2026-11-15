@@ -142,9 +142,7 @@ final class OptionsBuilder
             );
         }
 
-        if (!isset($this->options['orderBy'])) {
-            $this->options['orderBy'] = [];
-        }
+        $this->options['orderBy'] ??= [];
 
         $this->options['orderBy'] = array_merge($this->options['orderBy'], [$field => $orientation]);
 
@@ -171,9 +169,7 @@ final class OptionsBuilder
             );
         }
 
-        if (!isset($this->options['joinColumns'])) {
-            $this->options['joinColumns'] = [];
-        }
+        $this->options['joinColumns'] ??= [];
 
         $this->options['joinColumns'][] = $joinColumn;
 

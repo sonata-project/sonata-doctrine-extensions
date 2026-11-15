@@ -61,9 +61,7 @@ final class DoctrineCollector
 
     public static function getInstance(): self
     {
-        if (null === self::$instance) {
-            self::$instance = new self();
-        }
+        self::$instance ??= new self();
 
         return self::$instance;
     }
@@ -78,13 +76,9 @@ final class DoctrineCollector
      */
     public function addDiscriminator(string $class, string $key, string $discriminatorClass): void
     {
-        if (!isset($this->discriminators[$class])) {
-            $this->discriminators[$class] = [];
-        }
+        $this->discriminators[$class] ??= [];
 
-        if (!isset($this->discriminators[$class][$key])) {
-            $this->discriminators[$class][$key] = $discriminatorClass;
-        }
+        $this->discriminators[$class][$key] ??= $discriminatorClass;
     }
 
     /**
@@ -92,9 +86,7 @@ final class DoctrineCollector
      */
     public function addDiscriminatorColumn(string $class, ColumnDefinitionBuilder $columnDef): void
     {
-        if (!isset($this->discriminatorColumns[$class])) {
-            $this->discriminatorColumns[$class] = $columnDef->getOptions();
-        }
+        $this->discriminatorColumns[$class] ??= $columnDef->getOptions();
     }
 
     /**
@@ -102,9 +94,7 @@ final class DoctrineCollector
      */
     public function addInheritanceType(string $class, int $type): void
     {
-        if (!isset($this->inheritanceTypes[$class])) {
-            $this->inheritanceTypes[$class] = $type;
-        }
+        $this->inheritanceTypes[$class] ??= $type;
     }
 
     /**
@@ -112,13 +102,9 @@ final class DoctrineCollector
      */
     public function addAssociation(string $class, string $type, OptionsBuilder $options): void
     {
-        if (!isset($this->associations[$class])) {
-            $this->associations[$class] = [];
-        }
+        $this->associations[$class] ??= [];
 
-        if (!isset($this->associations[$class][$type])) {
-            $this->associations[$class][$type] = [];
-        }
+        $this->associations[$class][$type] ??= [];
 
         $this->associations[$class][$type][] = $options->getOptions();
     }
@@ -132,9 +118,7 @@ final class DoctrineCollector
     {
         $this->verifyColumnNames($columns);
 
-        if (!isset($this->indexes[$class])) {
-            $this->indexes[$class] = [];
-        }
+        $this->indexes[$class] ??= [];
 
         if (isset($this->indexes[$class][$name])) {
             return;
@@ -168,13 +152,9 @@ final class DoctrineCollector
      */
     public function addOverride(string $class, string $type, OptionsBuilder $options): void
     {
-        if (!isset($this->overrides[$class])) {
-            $this->overrides[$class] = [];
-        }
+        $this->overrides[$class] ??= [];
 
-        if (!isset($this->overrides[$class][$type])) {
-            $this->overrides[$class][$type] = [];
-        }
+        $this->overrides[$class][$type] ??= [];
 
         $this->overrides[$class][$type][] = $options->getOptions();
     }
