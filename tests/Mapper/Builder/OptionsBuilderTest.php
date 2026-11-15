@@ -189,6 +189,22 @@ final class OptionsBuilderTest extends TestCase
         ], $builder->getOptions());
     }
 
+    public function testOrderByWithSortDirection(): void
+    {
+        $builder = OptionsBuilder::createOneToMany('groups', 'App\Entity\Group')
+            ->addOrder('position', \SortDirection::Ascending)
+            ->addOrder('name', \SortDirection::Ascending);
+
+        static::assertSame([
+            'fieldName' => 'groups',
+            'targetEntity' => 'App\Entity\Group',
+            'orderBy' => [
+                'position' => \SortDirection::Ascending,
+                'name' => \SortDirection::Ascending,
+            ],
+        ], $builder->getOptions());
+    }
+
     public function testOrderByThrowsExceptionOnInvalidMapping(): void
     {
         $this->expectException(\RuntimeException::class);

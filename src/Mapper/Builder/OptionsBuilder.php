@@ -130,11 +130,11 @@ final class OptionsBuilder
     }
 
     /**
-     * @param 'ASC'|'DESC' $orientation
+     * @param 'ASC'|'DESC'|\SortDirection $orientation
      *
      * @return $this
      */
-    public function addOrder(string $field, string $orientation): self
+    public function addOrder(string $field, string|\SortDirection $orientation): self
     {
         if (!\in_array($this->type, [self::ONE_TO_MANY, self::MANY_TO_MANY], true)) {
             throw new \RuntimeException(
