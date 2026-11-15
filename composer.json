@@ -39,10 +39,10 @@
         "phpstan/phpstan-strict-rules": "^1.0 || ^2.0",
         "phpunit/phpunit": "^11.5.38 || ^12.3.10",
         "rector/rector": "^1.1 || ^2.0",
-        "symfony/dependency-injection": "^6.4 || ^7.3 || ^8.0",
-        "symfony/doctrine-bridge": "^6.4 || ^7.3 || ^8.0",
-        "symfony/expression-language": "^6.4 || ^7.3 || ^8.0",
-        "symfony/framework-bundle": "^6.4 || ^7.3 || ^8.0"
+        "symfony/dependency-injection": "^6.4 || ^7.4 || ^8.1",
+        "symfony/doctrine-bridge": "^6.4 || ^7.4 || ^8.1",
+        "symfony/expression-language": "^6.4 || ^7.4 || ^8.1",
+        "symfony/framework-bundle": "^6.4 || ^7.4 || ^8.1"
     },
     "conflict": {
         "doctrine/doctrine-bundle": "<2.7",
