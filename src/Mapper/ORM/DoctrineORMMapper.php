@@ -59,12 +59,12 @@ final class DoctrineORMMapper implements EventSubscriber
     private array $inheritanceTypes = [];
 
     /**
-     * @var array<class-string, array<string, array<string>>>
+     * @var array<class-string, array<string, list<string>>>
      */
     private array $indexes = [];
 
     /**
-     * @var array<class-string, array<string, array<string>>>
+     * @var array<class-string, array<string, list<string>>>
      */
     private array $uniques = [];
 
@@ -147,7 +147,7 @@ final class DoctrineORMMapper implements EventSubscriber
             return;
         }
 
-        $this->indexes[$class][$name] = $columns;
+        $this->indexes[$class][$name] = array_values($columns);
     }
 
     /**
@@ -165,7 +165,7 @@ final class DoctrineORMMapper implements EventSubscriber
             return;
         }
 
-        $this->uniques[$class][$name] = $columns;
+        $this->uniques[$class][$name] = array_values($columns);
     }
 
     /**
